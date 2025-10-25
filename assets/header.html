@@ -1,17 +1,32 @@
-<!-- Encabezado común: Matemática a Pedal -->
-<header style="
-  position: relative;
-  background: url('https://utec-math.github.io/matematica-a-pedal/assets/Matem%C3%A1tica%20a%20pedal.png') center/cover no-repeat;
-  height: 240px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #783f04;
-  font-family: 'Roboto Mono', monospace;
-  border-bottom: 2px solid #fff;
-">
-  <div style="background-color: rgba(255,255,255,0.85); padding: 10px 24px; border-radius: 12px;">
-    <h1 style="margin: 0; font-size: 48px;">Matemática a Pedal</h1>
-  </div>
+<!-- Encabezado global: banner sin recorte ni título superpuesto -->
+<header class="mp-header">
+  <img
+    src="https://utec-math.github.io/matematica-a-pedal/assets/Matemática a pedal.png"
+    alt="Matemática a Pedal"
+    class="mp-header-img"
+    decoding="async"
+    loading="eager"
+  />
 </header>
+
+<style>
+  /* Contenedor */
+  .mp-header{
+    margin:0;
+    padding:0;
+    line-height:0;          /* elimina espacio fantasma alrededor del img */
+    border-bottom: 1px solid #FFD580;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    background:#FFF;        /* por si la imagen tarda */
+  }
+
+  /* Imagen: ocupa todo el ancho, NO se recorta */
+  .mp-header-img{
+    display:block;
+    width:100%;
+    height:auto;            /* mantiene proporción */
+  }
+
+  /* Opcional: que el header “pegue” arriba al hacer scroll */
+  .mp-header{ position:sticky; top:0; z-index: 50; background:#fff; }
+</style>

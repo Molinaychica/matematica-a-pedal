@@ -1,0 +1,186 @@
+<!-- CAPÍTULO 6 — OPERACIONES CON FRACCIONES (Matemática a Pedal) -->
+<section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:980px; margin:0 auto;">
+
+  <!-- Encabezado -->
+  <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border:2px solid #fff; border-radius:12px; padding:18px 20px; box-shadow:0 6px 16px rgba(0,0,0,.08);">
+    <h1 style="color:#783f04; margin:0; font-size:28px;">Unidad 1 · Bloque F — Operaciones con fracciones</h1>
+    <p style="margin:8px 0 0;">Multiplicar, dividir, sumar y restar fracciones con seguridad: regla cruzada y uso del MCM.</p>
+  </div>
+
+  <!-- Objetivos -->
+  <div style="margin-top:18px; border:1.5px dashed #783f04; border-radius:12px; padding:14px 16px;">
+    <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Objetivos del Bloque F</h2>
+    <ul style="margin:0 0 0 18px;">
+      <li>Multiplicar y dividir fracciones simplificando antes y después.</li>
+      <li>Sumar y restar con igual y distinto denominador.</li>
+      <li>Usar MCM para un denominador común y aplicar la regla cruzada cuando corresponda.</li>
+      <li>Evitar errores típicos (no “cancelar” en sumas/restas).</li>
+    </ul>
+  </div>
+
+  <!-- Repaso rápido -->
+  <div style="margin-top:16px; display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+    <div style="border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h3 style="color:#783f04; margin:0 0 6px;">Multiplicación</h3>
+      <p>(a/b) × (c/d) = (a·c) / (b·d), con b,d ≠ 0.</p>
+      <p><b>Tip:</b> si podés, simplificá antes (dividí numerador y denominador por un mismo número).</p>
+      <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
+        Ej.: 12/35 × 7/6 → (12÷6)/(6÷6) = 2/1 y (7)/(35) = 1/5 → 2/5
+      </div>
+    </div>
+
+    <div style="border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <h3 style="color:#783f04; margin:0 0 6px;">División</h3>
+      <p>(a/b) ÷ (c/d) = (a/b) × (d/c) = (a·d) / (b·c), con b,c,d ≠ 0.</p>
+      <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
+        Ej.: 9/8 ÷ 6/7 = 9/8 × 7/6 → (9÷3)/(6÷3)=3/2 y 7/8 → (3·7)/(2·8)=21/16
+      </div>
+    </div>
+  </div>
+
+  <!-- Suma y resta -->
+  <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04; margin:0 0 8px;">Suma y resta de fracciones</h2>
+
+    <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+      <div style="background:#FFF6E6; border-radius:12px; padding:12px;">
+        <h4 style="color:#783f04; margin:0 0 6px;">1) Igual denominador</h4>
+        <p>(a/b) ± (c/b) = (a ± c) / b</p>
+        <div style="background:#FFF; border:1px dashed #FFD580; border-radius:8px; padding:8px;">
+          Ej.: 3/7 + 5/7 = (3+5)/7 = 8/7
+        </div>
+      </div>
+
+      <div style="background:#FFF6E6; border-radius:12px; padding:12px;">
+        <h4 style="color:#783f04; margin:0 0 6px;">2) Distinto denominador (dos métodos)</h4>
+        <p><b>Regla cruzada:</b> a/b ± c/d = (a·d ± b·c) / (b·d)</p>
+        <p><b>Con MCM:</b> Denominador común = mcm(b,d). Ajustar cada numerador.</p>
+        <div style="background:#FFF; border:1px dashed #FFD580; border-radius:8px; padding:8px; margin-top:6px;">
+          Ej. (cruzada): 2/3 + 5/4 = (2·4 + 3·5)/(3·4) = (8+15)/12 = 23/12
+        </div>
+        <div style="background:#FFF; border:1px dashed #FFD580; border-radius:8px; padding:8px; margin-top:6px;">
+          Ej. (MCM): 3/16 + 5/24. mcm(16,24)=48 → (3×3)/48 + (5×2)/48 = 9/48 + 10/48 = 19/48
+        </div>
+      </div>
+    </div>
+
+    <details style="margin-top:10px;"><summary style="cursor:pointer; color:#783f04;">Errores típicos (evitar)</summary>
+      <ul style="margin:8px 0 0 18px;">
+        <li>(a/b) + (c/d) ≠ (a+c)/(b+d)  ← esto está mal.</li>
+        <li>No se “cancela” en sumas/restas: (a + b)/b no se simplifica, salvo que haya <b>factor común</b>.</li>
+        <li>Recordá: el denominador jamás puede ser 0.</li>
+      </ul>
+    </details>
+  </div>
+
+  <!-- MCM práctico -->
+  <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04; margin:0 0 8px;">Cómo hallar el MCM (versión práctica)</h2>
+    <ol style="margin:0 0 0 18px;">
+      <li>Descomponé b y d en factores primos.</li>
+      <li>Tomá cada primo con el <b>mayor exponente</b> que aparezca.</li>
+      <li>Multiplicá esos factores: eso es el MCM.</li>
+    </ol>
+    <div style="background:#FFF6E6; border-radius:8px; padding:10px; margin-top:6px;">
+      Ej.: b=16=2⁴, d=24=2³·3 → MCM=2⁴·3=48.
+    </div>
+  </div>
+
+  <!-- Ejemplos guiados -->
+  <div style="margin-top:16px; display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+    <div style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
+      <h4 style="color:#783f04; margin:0 0 6px;">Ejemplo 1 — Suma</h4>
+      <p>5/12 + 7/18. MCM(12,18)=36.</p>
+      <p>5/12 = (5×3)/36 = 15/36; 7/18 = (7×2)/36 = 14/36 → 29/36.</p>
+    </div>
+    <div style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
+      <h4 style="color:#783f04; margin:0 0 6px;">Ejemplo 2 — Resta</h4>
+      <p>3/8 − 5/12. MCM(8,12)=24.</p>
+      <p>3/8 = (3×3)/24 = 9/24; 5/12 = (5×2)/24 = 10/24 → (9−10)/24 = −1/24.</p>
+    </div>
+    <div style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
+      <h4 style="color:#783f04; margin:0 0 6px;">Ejemplo 3 — Expresión mixta</h4>
+      <p>(2/3)x − (5/6)x = (4/6 − 5/6)x = (−1/6)x = −x/6.</p>
+    </div>
+  </div>
+
+  <!-- Mini-actividad 1 -->
+  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04; margin:0 0 8px;">Mini-actividad 1 · Multiplicación y división</h2>
+    <ol style="margin:0 0 0 18px;">
+      <li>4/9 × 27/8</li>
+      <li>5/12 ÷ 25/18</li>
+      <li>14/15 × 9/7</li>
+      <li>(3x/10) ÷ (9/5)</li>
+      <li>(2a−6)/8 × 12</li>
+    </ol>
+    <details style="margin-top:10px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+      <ol style="margin:8px 0 0 18px;">
+        <li>4/9 × 27/8 = (4×27)/(9×8). Simplificando por 9 y 4 → 3/2.</li>
+        <li>5/12 ÷ 25/18 = 5/12 × 18/25 → simplificar 5 y 25 → 18/60 = 3/10.</li>
+        <li>14/15 × 9/7 → simplificar 14 y 7 → 9/15 = 3/5.</li>
+        <li>(3x/10) × (5/9) = (15x)/90 = x/6.</li>
+        <li>(2(a−3))/8 × 12 = ((a−3)/4) × 12 = 3(a−3) = 3a − 9.</li>
+      </ol>
+    </details>
+  </div>
+
+  <!-- Mini-actividad 2 -->
+  <div style="margin-top:14px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04; margin:0 0 8px;">Mini-actividad 2 · Suma y resta</h2>
+    <ol style="margin:0 0 0 18px;">
+      <li>7/10 + 11/15</li>
+      <li>5/12 − 1/8</li>
+      <li>3/5 + 2/7</li>
+      <li>9/14 − 4/21</li>
+      <li>(x/3) + (x/4)</li>
+    </ol>
+    <details style="margin-top:10px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+      <ol style="margin:8px 0 0 18px;">
+        <li>MCM(10,15)=30 → 21/30 + 22/30 = 43/30.</li>
+        <li>MCM(12,8)=24 → 10/24 − 3/24 = 7/24.</li>
+        <li>MCM(5,7)=35 → 21/35 + 10/35 = 31/35.</li>
+        <li>MCM(14,21)=42 → 27/42 − 8/42 = 19/42.</li>
+        <li>MCM(3,4)=12 → 4x/12 + 3x/12 = 7x/12.</li>
+      </ol>
+    </details>
+  </div>
+
+  <!-- Mini-actividad 3: criterio -->
+  <div style="margin-top:14px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04; margin:0 0 8px;">Mini-actividad 3 · ¿Cruzada o MCM?</h2>
+    <p>Elegí el método más cómodo y resolvé:</p>
+    <ol style="margin:0 0 0 18px;">
+      <li>2/3 + 1/6</li>
+      <li>5/8 − 3/4</li>
+      <li>4/9 + 7/12</li>
+    </ol>
+    <details style="margin-top:10px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+      <ol style="margin:8px 0 0 18px;">
+        <li>MCM(3,6)=6 → 4/6 + 1/6 = 5/6.</li>
+        <li>MCM(8,4)=8 → 5/8 − 6/8 = −1/8.</li>
+        <li>MCM(9,12)=36 → 16/36 + 21/36 = 37/36.</li>
+      </ol>
+    </details>
+  </div>
+
+  <!-- Cierre -->
+  <div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04; margin:0 0 8px;">Para seguir</h2>
+    <p style="margin:0;">Próximo capítulo: <b>Decimales y fracciones</b> — convertir decimales finitos y periódicos a fracción y viceversa.</p>
+  </div>
+
+</section>
+<!-- Navegador Unidad 1 - Capítulo 6 -->
+<div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px;
+            background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px;
+            font-family:'Roboto Mono', monospace;">
+  <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/unidad-1-conjuntos-num%C3%A9ricos-y-operaciones-b%C3%A1sicas/cap%C3%ADtulo-5-fracciones-equivalentes-y-simplificaci%C3%B3n"
+     style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
+            border-radius:10px; padding:8px 14px;">⬅️ Bloque E</a>
+  <span style="color:#7f6000; font-size:14px;">Continuá pedaleando</span>
+  <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/unidad-1-conjuntos-num%C3%A9ricos-y-operaciones-b%C3%A1sicas/cap%C3%ADtulo-7-decimales-y-fracciones"
+     style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
+            border-radius:10px; padding:8px 14px;">Siguiente ➡️ Bloque G</a>
+</div>
+<!-- FIN CAPÍTULO 6 -->

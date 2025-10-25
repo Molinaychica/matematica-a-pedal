@@ -1,3 +1,15 @@
+<!-- Cargar encabezado -->
+<div id="header-placeholder"></div>
+<script>
+  fetch("https://utec-math.github.io/matematica-a-pedal/assets/header.html")
+    .then(r => r.text())
+    .then(html => document.getElementById("header-placeholder").innerHTML = html);
+</script>
+
+<!-- Tu contenido original -->
+<section id="u0-home" style="font-family:'Roboto Mono', monospace;">
+  <!-- ... resto del contenido ... -->
+</section>
 <!-- HOME — MATEMÁTICA A PEDAL -->
 <section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1100px; margin:0 auto;">
 
@@ -158,4 +170,5 @@
 
 </section>
 <!-- FIN HOME -->
+
 

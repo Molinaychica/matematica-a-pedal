@@ -1,0 +1,139 @@
+<!-- UNIDAD 0 · BLOQUE E — NOTACIÓN CIENTÍFICA -->
+<section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:980px; margin:0 auto;">
+
+  <!-- MathJax (omití si ya está cargado) -->
+  <script>
+    window.MathJax = { tex:{ inlineMath:[['\\(','\\)'],['$','$']], displayMath:[['\\[','\\]'],['$$','$$']] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <!-- Encabezado -->
+  <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border-radius:12px; padding:18px 20px; border:2px solid #fff;">
+    <h1 style="color:#783f04; margin:0;">Unidad 0 · Bloque E — Notación científica</h1>
+    <p style="margin:8px 0 0;">
+      La notación científica expresa números muy grandes o muy pequeños de forma compacta usando potencias de 10.
+      Es esencial en física, química y biología para manejar órdenes de magnitud.
+    </p>
+  </div>
+
+  <!-- Recordatorio -->
+  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">📘 Recordatorio rápido</h2>
+    <ul style="margin:0 0 0 18px;">
+      <li>Forma estándar: \( a\cdot10^{n} \) con \(1\le |a|<10\) y \( n\in\mathbb{Z}\).</li>
+      <li>Si \(n>0\) → número grande. Si \(n<0\) → número pequeño.</li>
+      <li>Multiplicar: \((a\cdot10^{m})(b\cdot10^{n})=(ab)\cdot10^{m+n}\).</li>
+      <li>Dividir: \(\dfrac{a\cdot10^{m}}{b\cdot10^{n}}=\left(\dfrac{a}{b}\right)\cdot10^{m-n}\).</li>
+    </ul>
+    <div style="background:#FFF6E6; border-radius:8px; padding:10px; margin-top:8px;">
+      <b>Tip</b>: Si el coeficiente te queda fuera de \([1,10)\), volvés a normalizar moviendo la coma y ajustando el exponente.
+    </div>
+  </div>
+
+  <!-- Ejercicio 1: a notación científica -->
+  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">1) Convertí a notación científica</h2>
+    <ol style="margin:0 0 0 18px;">
+      <li>4 200 000</li>
+      <li>0,000 36</li>
+      <li>58 000 000 000</li>
+      <li>0,000 000 000 92</li>
+    </ol>
+    <details style="margin-top:8px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+      <ul style="margin:8px 0 0 18px;">
+        <li>\(4{,}2\cdot10^{6}\)</li>
+        <li>\(3{,}6\cdot10^{-4}\)</li>
+        <li>\(5{,}8\cdot10^{10}\)</li>
+        <li>\(9{,}2\cdot10^{-10}\)</li>
+      </ul>
+    </details>
+  </div>
+
+  <!-- Ejercicio 2: a forma decimal -->
+  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">2) Pasá de notación científica a forma decimal</h2>
+    <ol style="margin:0 0 0 18px;">
+      <li>\(3{,}1\cdot10^{2}\)</li>
+      <li>\(7{,}45\cdot10^{-3}\)</li>
+      <li>\(1{,}2\cdot10^{6}\)</li>
+      <li>\(9{,}8\cdot10^{-5}\)</li>
+    </ol>
+    <details style="margin-top:8px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+      <ul style="margin:8px 0 0 18px;">
+        <li>\(310\)</li>
+        <li>\(0{,}00745\)</li>
+        <li>\(1\,200\,000\)</li>
+        <li>\(0{,}000098\)</li>
+      </ul>
+    </details>
+  </div>
+
+  <!-- Ejercicio 3: operar con potencias de 10 -->
+  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">3) Operaciones con potencias de 10</h2>
+    <ol style="margin:0 0 0 18px;">
+      <li>\((2\cdot10^{3})\,(4\cdot10^{5})\)</li>
+      <li>\(\dfrac{6\cdot10^{8}}{3\cdot10^{4}}\)</li>
+      <li>\((5\cdot10^{-4})\,(2\cdot10^{6})\)</li>
+      <li>\(\dfrac{9\cdot10^{-2}}{3\cdot10^{-5}}\)</li>
+    </ol>
+    <details style="margin-top:8px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+      <ul style="margin:8px 0 0 18px;">
+        <li>\((2\cdot4)\cdot10^{3+5}=8\cdot10^{8}\)</li>
+        <li>\((6/3)\cdot10^{8-4}=2\cdot10^{4}\)</li>
+        <li>\((5\cdot2)\cdot10^{-4+6}=10\cdot10^{2}=1\cdot10^{3}\)</li>
+        <li>\((9/3)\cdot10^{-2-(-5)}=3\cdot10^{3}\)</li>
+      </ul>
+    </details>
+  </div>
+
+  <!-- Ejercicio 4: aplicaciones -->
+  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">4) Aplicaciones numéricas</h2>
+    <ol style="margin:0 0 0 18px;">
+      <li><b>Astronomía:</b> distancia Tierra–Sol \(\approx 1{,}496\cdot10^{11}\,\text{m}\). Expresala en km.</li>
+      <li><b>Microbiología:</b> una bacteria mide \(2{,}5\cdot10^{-6}\,\text{m}\). ¿Cuántas entrarían en \(1\,\text{cm}=10^{-2}\,\text{m}\)?</li>
+      <li><b>Física:</b> la velocidad de la luz es \(3{,}0\cdot10^{8}\,\text{m/s}\). ¿Cuántos metros recorre en \(5\,\text{s}\)?</li>
+    </ol>
+    <details style="margin-top:8px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+      <ul style="margin:8px 0 0 18px;">
+        <li>\(1{,}496\cdot10^{11}\,\text{m}=1{,}496\cdot10^{8}\,\text{km}\approx 1{,}5\cdot10^{8}\,\text{km}\).</li>
+        <li>\(\dfrac{10^{-2}}{2{,}5\cdot10^{-6}}=\dfrac{1}{2{,}5}\cdot10^{-2-(-6)}=0{,}4\cdot10^{4}=4\cdot10^{3}\Rightarrow\) unas \(4000\) bacterias.</li>
+        <li>\(3{,}0\cdot10^{8}\,\text{m/s}\cdot5\,\text{s}=1{,}5\cdot10^{9}\,\text{m}\).</li>
+      </ul>
+    </details>
+  </div>
+
+  <!-- Errores comunes -->
+  <div style="margin-top:18px; background:#FFF6E6; border:1px dashed #FFD580; border-radius:12px; padding:14px;">
+    <h3 style="color:#783f04; margin:0 0 6px;">💡 Evitá estos errores</h3>
+    <ul style="margin:0 0 0 18px;">
+      <li>Dejar el coeficiente fuera de \([1,10)\): \((6\cdot10^{3})(5\cdot10^{2})=30\cdot10^{5}=3\cdot10^{6}\).</li>
+      <li>Confundir signos de exponentes al dividir: \(10^{-2}/10^{-5}=10^{(-2)-(-5)}=10^{3}\).</li>
+    </ul>
+  </div>
+
+  <!-- Cierre -->
+  <div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">🚴‍♀️ Para seguir</h2>
+    <p>
+      ¡Excelente! Con este bloque cerrás el <b>Calentamiento Matemático</b>. 
+      A continuación, encontrá la <b>Mini-evaluación de repaso</b> y el <b>Checklist U0</b> para registrar tu progreso.
+    </p>
+  </div>
+
+</section>
+<!-- FIN BLOQUE E -->
+
+<!-- Navegador Unidad 0 - Bloque E -->
+<div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px;
+            background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px;
+            font-family:'Roboto Mono', monospace;">
+  <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/unidad-0-calentamiento-matem%C3%A1tico/bloque-d-potenciaci%C3%B3n-y-radicaci%C3%B3n"
+     style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
+            border-radius:10px; padding:8px 14px;">⬅️ Bloque D</a>
+  <span style="color:#7f6000; font-size:14px;">¡Buen pedaleo!</span>
+  <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/unidad-0-calentamiento-matem%C3%A1tico/mini-evaluaci%C3%B3n"
+     style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
+            border-radius:10px; padding:8px 14px;">Siguiente ➡️ Mini Evaluación</a>
+</div>

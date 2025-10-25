@@ -1,0 +1,118 @@
+<!-- UNIDAD 4 · CAPÍTULO 4 — NOTACIÓN CIENTÍFICA Y APLICACIONES -->
+<section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:980px; margin:0 auto;">
+
+  <!-- Encabezado -->
+  <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border-radius:12px; padding:18px 20px; border:2px solid #fff;">
+    <h1 style="color:#783f04; margin:0;">Unidad 4 · Capítulo 4 — Notación científica y aplicaciones</h1>
+    <p style="margin:8px 0 0;">
+      La notación científica es una forma práctica de escribir números muy grandes o muy pequeños usando potencias de diez.
+      Se emplea a diario en las ciencias naturales, la ingeniería y la informática para expresar magnitudes extremas de manera compacta y precisa.
+    </p>
+  </div>
+
+  <!-- Qué es la notación científica -->
+  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">1️⃣ Definición</h2>
+    <p>
+      Un número positivo <em>x</em> está en <b>notación científica</b> si puede escribirse como:
+      <br><strong>x = a · 10<sup>n</sup></strong> &nbsp; donde &nbsp; 1 ≤ a &lt; 10 y n ∈ ℤ.
+    </p>
+    <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
+      <b>Ejemplos</b>
+      <ul style="margin:6px 0 0 18px;">
+        <li>4 000 000 000 000 = 4 · 10<sup>12</sup></li>
+        <li>0,000 045 = 4,5 · 10<sup>−5</sup></li>
+        <li>2,9979 · 10<sup>8</sup> m/s → velocidad de la luz en el vacío.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Cómo escribir números -->
+  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">2️⃣ Cómo convertir un número a notación científica</h2>
+    <ul style="margin:0 0 0 18px;">
+      <li>Ubicá la coma después del primer dígito distinto de cero.</li>
+      <li>Contá cuántos lugares se movió la coma: ese número será el exponente <em>n</em> de 10.</li>
+      <li>Si la coma se movió a la izquierda, <em>n</em> es positivo; si se movió a la derecha, <em>n</em> es negativo.</li>
+    </ul>
+
+    <div style="display:grid; gap:10px; grid-template-columns:1fr 1fr; margin-top:8px;">
+      <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
+        <b>Ejemplo 1 · Número grande</b><br>
+        7 500 000 000 = 7,5 · 10<sup>9</sup>.
+      </div>
+      <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
+        <b>Ejemplo 2 · Número pequeño</b><br>
+        0,000 003 2 = 3,2 · 10<sup>−6</sup>.
+      </div>
+    </div>
+  </div>
+
+  <!-- Operaciones con potencias de diez -->
+  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">3️⃣ Operaciones con notación científica</h2>
+    <p>Las reglas de los exponentes se aplican directamente a las potencias de 10.</p>
+    <div style="display:grid; gap:10px; grid-template-columns:1fr 1fr;">
+      <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
+        <b>Multiplicación</b><br>
+        (a · 10<sup>m</sup>) · (b · 10<sup>n</sup>) = (a·b) · 10<sup>m+n</sup>.<br>
+        <i>Ej:</i> (3 · 10<sup>4</sup>)·(2 · 10<sup>2</sup>) = 6 · 10<sup>6</sup>.
+      </div>
+      <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
+        <b>División</b><br>
+        (a · 10<sup>m</sup>) / (b · 10<sup>n</sup>) = (a/b) · 10<sup>m−n</sup>.<br>
+        <i>Ej:</i> (4 · 10<sup>7</sup>)/(2 · 10<sup>3</sup>) = 2 · 10<sup>4</sup>.
+      </div>
+      <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
+        <b>Potenciación</b><br>
+        (a · 10<sup>n</sup>)<sup>p</sup> = a<sup>p</sup> · 10<sup>n·p</sup>.<br>
+        <i>Ej:</i> (2 · 10<sup>3</sup>)² = 4 · 10<sup>6</sup>.
+      </div>
+      <div style="background:#FFF6E6; border-radius:8px; padding:10px;">
+        <b>Suma o resta</b><br>
+        Se pueden sumar solo si tienen el mismo exponente n.<br>
+        <i>Ej:</i> 3,2 · 10<sup>5</sup> + 1,8 · 10<sup>5</sup> = 5,0 · 10<sup>5</sup>.
+      </div>
+    </div>
+  </div>
+
+  <!-- Aplicaciones científicas -->
+  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">4️⃣ Aplicaciones en ciencia y tecnología</h2>
+    <ul style="margin:0 0 0 18px;">
+      <li><b>Astrofísica:</b> distancias estelares (años luz) o masas planetarias.</li>
+      <li><b>Química:</b> masas atómicas, concentraciones molares (10<sup>−3</sup>, 10<sup>−6</sup> mol/L).</li>
+      <li><b>Biología:</b> tamaño celular (~10<sup>−5</sup> m) o número de bacterias (~10<sup>9</sup>).</li>
+      <li><b>Ingeniería:</b> corrientes eléctricas en microamperios (10<sup>−6</sup> A) o frecuencias en gigahercios (10<sup>9</sup> Hz).</li>
+    </ul>
+  </div>
+
+  <!-- Ejercicios -->
+  <div style="margin-top:18px; border:1px dashed #FFD580; border-radius:8px; padding:14px;">
+    <h3 style="color:#783f04; margin:0 0 6px 0;">Mini-actividad · De la realidad a la notación científica</h3>
+    <ol style="margin:0 0 0 18px;">
+      <li>Escribí 0,000 000 045 kg en notación científica.</li>
+      <li>Expresá 72 000 000 m en notación científica.</li>
+      <li>Multiplicá (3,2 · 10<sup>−5</sup>) · (4 · 10<sup>2</sup>).</li>
+      <li>Dividí (6 · 10<sup>8</sup>) / (2 · 10<sup>4</sup>).</li>
+      <li>Convertí el tamaño promedio de un virus (0,000 000 15 m) a notación científica.</li>
+    </ol>
+    <details style="margin-top:8px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+      <ol style="margin:8px 0 0 18px;">
+        <li>4,5 · 10<sup>−8</sup> kg.</li>
+        <li>7,2 · 10<sup>7</sup> m.</li>
+        <li>(3,2 · 10<sup>−5</sup>)(4 · 10<sup>2</sup>) = 12,8 · 10<sup>−3</sup> = 1,28 · 10<sup>−2</sup>.</li>
+        <li>(6 · 10<sup>8</sup>)/(2 · 10<sup>4</sup>) = 3 · 10<sup>4</sup>.</li>
+        <li>1,5 · 10<sup>−7</sup> m.</li>
+      </ol>
+    </details>
+  </div>
+
+  <!-- Cierre -->
+  <div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">Para seguir</h2>
+    <p>En el próximo capítulo: <b>Mini-app “Calculadora de Potencias y Raíces”</b> — una herramienta interactiva para practicar los conceptos de esta unidad.</p>
+  </div>
+
+</section>
+<!-- FIN CAPÍTULO 4 -->

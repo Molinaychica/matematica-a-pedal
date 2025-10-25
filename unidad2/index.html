@@ -1,0 +1,212 @@
+<section id="u2-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1000px; margin:0 auto;">
+
+  <script>
+    window.MathJax = { tex:{ inlineMath:[['\\(','\\)'],['$','$']], displayMath:[['\\[','\\]'],['$$','$$']] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border:2px solid #fff; border-radius:14px; padding:18px 20px; box-shadow:0 6px 16px rgba(0,0,0,.08);">
+    <h1 style="color:#783f04; margin:0; font-size:30px;">Unidad 2 — Factorización y Manejo de Expresiones Algebraicas</h1>
+    <p style="margin:8px 0 0;">Del lenguaje algebraico al dominio de la factorización: cómo simplificar, desarrollar y operar expresiones con seguridad.</p>
+  </div>
+
+  <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <div style="display:flex; align-items:center; gap:10px; justify-content:space-between; flex-wrap:wrap;">
+      <div style="flex:1 1 280px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+          <span style="color:#783f04;">Progreso de la unidad</span>
+          <span id="u2-progress-label" style="color:#7f6000;">0%</span>
+        </div>
+        <div style="height:12px; background:#FFF6E6; border:1px solid #FFD580; border-radius:999px; overflow:hidden;">
+          <div id="u2-progress-bar" style="height:100%; width:0%; background:#FFA559;"></div>
+        </div>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <a id="u2-continue" href="#" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">▶️ Continuar donde quedé</a>
+        <button id="u2-reset" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Reset progreso</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+    <h2 style="color:#783f04; margin:0 0 10px; font-size:22px;">Índice de capítulos</h2>
+
+    <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+      <article class="u2-card" data-key="c1" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3 style="color:#783f04; margin:0;">Cap. 1 · Expresiones algebraicas y polinomios</h3>
+          <span class="u2-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
+        </div>
+        <p style="margin:6px 0 8px;">Definición, clasificación, grado y evaluación de polinomios.</p>
+        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+          <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/unidad-2-factorizaci%C3%B3n-y-expresiones-algebraicas/cap%C3%ADtulo-1-expresiones-algebraicas-y-polinomios"
+              style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+            <input type="checkbox" class="u2-done" data-key="c1"> <span>Marcar como completado</span>
+          </label>
+        </div>
+      </article>
+
+      <article class="u2-card" data-key="c2" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3 style="color:#783f04; margin:0;">Cap. 2 · Operaciones con expresiones algebraicas</h3>
+          <span class="u2-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
+        </div>
+        <p style="margin:6px 0 8px;">Suma, resta, multiplicación y división de polinomios. Regla de Ruffini.</p>
+        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+          <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/unidad-2-factorizaci%C3%B3n-y-expresiones-algebraicas/cap%C3%ADtulo-2-operaciones-con-expresiones-algebraicas"
+              style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+            <input type="checkbox" class="u2-done" data-key="c2"> <span>Marcar como completado</span>
+          </label>
+        </div>
+      </article>
+
+      <article class="u2-card" data-key="c3" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3 style="color:#783f04; margin:0;">Cap. 3 · Productos notables</h3>
+          <span class="u2-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
+        </div>
+        <p style="margin:6px 0 8px;">Cuadrado de binomio, suma por diferencia, cubo de binomio.</p>
+        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+          <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/unidad-2-factorizaci%C3%B3n-y-expresiones-algebraicas/cap%C3%ADtulo-3-productos-notables"
+              style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+            <input type="checkbox" class="u2-done" data-key="c3"> <span>Marcar como completado</span>
+          </label>
+        </div>
+      </article>
+
+      <article class="u2-card" data-key="c4" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3 style="color:#783f04; margin:0;">Cap. 4 · Factorización</h3>
+          <span class="u2-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
+        </div>
+        <p style="margin:6px 0 8px;">Factor común, diferencia de cuadrados, trinomio cuadrado perfecto, suma/resta de cubos.</p>
+        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+          <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/unidad-2-factorizaci%C3%B3n-y-expresiones-algebraicas/cap%C3%ADtulo-4-factorizaci%C3%B3n"
+              style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+            <input type="checkbox" class="u2-done" data-key="c4"> <span>Marcar como completado</span>
+          </label>
+        </div>
+      </article>
+
+      <article class="u2-card" data-key="c5" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3 style="color:#783f04; margin:0;">Cap. 5 · Fracciones algebraicas</h3>
+          <span class="u2-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
+        </div>
+        <p style="margin:6px 0 8px;">Simplificación, suma, resta, multiplicación y división de fracciones algebraicas.</p>
+        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+          <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/unidad-2-factorizaci%C3%B3n-y-expresiones-algebraicas/cap%C3%ADtulo-5-fracciones-algebraicas"
+              style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+            <input type="checkbox" class="u2-done" data-key="c5"> <span>Marcar como completado</span>
+          </label>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <div id="mini" style="margin-top:18px; border:2px solid #FFD580; border-radius:12px; padding:16px;">
+    <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Mini-evaluación (10 ítems)</h2>
+    <p style="margin:0 0 10px;">Resolvé y luego desplegá “Mostrar soluciones” para autocorregirte.</p>
+    <ol style="margin:0 0 0 18px;">
+      <li>Clasificá y hallá el grado: 3x²y³ − 4xy.</li>
+      <li>Simplificá: (5x² − 3x + 2) + (2x² − x − 4).</li>
+      <li>Expandí: (x + 3)².</li>
+      <li>Factorizá: 9x² − 16.</li>
+      <li>Reconocé el caso notable en a³ + 27.</li>
+      <li>Simplificá: (6x³ − 9x²)/(3x²).</li>
+      <li>Calculá: (x + 2)(x² − 2x + 4).</li>
+      <li>Simplificá: (x² − 9)/(x − 3).</li>
+      <li>Sumá: 3/(x + 1) + 2/x.</li>
+      <li>Indicá el dominio de (2x − 1)/(x² − 4).</li>
+    </ol>
+    <details style="margin-top:12px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+      <ol style="margin:8px 0 0 18px;">
+        <li>Polinomio de dos términos, grado 5 (2 + 3 = 5).</li>
+        <li>7x² − 4x − 2.</li>
+        <li>x² + 6x + 9.</li>
+        <li>(3x + 4)(3x − 4).</li>
+        <li>(a + 3)(a² − 3a + 9).</li>
+        <li>(6x³ − 9x²)/(3x²) = 2x − 3.</li>
+        <li>x³ + 2x² − 2x + 4x + 2x² − 4x + 8 = x³ + 8.</li>
+        <li>(x² − 9)/(x − 3) = x + 3 ( x ≠ 3 ).</li>
+        <li>MCM = x(x + 1) → (3x + 2(x + 1))/[x(x + 1)] = (5x + 2)/[x(x + 1)].</li>
+        <li>x ≠ 2, −2.</li>
+      </ol>
+    </details>
+  </div>
+
+  <script>
+    (function(){
+      const STORAGE_KEY = 'mp-u2-progress-v1'; // Cambiado a u2
+      const cards = Array.from(document.querySelectorAll('#u2-home .u2-card'));
+      const toggles = Array.from(document.querySelectorAll('#u2-home .u2-done'));
+      const pills = Array.from(document.querySelectorAll('#u2-home .u2-pill'));
+      const bar = document.getElementById('u2-progress-bar');
+      const label = document.getElementById('u2-progress-label');
+      const resetBtn = document.getElementById('u2-reset');
+      const continueA = document.getElementById('u2-continue');
+
+      const order = cards.map(c => c.dataset.key); // c1..c5
+
+      function readState(){
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+        catch(e){ return {}; }
+      }
+      function writeState(s){ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
+
+      function updateUI(){
+        const s = readState();
+        // checkboxes + pills
+        toggles.forEach(chk => {
+          const key = chk.dataset.key;
+          chk.checked = !!s[key];
+        });
+        cards.forEach(card => {
+          const key = card.dataset.key;
+          const pill = card.querySelector('.u2-pill');
+          const done = !!s[key];
+          pill.textContent = done ? '✅ Completado' : '🔄 En curso';
+          pill.style.background = done ? '#EFFFF2' : 'transparent';
+        });
+        // progress
+        const total = order.length;
+        const doneCount = order.filter(k => !!s[k]).length;
+        const pct = Math.round(100 * doneCount / total);
+        bar.style.width = pct + '%';
+        label.textContent = pct + '%';
+
+        // continuar donde quedé: siguiente NO completado o el último si todo ok
+        let nextKey = order.find(k => !s[k]) || order[order.length-1];
+        const nextCard = cards.find(c => c.dataset.key === nextKey);
+        const nextLink = nextCard ? nextCard.querySelector('a[href]') : null;
+        if(nextLink){
+          continueA.href = nextLink.href;
+        } else {
+          continueA.removeAttribute('href');
+        }
+      }
+
+      function onToggle(e){
+        const key = e.target.dataset.key;
+        const s = readState();
+        s[key] = e.target.checked;
+        writeState(s);
+        updateUI();
+      }
+      function onReset(){
+        localStorage.removeItem(STORAGE_KEY);
+        updateUI();
+      }
+
+      toggles.forEach(t => t.addEventListener('change', onToggle));
+      resetBtn.addEventListener('click', onReset);
+      updateUI();
+    })();
+  </script>
+
+</section>

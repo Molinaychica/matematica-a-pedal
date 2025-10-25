@@ -1,0 +1,65 @@
+<!-- UNIDAD 4 · CAPÍTULO 5 — MINI-APP: CALCULADORA DE POTENCIAS Y RAÍCES -->
+<section style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:980px; margin:0 auto;">
+
+  <!-- Encabezado -->
+  <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border-radius:12px; padding:18px 20px; border:2px solid #fff;">
+    <h1 style="color:#783f04; margin:0;">Unidad 4 · Capítulo 5 — Mini-app: Calculadora de Potencias y Raíces</h1>
+    <p style="margin:8px 0 0;">
+      Usá esta herramienta para practicar potenciación, radicación, exponentes negativos y fraccionarios, y notación científica. 
+      La app explica los pasos y muestra equivalencias (por ejemplo, <em>a<sup>p/q</sup> = <sup>q</sup>√(a<sup>p</sup>)</em>).
+    </p>
+  </div>
+
+  <!-- Instrucciones -->
+  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">Cómo usar</h2>
+    <ul style="margin:0 0 0 18px;">
+      <li>Elegí <b>Potencia</b> o <b>Raíz</b>.</li>
+      <li>Ingresá la <b>base</b> y el <b>exponente</b> (admite fracciones tipo 2/3), o el <b>índice</b> y el <b>radicando</b>.</li>
+      <li>La app muestra el resultado exacto (si es posible), decimal y en notación científica, con pasos intermedios.</li>
+    </ul>
+  </div>
+
+  <!-- EMBED STREAMLIT CON LOADER -->
+<div id="app-wrap" style="position:relative; border:1px solid #FFD580; border-radius:12px; overflow:hidden;">
+
+  <!-- Barra superior -->
+  <div style="background:#FFF6E6; padding:10px 14px; border-bottom:1px solid #FFD580;">
+    <b style="color:#783f04;">App interactiva</b>
+  </div>
+
+  <!-- Loader -->
+  <div id="loader" style="
+       position:absolute; inset:42px 0 0 0;  /* debajo de la barra superior */
+       display:flex; align-items:center; justify-content:center;
+       background:repeating-linear-gradient(
+         45deg, #FFF6E6, #FFF6E6 16px, #FFE6BB 16px, #FFE6BB 32px
+       );
+       color:#7f6000; font-family:'Roboto Mono', monospace; z-index:2;">
+    <div style="text-align:center; padding:24px;">
+      <div style="font-size:18px; color:#783f04; margin-bottom:6px;">Cargando la calculadora… 🚴‍♂️</div>
+      <div style="font-size:13px;">Si tarda, abrila en una pestaña nueva.</div>
+    </div>
+  </div>
+
+  <!-- Iframe -->
+  <iframe
+    src="https://matematica-a-pedal.streamlit.app/?embed=true"
+    style="width:100%; height:720px; border:0; display:block; position:relative; z-index:1;"
+    onload="try{document.getElementById('loader').style.display='none';}catch(e){}">
+  </iframe>
+</div>
+
+
+  <!-- Cierre -->
+  <div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">Sugerencias de práctica</h2>
+    <ul style="margin:0 0 0 18px;">
+      <li>Probá: 8<sup>2/3</sup>, 16<sup>−3/4</sup>, (−8)<sup>1/3</sup>, √50, <sup>3</sup>√54.</li>
+      <li>Explorá equivalencias: 27<sup>2/3</sup> ↔ <sup>3</sup>√(27²).</li>
+      <li>Usá notación científica para comparar magnitudes muy grandes/pequeñas.</li>
+    </ul>
+  </div>
+
+</section>
+<!-- FIN CAPÍTULO 5 -->

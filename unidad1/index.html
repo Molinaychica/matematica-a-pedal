@@ -1,0 +1,258 @@
+<!-- UNIDAD 1 — PORTADA (Matemática a Pedal) -->
+<section id="u1-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1000px; margin:0 auto;">
+
+  <!-- MathJax (omití si ya está en la página) -->
+  <script>
+    window.MathJax = { tex:{ inlineMath:[['\\(','\\)'],['$','$']], displayMath:[['\\[','\\]'],['$$','$$']] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <!-- Portada -->
+  <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border:2px solid #fff; border-radius:14px; padding:18px 20px; box-shadow:0 6px 16px rgba(0,0,0,.08);">
+    <h1 style="color:#783f04; margin:0; font-size:30px;">Unidad 1 — Conjuntos numéricos y operaciones básicas</h1>
+    <p style="margin:8px 0 0;">Ruta didáctica con capítulos cortos, ejemplos claros y actividades autocorregibles.</p>
+  </div>
+
+  <!-- Progreso -->
+  <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <div style="display:flex; align-items:center; gap:10px; justify-content:space-between; flex-wrap:wrap;">
+      <div style="flex:1 1 280px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+          <span style="color:#783f04;">Progreso de la unidad</span>
+          <span id="u1-progress-label" style="color:#7f6000;">0%</span>
+        </div>
+        <div style="height:12px; background:#FFF6E6; border:1px solid #FFD580; border-radius:999px; overflow:hidden;">
+          <div id="u1-progress-bar" style="height:100%; width:0%; background:#FFA559;"></div>
+        </div>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <a id="u1-continue" href="#" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">▶️ Continuar donde quedé</a>
+        <button id="u1-reset" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Reset progreso</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menú índice (Cards) -->
+  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+    <h2 style="color:#783f04; margin:0 0 10px; font-size:22px;">Índice de capítulos</h2>
+
+    <div style="display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));">
+      <!-- Cap 1 -->
+      <article class="u1-card" data-key="c1" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3 style="color:#783f04; margin:0;">Cap. 1 · Conjuntos numéricos</h3>
+          <span class="u1-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
+        </div>
+        <p style="margin:6px 0 8px;">\( \mathbb{N},\mathbb{Z},\mathbb{Q},\mathbb{R} \). Inclusiones, ejemplos típicos y criterios rápidos.</p>
+        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+          <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/unidad-1-conjuntos-num%C3%A9ricos-y-operaciones-b%C3%A1sicas/cap%C3%ADtulo-1-conjuntos-num%C3%A9ricos"
+             style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+            <input type="checkbox" class="u1-done" data-key="c1"> <span>Marcar como completado</span>
+          </label>
+        </div>
+      </article>
+
+      <!-- Cap 2 -->
+      <article class="u1-card" data-key="c2" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3 style="color:#783f04; margin:0;">Cap. 2 · Propiedades</h3>
+          <span class="u1-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
+        </div>
+        <p style="margin:6px 0 8px;">Conmutativa, asociativa, distributiva; neutros e inversos. Aplicación en simplificaciones.</p>
+        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+          <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/unidad-1-conjuntos-num%C3%A9ricos-y-operaciones-b%C3%A1sicas/cap%C3%ADtulo-2-propiedades-de-las-operaciones"
+             style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+            <input type="checkbox" class="u1-done" data-key="c2"> <span>Marcar como completado</span>
+          </label>
+        </div>
+      </article>
+
+      <!-- Cap 3 -->
+      <article class="u1-card" data-key="c3" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3 style="color:#783f04; margin:0;">Cap. 3 · Suma y resta</h3>
+          <span class="u1-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
+        </div>
+        <p style="margin:6px 0 8px;">Reglas de signos, paréntesis y estrategias de cálculo mental.</p>
+        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+          <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/unidad-1-conjuntos-num%C3%A9ricos-y-operaciones-b%C3%A1sicas/cap%C3%ADtulo-3-suma-y-resta-con-n%C3%BAmeros-reales"
+             style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+            <input type="checkbox" class="u1-done" data-key="c3"> <span>Marcar como completado</span>
+          </label>
+        </div>
+      </article>
+
+      <!-- Cap 4 -->
+      <article class="u1-card" data-key="c4" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3 style="color:#783f04; margin:0;">Cap. 4 · Multiplicación y división</h3>
+          <span class="u1-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
+        </div>
+        <p style="margin:6px 0 8px;">Producto, cociente, signos y atajos de cálculo.</p>
+        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+          <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/unidad-1-conjuntos-num%C3%A9ricos-y-operaciones-b%C3%A1sicas/cap%C3%ADtulo-4-fracciones"
+             style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+            <input type="checkbox" class="u1-done" data-key="c4"> <span>Marcar como completado</span>
+          </label>
+        </div>
+      </article>
+
+      <!-- Cap 5 -->
+      <article class="u1-card" data-key="c5" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3 style="color:#783f04; margin:0;">Cap. 5 · Fracciones equivalentes</h3>
+          <span class="u1-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
+        </div>
+        <p style="margin:6px 0 8px;">Equivalencia y simplificación con m.c.d.; criterios prácticos.</p>
+        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+          <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/unidad-1-conjuntos-num%C3%A9ricos-y-operaciones-b%C3%A1sicas/cap%C3%ADtulo-5-fracciones-equivalentes-y-simplificaci%C3%B3n"
+             style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+            <input type="checkbox" class="u1-done" data-key="c5"> <span>Marcar como completado</span>
+          </label>
+        </div>
+      </article>
+
+      <!-- Cap 6 -->
+      <article class="u1-card" data-key="c6" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3 style="color:#783f04; margin:0;">Cap. 6 · Operaciones con fracciones</h3>
+          <span class="u1-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
+        </div>
+        <p style="margin:6px 0 8px;">M.C.M., suma/resta con distinto denominador y regla cruzada.</p>
+        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+          <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/unidad-1-conjuntos-num%C3%A9ricos-y-operaciones-b%C3%A1sicas/cap%C3%ADtulo-6-operaciones-con-fracciones"
+             style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+            <input type="checkbox" class="u1-done" data-key="c6"> <span>Marcar como completado</span>
+          </label>
+        </div>
+      </article>
+
+      <!-- Cap 7 -->
+      <article class="u1-card" data-key="c7" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h3 style="color:#783f04; margin:0;">Cap. 7 · Decimales ↔ fracciones</h3>
+          <span class="u1-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
+        </div>
+        <p style="margin:6px 0 8px;">Conversión, periódicos \( \leftrightarrow \) fracciones, criterios de finitud.</p>
+        <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+          <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/unidad-1-conjuntos-num%C3%A9ricos-y-operaciones-b%C3%A1sicas/cap%C3%ADtulo-7-decimales-y-fracciones"
+             style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+            <input type="checkbox" class="u1-done" data-key="c7"> <span>Marcar como completado</span>
+          </label>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Mini-evaluación final -->
+  <div id="mini" style="margin-top:18px; border:2px solid #FFD580; border-radius:12px; padding:16px;">
+    <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Mini-evaluación (10 ítems)</h2>
+    <p style="margin:0 0 10px;">Resolvé y luego desplegá “Mostrar soluciones” para autocorregirte.</p>
+    <!-- (dejamos tu lista tal como la tenías) -->
+    <ol style="margin:0 0 0 18px;">
+      <li>(Clasificación) Indicar el conjunto más pequeño al que pertenece cada número: a) 7  b) −4  c) 5/6  d) √3  e) 0,125</li>
+      <li>(Propiedad) Identificá la propiedad usada: a) 8 + 11 = 11 + 8  b) (2·5)·3 = 2·(5·3)  c) k(m + n) = km + kn</li>
+      <li>(Signos) Calculá: a) 12 + (−19)  b) −7 − (−5)  c) −3 + 9 − 12</li>
+      <li>(Paréntesis) Simplificá: −(x − 4) + (2x − 1)</li>
+      <li>(Producto/Cociente) Calculá: a) (−6)·(−7)  b) 24 ÷ (−3)  c) 9 ÷ (−1/3)</li>
+      <li>(Fracciones) Multiplicá y simplificá: 14/15 × 9/7</li>
+      <li>(Fracciones) Dividí y simplificá: 5/12 ÷ 25/18</li>
+      <li>(Suma/Resta fracc.) 7/10 + 11/15  y  5/12 − 1/8</li>
+      <li>(Decimal ↔ fracción) Pasá a fracción: a) 0,6  b) 0,72 72 72…</li>
+      <li>(Fracción → decimal) Indicá si es finito o periódico y calculá: a) 7/25  b) 9/11</li>
+    </ol>
+    <details style="margin-top:12px;"><summary style="cursor:pointer; color:#783f04;">Mostrar soluciones</summary>
+      <ol style="margin:8px 0 0 18px;">
+        <li>a) N ⊂ Z ⊂ Q ⊂ R · b) Z ⊂ Q ⊂ R · c) Q ⊂ R · d) I ⊂ R · e) Q ⊂ R</li>
+        <li>a) Conmutativa (suma) · b) Asociativa (producto) · c) Distributiva</li>
+        <li>a) −7 · b) −2 · c) −6</li>
+        <li>−x + 4 + 2x − 1 = x + 3</li>
+        <li>a) +42 · b) −8 · c) 9 × (−1/3) = −3</li>
+        <li>14/15 × 9/7 → (14 con 7) → (2×9)/15 = 18/15 = 6/5</li>
+        <li>5/12 ÷ 25/18 = 5/12 × 18/25 → (5 con 25) → 18/60 = 3/10</li>
+        <li>7/10 + 11/15: MCM=30 → 21/30 + 22/30 = 43/30. · 5/12 − 1/8: MCM=24 → 10/24 − 3/24 = 7/24</li>
+        <li>a) 0,6 = 3/5 · b) 0,727272… = 72/99 = 8/11</li>
+        <li>a) 7/25 = 0,28 (finito) · b) 9/11 = 0,81‾ (periódico)</li>
+      </ol>
+    </details>
+  </div>
+
+  <!-- Script: progreso y guardado local -->
+  <script>
+    (function(){
+      const STORAGE_KEY = 'mp-u1-progress-v1';
+      const cards = Array.from(document.querySelectorAll('#u1-home .u1-card'));
+      const toggles = Array.from(document.querySelectorAll('#u1-home .u1-done'));
+      const pills = Array.from(document.querySelectorAll('#u1-home .u1-pill'));
+      const bar = document.getElementById('u1-progress-bar');
+      const label = document.getElementById('u1-progress-label');
+      const resetBtn = document.getElementById('u1-reset');
+      const continueA = document.getElementById('u1-continue');
+
+      const order = cards.map(c => c.dataset.key); // c1..c7
+
+      function readState(){
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+        catch(e){ return {}; }
+      }
+      function writeState(s){ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
+
+      function updateUI(){
+        const s = readState();
+        // checkboxes + pills
+        toggles.forEach(chk => {
+          const key = chk.dataset.key;
+          chk.checked = !!s[key];
+        });
+        cards.forEach(card => {
+          const key = card.dataset.key;
+          const pill = card.querySelector('.u1-pill');
+          const done = !!s[key];
+          pill.textContent = done ? '✅ Completado' : '🔄 En curso';
+          pill.style.background = done ? '#EFFFF2' : 'transparent';
+        });
+        // progress
+        const total = order.length;
+        const doneCount = order.filter(k => !!s[k]).length;
+        const pct = Math.round(100 * doneCount / total);
+        bar.style.width = pct + '%';
+        label.textContent = pct + '%';
+
+        // continuar donde quedé: siguiente NO completado o el último si todo ok
+        let nextKey = order.find(k => !s[k]) || order[order.length-1];
+        const nextCard = cards.find(c => c.dataset.key === nextKey);
+        const nextLink = nextCard ? nextCard.querySelector('a[href]') : null;
+        if(nextLink){
+          continueA.href = nextLink.href;
+        } else {
+          continueA.removeAttribute('href');
+        }
+      }
+
+      function onToggle(e){
+        const key = e.target.dataset.key;
+        const s = readState();
+        s[key] = e.target.checked;
+        writeState(s);
+        updateUI();
+      }
+      function onReset(){
+        localStorage.removeItem(STORAGE_KEY);
+        updateUI();
+      }
+
+      toggles.forEach(t => t.addEventListener('change', onToggle));
+      resetBtn.addEventListener('click', onReset);
+      updateUI();
+    })();
+  </script>
+
+</section>
+<!-- FIN UNIDAD 1 — PORTADA -->

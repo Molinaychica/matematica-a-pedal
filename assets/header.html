@@ -1,21 +1,63 @@
 <!-- assets/header.html -->
 <header style="font-family:'Roboto Mono', monospace;">
 
-  <!-- IMAGEN DE PORTADA (restaurada como antes) -->
-  <div style="background:linear-gradient(105deg,#FFD580,#FFA559); border-bottom:2px solid #FFD580;">
-    <div style="max-width:1180px; margin:0 auto; display:flex; align-items:center; justify-content:center; padding:20px 0;">
-      <img src="/matematica-a-pedal/assets/Matemática a pedal.png" alt="Banner Matemática a Pedal"
-           style="max-height:120px; object-fit:contain;">
+  <!-- PORTADA TIPOGRÁFICA -->
+  <div class="hero"
+       style="background:linear-gradient(105deg,#FFD580,#FFA559);
+              border-bottom:2px solid #FFD580;">
+    <div class="hero-inner"
+         style="max-width:1180px;margin:0 auto;
+                display:flex;align-items:center;justify-content:space-between;
+                gap:24px; padding:28px 18px;">
+
+      <!-- Texto -->
+      <div class="hero-text" style="flex:1 1 auto;">
+        <h1 style="margin:0;color:#783f04;
+                   font-weight:800;line-height:1.1;
+                   font-size:clamp(28px,5vw,52px);">
+          Matemática a Pedal
+        </h1>
+        <p style="margin:6px 0 0;color:#7f6000;
+                  font-size:clamp(14px,2.3vw,18px);max-width:640px;">
+          Capítulos cortos, ejemplos claros y mini-apps interactivas para pedalear matemática a tu ritmo.
+        </p>
+      </div>
+
+      <!-- Espacio para tu imagen de bici/espiral (opcional) -->
+      <div class="hero-art"
+           style="flex:0 0 320px; height:140px; display:flex; align-items:center; justify-content:center;">
+        <!--
+          Cuando tengas la imagen, descomentá la línea siguiente y actualizá la ruta.
+          Recomendado: 320×140 px aprox, fondo transparente (PNG/SVG).
+        -->
+        <!-- <img src="/matematica-a-pedal/assets/bici-espiral.png"
+                  alt="Bicicleta con espiral áurea"
+                  style="max-width:100%; max-height:100%; object-fit:contain;"> -->
+
+        <!-- Placeholder mientras tanto (borde suave, mismo tono) -->
+        <div style="width:100%; height:100%;
+                    border:2px dashed rgba(120,63,4,.25);
+                    border-radius:12px; color:#7f6000;
+                    display:flex;align-items:center;justify-content:center;
+                    font-size:14px; opacity:.8;">
+          Tu imagen aquí
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- MENÚ DE UNIDADES DEBAJO DE LA IMAGEN -->
-  <nav style="background:#FFF6E6; border-top:1px solid #FFD580; border-bottom:1px solid #FFD580;">
-    <div style="max-width:1180px; margin:0 auto; display:flex; justify-content:center; gap:16px; padding:10px 0; flex-wrap:wrap;">
+  <!-- MENÚ HORIZONTAL DE UNIDADES (debajo de la portada) -->
+  <nav style="position:relative; z-index:50;
+              background:#FFF6E6; border-top:1px solid #FFD580; border-bottom:1px solid #FFD580;">
+    <div style="max-width:1180px; margin:0 auto;
+                display:flex; justify-content:center; gap:16px; padding:10px 0; flex-wrap:wrap;">
 
       <!-- Unidad 0 -->
       <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04; border-radius:10px; padding:8px 12px; cursor:pointer;">Unidad 0 ▾</button>
+        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;
+                       border-radius:10px; padding:8px 12px; cursor:pointer;">
+          Unidad 0 ▾
+        </button>
         <div class="submenu">
           <a href="/matematica-a-pedal/unidad0/index.html#intro">Introducción</a>
           <a href="/matematica-a-pedal/unidad0/index.html#bloque-a">Bloque A</a>
@@ -25,7 +67,10 @@
 
       <!-- Unidad 1 -->
       <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04; border-radius:10px; padding:8px 12px; cursor:pointer;">Unidad 1 ▾</button>
+        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;
+                       border-radius:10px; padding:8px 12px; cursor:pointer;">
+          Unidad 1 ▾
+        </button>
         <div class="submenu">
           <a href="/matematica-a-pedal/unidad1/index.html#cap-1">Cap. 1 — Conjuntos</a>
           <a href="/matematica-a-pedal/unidad1/index.html#cap-2">Cap. 2 — Operaciones</a>
@@ -35,7 +80,10 @@
 
       <!-- Unidad 2 -->
       <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04; border-radius:10px; padding:8px 12px; cursor:pointer;">Unidad 2 ▾</button>
+        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;
+                       border-radius:10px; padding:8px 12px; cursor:pointer;">
+          Unidad 2 ▾
+        </button>
         <div class="submenu">
           <a href="/matematica-a-pedal/unidad2/index.html#cap-1">Cap. 1 — Productos notables</a>
           <a href="/matematica-a-pedal/unidad2/index.html#cap-2">Cap. 2 — Factorización</a>
@@ -44,7 +92,10 @@
 
       <!-- Unidad 3 -->
       <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04; border-radius:10px; padding:8px 12px; cursor:pointer;">Unidad 3 ▾</button>
+        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;
+                       border-radius:10px; padding:8px 12px; cursor:pointer;">
+          Unidad 3 ▾
+        </button>
         <div class="submenu">
           <a href="/matematica-a-pedal/unidad3/index.html">Contenido</a>
         </div>
@@ -52,7 +103,10 @@
 
       <!-- Unidad 4 -->
       <div class="menu-item" style="position:relative;">
-        <button style="background:#fff; border:1px solid #FFD580; color:#783f04; border-radius:10px; padding:8px 12px; cursor:pointer;">Unidad 4 ▾</button>
+        <button style="background:#fff; border:1px solid #FFD580; color:#783f04;
+                       border-radius:10px; padding:8px 12px; cursor:pointer;">
+          Unidad 4 ▾
+        </button>
         <div class="submenu">
           <a href="/matematica-a-pedal/unidad4/index.html#cap-1">Cap. 1 — Potencias</a>
           <a href="/matematica-a-pedal/unidad4/index.html#cap-2">Cap. 2 — Raíces</a>
@@ -61,39 +115,30 @@
 
       <!-- Autodiagnóstico -->
       <a href="https://sites.google.com/utec.edu.uy/matemtica-a-pedal/autodiagn%C3%B3stico"
-         style="background:#fff; border:1px solid #FFD580; color:#783f04; border-radius:10px; padding:8px 12px; text-decoration:none;">
-         🧠 Autodiagnóstico
+         style="background:#fff; border:1px solid #FFD580; color:#783f04;
+                border-radius:10px; padding:8px 12px; text-decoration:none;">
+        🧠 Autodiagnóstico
       </a>
     </div>
   </nav>
-
 </header>
 
 <style>
-  /* Submenús desplegables */
-  .submenu {
-    display:none;
-    position:absolute;
-    top:38px;
-    left:0;
-    background:#fff;
-    border:1px solid #FFD580;
-    border-radius:10px;
-    box-shadow:0 6px 12px rgba(0,0,0,.08);
-    min-width:220px;
-    z-index:100;
-    padding:6px 0;
+  /* Submenús desplegables (quedan encima del contenido) */
+  .submenu{
+    display:none; position:absolute; top:38px; left:0; z-index:1000;
+    background:#fff; border:1px solid #FFD580; border-radius:10px;
+    box-shadow:0 6px 12px rgba(0,0,0,.08); min-width:240px; padding:6px 0;
   }
-  .submenu a {
-    display:block;
-    padding:6px 12px;
-    color:#7f6000;
-    text-decoration:none;
+  .submenu a{
+    display:block; padding:6px 12px; color:#7f6000; text-decoration:none;
   }
-  .submenu a:hover {
-    background:#FFF6E6;
-  }
-  .menu-item:hover .submenu {
-    display:block;
+  .submenu a:hover{ background:#FFF6E6; }
+  .menu-item:hover .submenu{ display:block; }
+
+  /* Responsive: ocultar arte si el ancho es chico */
+  @media (max-width: 720px){
+    .hero-inner{ flex-direction:column; align-items:flex-start !important; }
+    .hero-art{ display:none !important; }
   }
 </style>

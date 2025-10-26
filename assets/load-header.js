@@ -3,56 +3,64 @@
   const placeholder = document.getElementById("header-placeholder");
   if (!placeholder) return;
 
-  // 1) Inyectar header (sin caché)
-  const hdr = await fetch("/matematica-a-pedal/assets/header.html?v=4", { cache: "no-store" });
-  placeholder.innerHTML = await hdr.text();
+  // Cargar el header sin caché
+  const headerRes = await fetch("/matematica-a-pedal/assets/header.html?v=4", { cache: "no-store" });
+  placeholder.innerHTML = await headerRes.text();
 
-  // 2) Cargar datos de navegación
-  let nav;
-  try {
-    const navRes = await fetch("/matematica-a-pedal/assets/nav.json?v=2", { cache: "no-store" });
-    nav = await navRes.json();
-  } catch (e) {
-    console.warn("No se pudo cargar nav.json", e);
-    return;
-  }
-
-  // 3) Pintar lista de unidades + bloques en el dropdown
-  const unitsList = document.getElementById("units-list");
-  if (unitsList && Array.isArray(nav?.unidades)) {
-    unitsList.innerHTML = nav.unidades.map(u => {
-      const bloques = (u.bloques || [])
-        .map(b => `<a href="${u.href}${b.hash}" style="color:#7f6000;text-decoration:none;padding:4px 0;display:block;">• ${b.title}</a>`)
-        .join("");
-      return `
-        <div style="border:1px solid #FFD580;border-radius:10px;padding:8px;">
-          <a href="${u.href}" style="color:#783f04;text-decoration:none;font-weight:700;">${u.title}</a>
-          ${bloques ? `<div style="margin-top:6px;padding-left:6px;">${bloques}</div>` : ""}
-        </div>
-      `;
-    }).join("");
-  }
-
-  // 4) Dropdown: abrir/cerrar
+  // Dropdown básico
   const dd = document.querySelector('.dropdown');
-  if (dd) {
-    const btn = dd.querySelector('button');
-    const menu = dd.querySelector('.dropdown-menu');
-    btn?.addEventListener('click', ()=>{
-      const open = menu.style.display === 'block';
-      menu.style.display = open ? 'none' : 'block';
-      btn.setAttribute('aria-expanded', String(!open));
-    });
-    document.addEventListener('click', (e)=>{
-      if(!dd.contains(e.target)) { menu.style.display = 'none'; btn.setAttribute('aria-expanded','false'); }
-    });
-  }
+  const btn = dd?.querySelector('button');
+  const menu = dd?.querySelector('.dropdown-menu');
+  btn?.addEventListener('click', ()=>{
+    const open = menu.style.display === 'block';
+    menu.style.display = open ? 'none' : 'block';
+    btn.setAttribute('aria-expanded', String(!open));
+  });
+  document.addEventListener('click', (e)=>{
+    if(dd && !dd.contains(e.target)) { menu.style.display = 'none'; btn?.setAttribute('aria-expanded','false'); }
+  });
 
-  // 5) Marcar activo si estás en una unidad
-  const path = location.pathname;
-  const active = nav.unidades?.find(u => path.includes(`/${u.id}/`));
-  if (active) {
-    const link = [...document.querySelectorAll('#units-list a')].find(a => a.getAttribute('href') === active.href);
-    if (link) link.style.textDecoration = 'underline';
+  // ---- Render dinámico del listado de unidades y sus bloques desde nav.json
+  try {
+    const navRes = await fetch("/matematica-a-pedal/assets/nav.json?v=1", { cache: "no-store" });
+    const nav = await navRes.json();
+    const container = document.getElementById("units-list");
+    if (!container || !nav?.unidades?.length) return;
+
+    // Limpio y vuelco
+    container.innerHTML = "";
+    nav.unidades.forEach(u => {
+      // Tarjeta de cada unidad
+      const card = document.createElement('div');
+      card.style.cssText = "border:1px solid #FFD580; border-radius:10px; padding:8px; background:#FFF6E6;";
+
+      // Título de unidad (link)
+      const h = document.createElement('a');
+      h.href = u.href || "#";
+      h.textContent = u.title || u.id;
+      h.style.cssText = "display:block; color:#783f04; font-weight:700; margin-bottom:6px; text-decoration:none;";
+      card.appendChild(h);
+
+      // Bloques internos (si existen)
+      if (Array.isArray(u.bloques) && u.bloques.length) {
+        const ul = document.createElement('ul');
+        ul.style.cssText = "list-style:none; padding-left:0; margin:0; display:flex; flex-direction:column; gap:4px;";
+        u.bloques.forEach(b => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          // Si el bloque trae hash, lo concatenamos; si no, usamos href directo
+          a.href = (u.href || "#") + (b.hash || "");
+          a.textContent = b.title || "Bloque";
+          a.style.cssText = "color:#7f6000; text-decoration:none;";
+          li.appendChild(a);
+          ul.appendChild(li);
+        });
+        card.appendChild(ul);
+      }
+
+      container.appendChild(card);
+    });
+  } catch (e) {
+    console.error("No se pudo cargar nav.json", e);
   }
 })();

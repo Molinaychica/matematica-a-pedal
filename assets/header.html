@@ -1,32 +1,41 @@
 <!-- assets/header.html -->
 <header style="font-family:'Roboto Mono', monospace;">
-  <div style="background:linear-gradient(105deg,#FFD580,#FFA559); border-bottom:1px solid #fff;">
-    <div style="max-width:1180px;margin:0 auto;padding:14px 18px;display:flex;gap:12px;align-items:center;justify-content:space-between;">
-      <a href="/matematica-a-pedal/" style="text-decoration:none;color:#783f04;font-weight:700;font-size:20px;display:flex;gap:10px;align-items:center;">
-        <img src="/matematica-a-pedal/assets/Matemática a pedal.png" alt="Matemática a Pedal" style="height:32px;object-fit:contain;">
+
+  <!-- BARRA SUPERIOR -->
+  <div style="background:#FFA559; border-bottom:1px solid #fff;">
+    <div style="max-width:1180px; margin:0 auto; padding:10px 18px; display:flex; gap:12px; align-items:center; justify-content:space-between;">
+      <a href="/matematica-a-pedal/" style="text-decoration:none; color:#783f04; font-weight:700; font-size:20px; display:flex; gap:10px; align-items:center;">
+        <img src="/matematica-a-pedal/assets/Matemática a pedal.png" alt="Matemática a Pedal" style="height:30px; object-fit:contain;">
         Matemática a Pedal
       </a>
-      <nav id="global-nav" style="display:flex;gap:12px;align-items:center;">
-        <a href="/matematica-a-pedal/" style="color:#783f04;text-decoration:none;">Inicio</a>
-
+      <nav id="global-nav" style="display:flex; gap:12px; align-items:center;">
+        <a href="/matematica-a-pedal/" style="color:#783f04; text-decoration:none;">Inicio</a>
         <div class="dropdown" style="position:relative;">
           <button aria-haspopup="true" aria-expanded="false"
-            style="background:#fff;border:1px solid #FFD580;color:#783f04;padding:8px 10px;border-radius:10px;cursor:pointer;">
+            style="background:#fff; border:1px solid #FFD580; color:#783f04; padding:6px 10px; border-radius:10px; cursor:pointer;">
             Unidades ▾
           </button>
           <div class="dropdown-menu" role="menu"
-               style="position:absolute;top:40px;right:0;background:#fff;border:1px solid #FFD580;border-radius:10px;min-width:320px;padding:8px;display:none;box-shadow:0 8px 20px rgba(0,0,0,.08);">
-            <!-- se llena con JS desde nav.json -->
-            <div id="units-list" style="display:grid;gap:6px;"></div>
+            style="position:absolute; top:40px; right:0; background:#fff; border:1px solid #FFD580; border-radius:10px; min-width:300px; padding:8px; display:none; box-shadow:0 8px 20px rgba(0,0,0,.08);">
+            <div id="units-list" style="display:grid; gap:6px;"></div>
           </div>
         </div>
       </nav>
     </div>
   </div>
+
+  <!-- IMAGEN / PORTADA -->
+  <div style="background:linear-gradient(105deg,#FFD580,#FFA559); border-bottom:2px solid #FFD580;">
+    <div style="max-width:1180px; margin:0 auto; display:flex; align-items:center; justify-content:center; padding:20px 0;">
+      <img src="/matematica-a-pedal/assets/Matemática a pedal.png" alt="Banner Matemática a Pedal"
+           style="max-height:120px; object-fit:contain;">
+    </div>
+  </div>
+
 </header>
 
 <script>
-  // Interacción simple del dropdown
+  // Menú desplegable simple
   (function(){
     const dd = document.querySelector('.dropdown');
     if(!dd) return;
@@ -42,4 +51,3 @@
     });
   })();
 </script>
-

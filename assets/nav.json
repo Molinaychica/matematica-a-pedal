@@ -16,11 +16,11 @@
       "bloques": [
         { "title": "Bloque A", "hash": "#bloque-a" },
         { "title": "Bloque B", "hash": "#bloque-b" },
-        { "title": "Bloque C", "hash": "#cap-3" }
-        { "title": "Bloque D", "hash": "#cap-4" }
-        { "title": "Bloque E", "hash": "#cap-5" }
-        { "title": "Bloque F", "hash": "#cap-6" }
-        { "title": "Bloque G", "hash": "#cap-7" }
+        { "title": "Bloque C", "hash": "#bloque-c" },
+        { "title": "Bloque D", "hash": "#bloque-d" },
+        { "title": "Bloque E", "hash": "#bloque-e" },
+        { "title": "Bloque F", "hash": "#bloque-f" },
+        { "title": "Bloque G", "hash": "#bloque-g" }
       ]
     },
     { "id": "unidad2", "title": "Unidad 2 · Factorización", "href": "/matematica-a-pedal/unidad2/index.html",

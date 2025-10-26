@@ -3,29 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unidad 1 - Conjuntos Numéricos y Operaciones</title>
+  <title>Unidad 1 — Conjuntos y Operaciones · Matemática a Pedal</title>
 
   <!-- Estilo global -->
-  <link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=1">
+  <link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=2">
 
-  <!-- (si tenés MathJax o scripts globales, van acá también) -->
-  <link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=1">
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[','\\]'], ['$$','$$']]
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
 
-  <!-- UNIDAD 1 — PORTADA (Matemática a Pedal) -->
-<section id="u1-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1000px; margin:0 auto;">
-
-  <!-- MathJax (omití si ya está en la página) -->
-  <script>
-    window.MathJax = { tex:{ inlineMath:[['\\(','\\)'],['$','$']], displayMath:[['\\[','\\]'],['$$','$$']] } };
-  </script>
-  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- UNIDAD 1 — PORTADA (Matemática a Pedal) -->
+<main id="u1-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1180px; margin:0 auto;">
 
   <!-- Portada -->
-  <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border:2px solid #fff; border-radius:14px; padding:18px 20px; box-shadow:0 6px 16px rgba(0,0,0,.08);">
+  <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border:2px solid #fff; border-radius:14px; padding:18px 20px; box-shadow:0 6px 16px rgba(0,0,0,.08); margin-top:16px;">
     <h1 style="color:#783f04; margin:0; font-size:30px;">Unidad 1 — Conjuntos numéricos y operaciones básicas</h1>
     <p style="margin:8px 0 0;">Ruta didáctica con capítulos cortos, ejemplos claros y actividades autocorregibles.</p>
+  </div>
+
+  <!-- 🎯 Objetivos generales -->
+  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">🎯 Objetivos generales</h2>
+    <ul style="margin:0 0 0 18px;">
+      <li>Identificar y clasificar números en \( \mathbb{N}, \mathbb{Z}, \mathbb{Q}, \mathbb{R} \).</li>
+      <li>Aplicar propiedades (conmutativa, asociativa, distributiva) para simplificar cálculos.</li>
+      <li>Operar con fracciones y decimales con estrategias seguras.</li>
+      <li>Conectar representaciones fraccionarias y decimales (períodos ↔ fracciones).</li>
+    </ul>
+  </div>
+
+  <!-- 🔗 Relación con otras unidades -->
+  <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+    <h2 style="color:#783f04;">🔗 Relación con otras unidades</h2>
+    <p style="margin:0;">
+      Esta unidad cimenta el trabajo de <b>expresiones algebraicas y factorización</b> (U2) y se usa de base en
+      <b>trigonometría</b> (U3) y <b>potenciación/radicación</b> (U4). Las propiedades y el manejo de fracciones
+      reaparecen constantemente en todo el curso.
+    </p>
   </div>
 
   <!-- Progreso -->
@@ -170,7 +193,6 @@
   <div id="mini" style="margin-top:18px; border:2px solid #FFD580; border-radius:12px; padding:16px;">
     <h2 style="color:#783f04; margin:0 0 8px; font-size:22px;">Mini-evaluación (10 ítems)</h2>
     <p style="margin:0 0 10px;">Resolvé y luego desplegá “Mostrar soluciones” para autocorregirte.</p>
-    <!-- (dejamos tu lista tal como la tenías) -->
     <ol style="margin:0 0 0 18px;">
       <li>(Clasificación) Indicar el conjunto más pequeño al que pertenece cada número: a) 7  b) −4  c) 5/6  d) √3  e) 0,125</li>
       <li>(Propiedad) Identificá la propiedad usada: a) 8 + 11 = 11 + 8  b) (2·5)·3 = 2·(5·3)  c) k(m + n) = km + kn</li>
@@ -205,7 +227,6 @@
       const STORAGE_KEY = 'mp-u1-progress-v1';
       const cards = Array.from(document.querySelectorAll('#u1-home .u1-card'));
       const toggles = Array.from(document.querySelectorAll('#u1-home .u1-done'));
-      const pills = Array.from(document.querySelectorAll('#u1-home .u1-pill'));
       const bar = document.getElementById('u1-progress-bar');
       const label = document.getElementById('u1-progress-label');
       const resetBtn = document.getElementById('u1-reset');
@@ -223,24 +244,22 @@
         const s = readState();
         // checkboxes + pills
         toggles.forEach(chk => {
-          const key = chk.dataset.key;
-          chk.checked = !!s[key];
+          chk.checked = !!s[chk.dataset.key];
         });
         cards.forEach(card => {
-          const key = card.dataset.key;
           const pill = card.querySelector('.u1-pill');
-          const done = !!s[key];
+          const done = !!s[card.dataset.key];
           pill.textContent = done ? '✅ Completado' : '🔄 En curso';
           pill.style.background = done ? '#EFFFF2' : 'transparent';
         });
         // progress
-        const total = order.length;
+        const total = order.length || 1;
         const doneCount = order.filter(k => !!s[k]).length;
         const pct = Math.round(100 * doneCount / total);
         bar.style.width = pct + '%';
         label.textContent = pct + '%';
 
-        // continuar donde quedé: siguiente NO completado o el último si todo ok
+        // continuar donde quedé
         let nextKey = order.find(k => !s[k]) || order[order.length-1];
         const nextCard = cards.find(c => c.dataset.key === nextKey);
         const nextLink = nextCard ? nextCard.querySelector('a[href]') : null;
@@ -252,15 +271,16 @@
       }
 
       function onToggle(e){
-        const key = e.target.dataset.key;
         const s = readState();
-        s[key] = e.target.checked;
+        s[e.target.dataset.key] = e.target.checked;
         writeState(s);
         updateUI();
       }
       function onReset(){
-        localStorage.removeItem(STORAGE_KEY);
-        updateUI();
+        if (confirm('¿Estás seguro de que deseas reiniciar tu progreso en esta unidad?')) {
+          localStorage.removeItem(STORAGE_KEY);
+          updateUI();
+        }
       }
 
       toggles.forEach(t => t.addEventListener('change', onToggle));
@@ -269,16 +289,11 @@
     })();
   </script>
 
-</section>
+</main>
 <!-- FIN UNIDAD 1 — PORTADA -->
 
-  <section>
-    <h1>Unidad 0 — Calentamiento Matemático</h1>
-    <p>Bienvenido a Matemática a Pedal…</p>
-  </section>
-
-  <!-- Encabezado compartido -->
-  <script src="https://utec-math.github.io/matematica-a-pedal/assets/load-header.js"></script>
+<!-- Encabezado compartido (si lo estás usando en todo el sitio) -->
+<script src="https://utec-math.github.io/matematica-a-pedal/assets/load-header.js"></script>
 
 </body>
 </html>

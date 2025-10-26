@@ -14,9 +14,13 @@
     },
     { "id": "unidad1", "title": "Unidad 1 · Conjuntos y Operaciones", "href": "/matematica-a-pedal/unidad1/index.html",
       "bloques": [
-        { "title": "Cap. 1 — Conjuntos numéricos", "hash": "#cap-1" },
-        { "title": "Cap. 2 — Operaciones", "hash": "#cap-2" },
-        { "title": "Cap. 3 — Fracciones", "hash": "#cap-3" }
+        { "title": "Bloque A", "hash": "#cap-1" },
+        { "title": "Bloque B", "hash": "#cap-2" },
+        { "title": "Bloque C", "hash": "#cap-3" }
+        { "title": "Bloque D", "hash": "#cap-4" }
+        { "title": "Bloque E", "hash": "#cap-5" }
+        { "title": "Bloque F", "hash": "#cap-6" }
+        { "title": "Bloque G", "hash": "#cap-7" }
       ]
     },
     { "id": "unidad2", "title": "Unidad 2 · Factorización", "href": "/matematica-a-pedal/unidad2/index.html",

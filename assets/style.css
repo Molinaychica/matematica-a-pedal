@@ -1,0 +1,50 @@
+/* ============================================
+   ESTILOS GLOBALES — Matemática a Pedal
+============================================ */
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  color: #7f6000;
+  line-height: 1.6;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #783f04;
+  margin-top: 0;
+}
+
+a {
+  color: #783f04;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+section, main, .contenido, .page-content {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Más ancho en pantallas grandes */
+@media (min-width: 1600px) {
+  section, main, .contenido, .page-content {
+    max-width: 1320px;
+  }
+}
+
+/* Estilo general de listas y párrafos */
+p, li {
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* Resalta bloques y tarjetas */
+div, article {
+  box-sizing: border-box;
+}

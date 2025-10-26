@@ -15,11 +15,7 @@
 
   <!-- Encabezado (imagen superior) -->
   <div id="header-placeholder"></div>
-  <script>
-    fetch("https://utec-math.github.io/matematica-a-pedal/assets/header.html")
-      .then(r => r.text())
-      .then(html => document.getElementById("header-placeholder").innerHTML = html);
-  </script>
+  <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
   <!-- CONTENIDO PRINCIPAL -->
   <main style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1180px; margin:0 auto;">
@@ -167,4 +163,5 @@
 
 </body>
 </html>
+
 

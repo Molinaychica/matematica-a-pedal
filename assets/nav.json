@@ -5,17 +5,17 @@
       "bloques": [
         { "title": "Introducción", "hash": "#intro" },
         { "title": "Bloque A", "hash": "#bloque-a" },
-        { "title": "Bloque B", "hash": "#bloque-b" }
-        { "title": "Bloque C", "hash": "#bloque-c" }
-        { "title": "Bloque D", "hash": "#bloque-d" }
+        { "title": "Bloque B", "hash": "#bloque-b" },
+        { "title": "Bloque C", "hash": "#bloque-c" },
+        { "title": "Bloque D", "hash": "#bloque-d" },
         { "title": "Bloque E", "hash": "#bloque-e" }
         { "title": "Mini Evaluación", "hash": "#mini-evaluacion" }
       ]
     },
     { "id": "unidad1", "title": "Unidad 1 · Conjuntos y Operaciones", "href": "/matematica-a-pedal/unidad1/index.html",
       "bloques": [
-        { "title": "Bloque A", "hash": "#cap-1" },
-        { "title": "Bloque B", "hash": "#cap-2" },
+        { "title": "Bloque A", "hash": "#bloque-a" },
+        { "title": "Bloque B", "hash": "#bloque-b" },
         { "title": "Bloque C", "hash": "#cap-3" }
         { "title": "Bloque D", "hash": "#cap-4" }
         { "title": "Bloque E", "hash": "#cap-5" }

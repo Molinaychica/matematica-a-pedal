@@ -29,7 +29,7 @@
         { "title": "Bloque B", "hash": "#bloque-b" },
         { "title": "Bloque C", "hash": "#bloque-c" },
         { "title": "Bloque D", "hash": "#bloque-d" },
-        { "title": "Bloque E", "hash": "#bloque-d" }
+        { "title": "Bloque E", "hash": "#bloque-e" }
       ]
     },
     { "id": "unidad3", "title": "Unidad 3 · Trigonometría", "href": "/matematica-a-pedal/unidad3/index.html",

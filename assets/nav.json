@@ -1,0 +1,34 @@
+{
+  "home": "/matematica-a-pedal/",
+  "unidades": [
+    { "id": "unidad0", "title": "Unidad 0 · Calentamiento", "href": "/matematica-a-pedal/unidad0/index.html",
+      "bloques": [
+        { "title": "Introducción", "hash": "#intro" },
+        { "title": "Bloque A", "hash": "#bloque-a" },
+        { "title": "Bloque B", "hash": "#bloque-b" }
+      ]
+    },
+    { "id": "unidad1", "title": "Unidad 1 · Conjuntos y Operaciones", "href": "/matematica-a-pedal/unidad1/index.html",
+      "bloques": [
+        { "title": "Cap. 1 — Conjuntos numéricos", "hash": "#cap-1" },
+        { "title": "Cap. 2 — Operaciones", "hash": "#cap-2" },
+        { "title": "Cap. 3 — Fracciones", "hash": "#cap-3" }
+      ]
+    },
+    { "id": "unidad2", "title": "Unidad 2 · Factorización", "href": "/matematica-a-pedal/unidad2/index.html",
+      "bloques": [
+        { "title": "Cap. 1 — Productos Notables", "hash": "#cap-1" },
+        { "title": "Cap. 2 — Factorización", "hash": "#cap-2" }
+      ]
+    },
+    { "id": "unidad3", "title": "Unidad 3 · Trigonometría", "href": "/matematica-a-pedal/unidad3/index.html",
+      "bloques": []
+    },
+    { "id": "unidad4", "title": "Unidad 4 · Potencias y Raíces", "href": "/matematica-a-pedal/unidad4/index.html",
+      "bloques": [
+        { "title": "Cap. 1 — Potencias", "hash": "#cap-1" },
+        { "title": "Cap. 2 — Raíces", "hash": "#cap-2" }
+      ]
+    }
+  ]
+}

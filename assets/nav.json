@@ -25,8 +25,11 @@
     },
     { "id": "unidad2", "title": "Unidad 2 · Factorización", "href": "/matematica-a-pedal/unidad2/index.html",
       "bloques": [
-        { "title": "Cap. 1 — Productos Notables", "hash": "#cap-1" },
-        { "title": "Cap. 2 — Factorización", "hash": "#cap-2" }
+        { "title": "Bloque A", "hash": "#bloque-a" },
+        { "title": "Bloque B", "hash": "#bloque-b" },
+        { "title": "Bloque C", "hash": "#bloque-c" },
+        { "title": "Bloque D", "hash": "#bloque-d" },
+        { "title": "Bloque E", "hash": "#bloque-d" }
       ]
     },
     { "id": "unidad3", "title": "Unidad 3 · Trigonometría", "href": "/matematica-a-pedal/unidad3/index.html",

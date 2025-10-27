@@ -48,3 +48,10 @@ p, li {
 div, article {
   box-sizing: border-box;
 }
+/* Ajuste de ancho para todas las páginas de contenido */
+section {
+  max-width: 1180px !important;
+  margin: 0 auto;
+  padding: 20px;
+}
+

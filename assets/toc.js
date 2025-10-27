@@ -1,38 +1,55 @@
-// assets/toc.js
-(function(){
-  const headings = Array.from(document.querySelectorAll('h2[id]'));
-  if (!headings.length) return;
-
-  // Crear contenedor TOC
-  const aside = document.createElement('aside');
-  aside.setAttribute('aria-label','Índice de la unidad');
-  aside.style.cssText = "position:sticky; top:12px; align-self:start; border:1px solid #FFD580; border-radius:12px; padding:10px; background:#FFF6E6; color:#7f6000;";
-
-  const h = document.createElement('div');
-  h.textContent = "Índice de la unidad";
-  h.style.cssText = "color:#783f04; font-weight:700; margin-bottom:8px;";
-  aside.appendChild(h);
-
-  const ul = document.createElement('ul');
-  ul.style.cssText = "list-style:none; padding-left:0; margin:0; display:flex; flex-direction:column; gap:6px;";
-  headings.forEach(ho => {
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = `#${ho.id}`;
-    a.textContent = ho.textContent.trim();
-    a.style.cssText = "text-decoration:none; color:#7f6000;";
-    li.appendChild(a);
-    ul.appendChild(li);
-  });
-  aside.appendChild(ul);
-
-  // Insertarlo a la izquierda del main (layout simple de 2 columnas)
-  const main = document.querySelector('main');
+// assets/toc.js — versión con modo inline (índice arriba)
+document.addEventListener("DOMContentLoaded", () => {
+  const tocMode = document.body.dataset.toc || "sidebar";
+  const main = document.querySelector("main");
   if (!main) return;
 
-  const wrapper = document.createElement('div');
-  wrapper.style.cssText = "display:grid; grid-template-columns: 280px 1fr; gap:16px;";
-  main.parentNode.insertBefore(wrapper, main);
-  wrapper.appendChild(aside);
-  wrapper.appendChild(main);
-})();
+  // Buscar todos los h2 con id
+  const headers = main.querySelectorAll("h2[id]");
+  if (headers.length === 0) return;
+
+  // Crear índice
+  const toc = document.createElement("nav");
+  toc.className = "toc";
+  toc.style.border = "1px solid #FFD580";
+  toc.style.borderRadius = "12px";
+  toc.style.padding = "14px";
+  toc.style.background = "#FFF6E6";
+  toc.style.fontFamily = "'Roboto Mono', monospace";
+  toc.style.color = "#7f6000";
+  toc.style.lineHeight = "1.6";
+  toc.innerHTML = "<h3 style='color:#783f04;margin-top:0;'>📘 Índice de la unidad</h3>";
+
+  const list = document.createElement("ol");
+  headers.forEach((h) => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.textContent = h.textContent;
+    a.href = "#" + h.id;
+    a.style.color = "#7f6000";
+    a.style.textDecoration = "none";
+    a.addEventListener("mouseover", () => (a.style.textDecoration = "underline"));
+    a.addEventListener("mouseout", () => (a.style.textDecoration = "none"));
+    li.appendChild(a);
+    list.appendChild(li);
+  });
+  toc.appendChild(list);
+
+  if (tocMode === "inline") {
+    // Modo inline: el índice se inserta arriba del contenido, dentro del flujo
+    main.insertBefore(toc, main.firstChild);
+  } else {
+    // Modo sidebar: disposición en dos columnas
+    const wrapper = document.createElement("div");
+    wrapper.style.display = "flex";
+    wrapper.style.flexWrap = "wrap";
+    wrapper.style.gap = "24px";
+    const content = document.createElement("div");
+    content.style.flex = "1 1 680px";
+    const children = Array.from(main.childNodes);
+    children.forEach((ch) => content.appendChild(ch));
+    wrapper.appendChild(toc);
+    wrapper.appendChild(content);
+    main.appendChild(wrapper);
+  }
+});

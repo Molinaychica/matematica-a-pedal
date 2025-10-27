@@ -18,16 +18,8 @@
     };
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
-  <!-- Firebase + Auth -->
-  <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
-
-  <!-- Sincronización de progreso (checkboxes) -->
-  <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
 </head>
-
 <body>
-  <!-- Encabezado global -->
   <div id="header-placeholder"></div>
   <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
@@ -84,30 +76,115 @@
       </ol>
     </div>
 
-    <!-- 🚴 Cómo pedalear esta unidad -->
-    <div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <h2 style="color:#783f04;">🚴‍♀️ Cómo pedalear esta unidad</h2>
-      <ul style="margin:0 0 0 18px;">
-        <li>Leé cada bloque y resolvé los ejercicios en tu cuaderno.</li>
-        <li>Usá el botón <b>“Mostrar solución”</b> para comparar tus razonamientos.</li>
-        <li>Marcá tu avance en el <b>Checklist U0</b> al final de la página (se guarda localmente).</li>
-      </ul>
+    <!-- Progreso (igual estilo que U1) -->
+    <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <div style="display:flex; align-items:center; gap:10px; justify-content:space-between; flex-wrap:wrap;">
+        <div style="flex:1 1 280px;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+            <span style="color:#783f04;">Progreso de la unidad</span>
+            <span id="u0-progress-label" style="color:#7f6000;">0%</span>
+          </div>
+          <div style="height:12px; background:#FFF6E6; border:1px solid #FFD580; border-radius:999px; overflow:hidden;">
+            <div id="u0-progress-bar" style="height:100%; width:0%; background:#FFA559;"></div>
+          </div>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <a id="u0-continue" href="/matematica-a-pedal/unidad0/bloque-a.html" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">▶️ Continuar donde quedé</a>
+          <button id="u0-reset" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Reset progreso</button>
+        </div>
+      </div>
+
+      <!-- Checklist de U0 (coherente con U1) -->
+      <div style="margin-top:12px; display:grid; gap:6px;">
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+          <input type="checkbox" class="u0-done" data-key="intro"> <span>Introducción (esta página)</span>
+        </label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+          <input type="checkbox" class="u0-done" data-key="a"> <span>Bloque A — Conjuntos numéricos</span>
+        </label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+          <input type="checkbox" class="u0-done" data-key="b"> <span>Bloque B — Propiedades de las operaciones</span>
+        </label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+          <input type="checkbox" class="u0-done" data-key="c"> <span>Bloque C — Fracciones y racionales</span>
+        </label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+          <input type="checkbox" class="u0-done" data-key="d"> <span>Bloque D — Potenciación y radicación</span>
+        </label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+          <input type="checkbox" class="u0-done" data-key="e"> <span>Bloque E — Notación científica</span>
+        </label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+          <input type="checkbox" class="u0-done" data-key="mini"> <span>Mini-evaluación final</span>
+        </label>
+      </div>
     </div>
 
-    <!-- ✅ Checklist de progreso -->
-    <div style="margin-top:20px; border:1px solid #FFD580; border-radius:12px; padding:14px; background:#FFF6E6;">
-      <h2 style="color:#783f04;">✅ Checklist U0 — Calentamiento completado</h2>
-      <p style="margin:0 0 10px;">Marcá los bloques que hayas completado. El progreso se guarda automáticamente.</p>
-      <ul style="list-style:none; margin:0; padding:0;">
-        <li><label><input type="checkbox"> Introducción</label></li>
-        <li><label><input type="checkbox"> Bloque A — Conjuntos numéricos</label></li>
-        <li><label><input type="checkbox"> Bloque B — Propiedades de las operaciones</label></li>
-        <li><label><input type="checkbox"> Bloque C — Fracciones y racionales</label></li>
-        <li><label><input type="checkbox"> Bloque D — Potenciación y radicación</label></li>
-        <li><label><input type="checkbox"> Bloque E — Notación científica</label></li>
-        <li><label><input type="checkbox"> Mini Evaluación Final</label></li>
-      </ul>
-    </div>
+    <!-- Script: progreso y guardado local (clonado de U1, adaptado a U0) -->
+    <script>
+      (function(){
+        const STORAGE_KEY = 'mp-u0-progress-v1';
+        const toggles = Array.from(document.querySelectorAll('#u0-home .u0-done'));
+        const bar = document.getElementById('u0-progress-bar');
+        const label = document.getElementById('u0-progress-label');
+        const resetBtn = document.getElementById('u0-reset');
+        const continueA = document.getElementById('u0-continue');
+
+        // Orden lógico de avance y mapeo a URLs
+        const order = ['intro','a','b','c','d','e','mini'];
+        const links = {
+          intro: '/matematica-a-pedal/unidad0/index.html',
+          a: '/matematica-a-pedal/unidad0/bloque-a.html',
+          b: '/matematica-a-pedal/unidad0/bloque-b.html',
+          c: '/matematica-a-pedal/unidad0/bloque-c.html',
+          d: '/matematica-a-pedal/unidad0/bloque-d.html',
+          e: '/matematica-a-pedal/unidad0/bloque-e.html',
+          mini: '/matematica-a-pedal/unidad0/mini-evaluacion.html'
+        };
+
+        function readState(){
+          try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
+          catch(e){ return {}; }
+        }
+        function writeState(s){ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
+
+        function updateUI(){
+          const s = readState();
+
+          // Checkboxes
+          toggles.forEach(chk => { chk.checked = !!s[chk.dataset.key]; });
+
+          // Progreso
+          const total = order.length || 1;
+          const doneCount = order.filter(k => !!s[k]).length;
+          const pct = Math.round(100 * doneCount / total);
+          bar.style.width = pct + '%';
+          label.textContent = pct + '%';
+
+          // Continuar donde quedé: primer ítem no completado
+          const nextKey = order.find(k => !s[k]) || order[order.length - 1];
+          continueA.href = links[nextKey] || links.intro;
+        }
+
+        function onToggle(e){
+          const s = readState();
+          s[e.target.dataset.key] = e.target.checked;
+          writeState(s);
+          updateUI();
+        }
+
+        function onReset(){
+          if (confirm('¿Reiniciar tu progreso en la Unidad 0?')) {
+            localStorage.removeItem(STORAGE_KEY);
+            updateUI();
+          }
+        }
+
+        toggles.forEach(t => t.addEventListener('change', onToggle));
+        resetBtn.addEventListener('click', onReset);
+        updateUI();
+      })();
+    </script>
 
     <!-- Navegador Unidad 0 - Introducción -->
     <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px;
@@ -123,7 +200,6 @@
     </div>
 
   </main>
-
   <!-- FIN INTRODUCCIÓN UNIDAD 0 -->
 </body>
 </html>

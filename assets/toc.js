@@ -36,9 +36,20 @@ document.addEventListener("DOMContentLoaded", () => {
   toc.appendChild(list);
 
   if (tocMode === "inline") {
-    // Modo inline: el índice se inserta arriba del contenido, dentro del flujo
-    main.insertBefore(toc, main.firstChild);
+  // Modo inline: el índice se inserta justo después del encabezado principal
+  // (buscamos el primer h1 dentro del main)
+  const h1 = main.querySelector("h1");
+  if (h1 && h1.parentElement) {
+    h1.parentElement.insertAdjacentElement("afterend", toc);
   } else {
+    main.insertBefore(toc, main.firstChild);
+  }
+
+  // Ajustar ancho y centrado igual que el contenido
+  toc.style.maxWidth = "980px";
+  toc.style.margin = "18px auto";
+}
+ else {
     // Modo sidebar: disposición en dos columnas
     const wrapper = document.createElement("div");
     wrapper.style.display = "flex";

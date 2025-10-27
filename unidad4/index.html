@@ -6,21 +6,17 @@
   <title>Unidad 4 — Potenciación, Radicación y Notación Científica · Matemática a Pedal</title>
 
   <!-- Estilos globales -->
-  <link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=2">
+  <link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=3">
 </head>
 
 <body>
 
-  <!-- Encabezado compartido (imagen superior) -->
+  <!-- Encabezado compartido -->
   <div id="header-placeholder"></div>
-  <script>
-    fetch("https://utec-math.github.io/matematica-a-pedal/assets/header.html")
-      .then(r => r.text())
-      .then(html => document.getElementById("header-placeholder").innerHTML = html);
-  </script>
+  <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
   <!-- CONTENIDO DE LA UNIDAD -->
-  <main style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:1180px; margin:0 auto;">
+  <main id="u4-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1180px; margin:0 auto;">
 
     <!-- Encabezado -->
     <div style="background:linear-gradient(90deg,#FFD580,#FFA559); border-radius:12px; padding:20px; border:2px solid #fff; margin-top:16px;">
@@ -33,7 +29,7 @@
       </p>
     </div>
 
-    <!-- Objetivos generales -->
+    <!-- 🎯 Objetivos generales -->
     <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
       <h2 style="color:#783f04;">🎯 Objetivos generales</h2>
       <ul style="margin:0 0 0 18px;">
@@ -45,7 +41,7 @@
       </ul>
     </div>
 
-    <!-- Relación con otras unidades -->
+    <!-- 🔗 Relación con otras unidades -->
     <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
       <h2 style="color:#783f04;">🔗 Relación con otras unidades</h2>
       <p>
@@ -56,7 +52,7 @@
       </p>
     </div>
 
-    <!-- Índice de capítulos -->
+    <!-- 📚 Índice de capítulos -->
     <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
       <h2 style="color:#783f04;">📚 Índice de capítulos</h2>
       <ol style="margin:0 0 0 18px;">
@@ -75,31 +71,117 @@
       </ol>
     </div>
 
-    <!-- Recursos y sugerencias -->
-    <div style="margin-top:18px; background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:14px; margin-bottom:30px;">
-      <h2 style="color:#783f04;">🧩 Recursos y sugerencias</h2>
-      <ul style="margin:0 0 0 18px;">
-        <li>Usá la mini-app del Capítulo 5 para verificar pasos y resultados.</li>
-        <li>Explorá cómo se aplican las potencias de 10 en magnitudes físicas reales (energía, distancia, masa).</li>
-        <li>Intentá explicar cada propiedad con tus palabras y un ejemplo propio.</li>
-      </ul>
+    <!-- Progreso (idéntico formato a U1/U0) -->
+    <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
+      <div style="display:flex; align-items:center; gap:10px; justify-content:space-between; flex-wrap:wrap;">
+        <div style="flex:1 1 280px;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+            <span style="color:#783f04;">Progreso de la unidad</span>
+            <span id="u4-progress-label" style="color:#7f6000;">0%</span>
+          </div>
+          <div style="height:12px; background:#FFF6E6; border:1px solid #FFD580; border-radius:999px; overflow:hidden;">
+            <div id="u4-progress-bar" style="height:100%; width:0%; background:#FFA559;"></div>
+          </div>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <a id="u4-continue" href="/matematica-a-pedal/unidad4/capitulo1.html" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">▶️ Continuar donde quedé</a>
+          <button id="u4-reset" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Reset progreso</button>
+        </div>
+      </div>
+
+      <!-- Checklist -->
+      <div style="margin-top:12px; display:grid; gap:6px;">
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+          <input type="checkbox" class="u4-done" data-key="c1"> <span>Cap. 1 — Potenciación</span>
+        </label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+          <input type="checkbox" class="u4-done" data-key="c2"> <span>Cap. 2 — Radicación</span>
+        </label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+          <input type="checkbox" class="u4-done" data-key="c3"> <span>Cap. 3 — Radicales semejantes</span>
+        </label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+          <input type="checkbox" class="u4-done" data-key="c4"> <span>Cap. 4 — Notación científica</span>
+        </label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+          <input type="checkbox" class="u4-done" data-key="c5"> <span>Cap. 5 — Mini-app Calculadora</span>
+        </label>
+        <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+          <input type="checkbox" class="u4-done" data-key="c6"> <span>Cap. 6 — Ejercicios finales</span>
+        </label>
+      </div>
     </div>
 
-    <!-- Pie -->
-    <footer style="margin:18px 0; background:#FFF6E6; border:1px solid #FFD580; border-radius:14px; padding:14px;">
-      <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-        <div style="color:#783f04; font-weight:600;">Matemática a Pedal</div>
-        <div>·</div>
-        <div>Unidad 4 — Potenciación y Radicación</div>
-      </div>
-      <small style="display:block; margin-top:8px; opacity:.9;">Material abierto para uso educativo · UTEC – Uruguay</small>
-    </footer>
+    <!-- Script de progreso -->
+    <script>
+      (function(){
+        const STORAGE_KEY = 'mp-u4-progress-v1';
+        const toggles = Array.from(document.querySelectorAll('#u4-home .u4-done'));
+        const bar = document.getElementById('u4-progress-bar');
+        const label = document.getElementById('u4-progress-label');
+        const resetBtn = document.getElementById('u4-reset');
+        const continueA = document.getElementById('u4-continue');
+
+        const order = ['c1','c2','c3','c4','c5','c6'];
+        const links = {
+          c1: '/matematica-a-pedal/unidad4/capitulo1.html',
+          c2: '/matematica-a-pedal/unidad4/capitulo2.html',
+          c3: '/matematica-a-pedal/unidad4/capitulo3.html',
+          c4: '/matematica-a-pedal/unidad4/capitulo4.html',
+          c5: '/matematica-a-pedal/unidad4/capitulo5.html',
+          c6: '/matematica-a-pedal/unidad4/capitulo6.html'
+        };
+
+        function readState(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e){ return {}; } }
+        function writeState(s){ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
+
+        function updateUI(){
+          const s = readState();
+          toggles.forEach(chk => chk.checked = !!s[chk.dataset.key]);
+
+          const total = order.length;
+          const doneCount = order.filter(k => !!s[k]).length;
+          const pct = Math.round(100 * doneCount / total);
+          bar.style.width = pct + '%';
+          label.textContent = pct + '%';
+
+          const nextKey = order.find(k => !s[k]) || order[order.length-1];
+          continueA.href = links[nextKey];
+        }
+
+        function onToggle(e){
+          const s = readState();
+          s[e.target.dataset.key] = e.target.checked;
+          writeState(s); updateUI();
+        }
+
+        function onReset(){
+          if (confirm('¿Reiniciar tu progreso en la Unidad 4?')){
+            localStorage.removeItem(STORAGE_KEY);
+            updateUI();
+          }
+        }
+
+        toggles.forEach(t => t.addEventListener('change', onToggle));
+        resetBtn.addEventListener('click', onReset);
+        updateUI();
+      })();
+    </script>
+
+    <!-- Navegador inferior -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px;
+                background:#FFF6E6; border:1px solid #FFD580; border-radius:12px; padding:12px;
+                font-family:'Roboto Mono', monospace;">
+      <a href="/matematica-a-pedal/unidad3/index.html"
+         style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
+                border-radius:10px; padding:8px 14px;">⬅️ Unidad 3</a>
+      <span style="color:#7f6000; font-size:14px;">¡Buen pedaleo!</span>
+      <a href="/matematica-a-pedal/unidad4/capitulo1.html"
+         style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
+                border-radius:10px; padding:8px 14px;">Siguiente ➡️ Capítulo 1</a>
+    </div>
 
   </main>
-
-  <!-- Script del encabezado -->
-  <script src="https://utec-math.github.io/matematica-a-pedal/assets/load-header.js"></script>
-
+  <!-- FIN UNIDAD 4 -->
 </body>
 </html>
-

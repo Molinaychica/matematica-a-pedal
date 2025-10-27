@@ -22,6 +22,13 @@
 <body>
 <div id="header-placeholder"></div>
   <script src="/matematica-a-pedal/assets/load-header.js"></script>
+
+    <!-- Firebase + Auth -->
+  <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
+
+  <!-- Sincronización de progreso (checkboxes) -->
+  <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
+
 <!-- UNIDAD 0 · INTRODUCCIÓN E ÍNDICE -->
 <main id="u0-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1180px; margin:0 auto;">
 
@@ -86,6 +93,19 @@
   </div>
 
     </div>
+  
+  <!-- ✅ Checklist de avance: Unidad 0 -->
+  <div style="margin-top:22px; border:1px solid #FFD580; border-radius:12px;
+              padding:14px; background:#FFF6E6;">
+    <h2 style="color:#783f04;">📋 Checklist U0 — Calentamiento Matemático</h2>
+    <p style="margin:6px 0 12px;">Marcá lo que ya revisaste (se guarda automáticamente).</p>
+    <ul style="list-style:none; padding-left:0; margin:0;">
+      <li><label><input type="checkbox"> Leí la introducción general de la unidad.</label></li>
+      <li><label><input type="checkbox"> Comprendí los objetivos y la relación con el curso.</label></li>
+      <li><label><input type="checkbox"> Revisé el índice de bloques y sé cómo avanzar.</label></li>
+      <li><label><input type="checkbox"> Consulté el modo de trabajo (“Cómo pedalear esta unidad”).</label></li>
+    </ul>
+  </div>
 
   <!-- Navegador Unidad 0 - Introducción -->
   <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px;

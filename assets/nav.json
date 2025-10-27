@@ -1,0 +1,176 @@
+{
+  "home": "/matematica-a-pedal/",
+  "unidades": [
+    {
+      "id": "unidad0",
+      "title": "Unidad 0 · Calentamiento",
+      "href": "/matematica-a-pedal/unidad0/index.html",
+      "bloques": [
+        {
+          "title": "Introducción",
+          "href": "/matematica-a-pedal/unidad0/index.html"
+        },
+        {
+          "title": "Bloque A",
+          "href": "/matematica-a-pedal/unidad0/bloque-a.html"
+        },
+        {
+          "title": "Bloque B",
+          "href": "/matematica-a-pedal/unidad0/bloque-b.html"
+        },
+        {
+          "title": "Bloque C",
+          "href": "/matematica-a-pedal/unidad0/bloque-c.html"
+        },
+        {
+          "title": "Bloque D",
+          "href": "/matematica-a-pedal/unidad0/bloque-d.html"
+        },
+        {
+          "title": "Bloque E",
+          "href": "/matematica-a-pedal/unidad0/bloque-e.html"
+        },
+        {
+          "title": "Mini Evaluación",
+          "href": "/matematica-a-pedal/unidad0/mini-evaluacion.html"
+        }
+      ]
+    },
+    {
+      "id": "unidad1",
+      "title": "Unidad 1 · Conjuntos y Operaciones",
+      "href": "/matematica-a-pedal/unidad1/index.html",
+      "bloques": [
+        {
+          "title": "Introducción",
+          "href": "/matematica-a-pedal/unidad1/index.html"
+        },
+        {
+          "title": "Bloque A",
+          "href": "/matematica-a-pedal/unidad1/bloque-a.html"
+        },
+        {
+          "title": "Bloque B",
+          "href": "/matematica-a-pedal/unidad1/bloque-b.html"
+        },
+        {
+          "title": "Bloque C",
+          "href": "/matematica-a-pedal/unidad1/bloque-c.html"
+        },
+        {
+          "title": "Bloque D",
+          "href": "/matematica-a-pedal/unidad1/bloque-d.html"
+        },
+        {
+          "title": "Bloque E",
+          "href": "/matematica-a-pedal/unidad1/bloque-e.html"
+        },
+        {
+          "title": "Bloque F",
+          "href": "/matematica-a-pedal/unidad1/bloque-f.html"
+        },
+        {
+          "title": "Bloque G",
+          "href": "/matematica-a-pedal/unidad1/bloque-g.html"
+        }
+      ]
+    },
+    {
+      "id": "unidad2",
+      "title": "Unidad 2 · Funciones y Gráficas",
+      "href": "/matematica-a-pedal/unidad2/index.html",
+      "bloques": [
+        {
+          "title": "Introducción",
+          "href": "/matematica-a-pedal/unidad2/index.html"
+        },
+        {
+          "title": "Bloque A",
+          "href": "/matematica-a-pedal/unidad2/bloque-a.html"
+        },
+        {
+          "title": "Bloque B",
+          "href": "/matematica-a-pedal/unidad2/bloque-b.html"
+        },
+        {
+          "title": "Bloque C",
+          "href": "/matematica-a-pedal/unidad2/bloque-c.html"
+        },
+        {
+          "title": "Bloque D",
+          "href": "/matematica-a-pedal/unidad2/bloque-d.html"
+        },
+        {
+          "title": "Bloque E",
+          "href": "/matematica-a-pedal/unidad2/bloque-e.html"
+        }
+      ]
+    },
+    {
+      "id": "unidad3",
+      "title": "Unidad 3 · Trigonometría",
+      "href": "/matematica-a-pedal/unidad3/index.html",
+      "bloques": [
+        {
+          "title": "Introducción",
+          "href": "/matematica-a-pedal/unidad3/index.html"
+        },
+        {
+          "title": "Bloque A",
+          "href": "/matematica-a-pedal/unidad3/bloque-a.html"
+        },
+        {
+          "title": "Bloque B",
+          "href": "/matematica-a-pedal/unidad3/bloque-b.html"
+        },
+        {
+          "title": "Bloque C",
+          "href": "/matematica-a-pedal/unidad3/bloque-c.html"
+        },
+        {
+          "title": "Bloque D",
+          "href": "/matematica-a-pedal/unidad3/bloque-d.html"
+        },
+        {
+          "title": "Bloque E",
+          "href": "/matematica-a-pedal/unidad3/bloque-e.html"
+        }
+      ]
+    },
+    {
+      "id": "unidad4",
+      "title": "Unidad 4 · Potencias y Raíces",
+      "href": "/matematica-a-pedal/unidad4/index.html",
+      "bloques": [
+        {
+          "title": "Introducción",
+          "href": "/matematica-a-pedal/unidad4/index.html"
+        },
+        {
+          "title": "Bloque A",
+          "href": "/matematica-a-pedal/unidad4/bloque-a.html"
+        },
+        {
+          "title": "Bloque B",
+          "href": "/matematica-a-pedal/unidad4/bloque-b.html"
+        },
+        {
+          "title": "Bloque C",
+          "href": "/matematica-a-pedal/unidad4/bloque-c.html"
+        },
+        {
+          "title": "Bloque D",
+          "href": "/matematica-a-pedal/unidad4/bloque-d.html"
+        },
+        {
+          "title": "Bloque E",
+          "href": "/matematica-a-pedal/unidad4/bloque-e.html"
+        },
+        {
+          "title": "Bloque F",
+          "href": "/matematica-a-pedal/unidad4/bloque-f.html"
+        }
+      ]
+    }
+  ]
+}

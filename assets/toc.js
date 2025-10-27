@@ -22,17 +22,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const list = document.createElement("ol");
   headers.forEach((h) => {
-    const li = document.createElement("li");
-    const a = document.createElement("a");
-    a.textContent = h.textContent;
-    a.href = "#" + h.id;
-    a.style.color = "#7f6000";
-    a.style.textDecoration = "none";
-    a.addEventListener("mouseover", () => (a.style.textDecoration = "underline"));
-    a.addEventListener("mouseout", () => (a.style.textDecoration = "none"));
-    li.appendChild(a);
-    list.appendChild(li);
-  });
+  const li = document.createElement("li");
+  const a = document.createElement("a");
+
+  // --- NUEVO: función para limpiar numeraciones del título ---
+  function sanitizeTitle(t) {
+    // quita "1) ", "2) ", "3. ", "[4] ", etc. al comienzo del título
+    return t.trim()
+      .replace(/^\s*\(?\d+\)?[\.\)]\s+/, "")  // 1) ... | 1. ... | (1) ...
+      .replace(/^\[\d+\]\s+/, "");            // [1] ...
+  }
+
+  // --- aplicar limpieza y enlazar ---
+  a.textContent = sanitizeTitle(h.textContent);
+  a.href = "#" + h.id;
+  a.style.color = "#7f6000";
+  a.style.textDecoration = "none";
+
+  li.appendChild(a);
+  list.appendChild(li);
+});
+
   toc.appendChild(list);
 
   if (tocMode === "inline") {

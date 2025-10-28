@@ -60,7 +60,7 @@
       <li>
         Escribí en notación científica y realizá la operación:<br>
         a) \(0{,}00045 =\) ________<br>
-        b) \( 3{,}2\times 10^{5} = \) ________ (ya está normalizado?)<br>
+        b) \( 3{,}2\times 10^{5} = \) ________ (¿ya está normalizado?)<br>
         c) \( (4{,}5\times 10^{3})\,(2\times 10^{-2}) = \) ________
       </li>
     </ol>
@@ -117,6 +117,125 @@
       </ul>
     </details>
   </div>
+
+  <!-- 📊 Puntaje general de la mini-evaluación (va ANTES del checklist) -->
+  <div id="u0-scorebox" style="margin-top:24px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
+    <h2 style="color:#783f04; margin:0 0 8px;">📊 Puntaje de esta mini-evaluación</h2>
+    <p style="margin:0 0 10px;">
+      Marcá <b>✅</b> en cada ejercicio que resolviste correctamente. El puntaje se guarda automáticamente en este navegador.
+    </p>
+
+    <!-- Lista de ítems -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:8px;">
+      <label style="display:flex; gap:8px; align-items:center;">
+        <input type="checkbox" class="u0-ans" data-key="q1"> <span>1) Conjuntos</span>
+      </label>
+      <label style="display:flex; gap:8px; align-items:center;">
+        <input type="checkbox" class="u0-ans" data-key="q2"> <span>2) Propiedades</span>
+      </label>
+      <label style="display:flex; gap:8px; align-items:center;">
+        <input type="checkbox" class="u0-ans" data-key="q3"> <span>3) Simplificación</span>
+      </label>
+      <label style="display:flex; gap:8px; align-items:center;">
+        <input type="checkbox" class="u0-ans" data-key="q4"> <span>4) Suma de fracciones</span>
+      </label>
+      <label style="display:flex; gap:8px; align-items:center;">
+        <input type="checkbox" class="u0-ans" data-key="q5"> <span>5) Potencias y raíces</span>
+      </label>
+      <label style="display:flex; gap:8px; align-items:center;">
+        <input type="checkbox" class="u0-ans" data-key="q6"> <span>6) Notación científica</span>
+      </label>
+      <label style="display:flex; gap:8px; align-items:center;">
+        <input type="checkbox" class="u0-ans" data-key="q7"> <span>7) Equivalencias</span>
+      </label>
+      <label style="display:flex; gap:8px; align-items:center;">
+        <input type="checkbox" class="u0-ans" data-key="q8"> <span>8) Prop. de potencias</span>
+      </label>
+      <label style="display:flex; gap:8px; align-items:center;">
+        <input type="checkbox" class="u0-ans" data-key="q9"> <span>9) Raíces y suma</span>
+      </label>
+      <label style="display:flex; gap:8px; align-items:center;">
+        <input type="checkbox" class="u0-ans" data-key="q10"> <span>10) Orden con 10ⁿ</span>
+      </label>
+    </div>
+
+    <!-- Controles y barra -->
+    <div style="display:flex; gap:10px; align-items:center; margin-top:12px; flex-wrap:wrap;">
+      <button id="u0-score-calc" type="button"
+              style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">
+        ✅ Calcular puntaje
+      </button>
+      <button id="u0-score-reset" type="button"
+              style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">
+        🔄 Reiniciar puntaje
+      </button>
+      <button id="u0-print" type="button"
+              style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">
+        🖨️ Imprimir / Guardar PDF
+      </button>
+
+      <div style="margin-left:auto;">
+        <div style="min-width:220px;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+            <span style="color:#783f04;">Progreso</span>
+            <span id="u0-score-label" style="color:#7f6000;">0/10 · 0%</span>
+          </div>
+          <div style="height:12px; background:#FFF6E6; border:1px solid #FFD580; border-radius:999px; overflow:hidden;">
+            <div id="u0-score-bar" style="height:100%; width:0%; background:#FFA559;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script puntaje -->
+  <script>
+  (function(){
+    const STORAGE = 'mp-u0-score-v1';
+    const checks = Array.from(document.querySelectorAll('.u0-ans'));
+    const bar = document.getElementById('u0-score-bar');
+    const label = document.getElementById('u0-score-label');
+    const btnCalc = document.getElementById('u0-score-calc');
+    const btnReset = document.getElementById('u0-score-reset');
+    const btnPrint = document.getElementById('u0-print');
+
+    function readState(){ try{ return JSON.parse(localStorage.getItem(STORAGE)||'{}'); }catch(e){return {}} }
+    function writeState(s){ localStorage.setItem(STORAGE, JSON.stringify(s)); }
+
+    function applyState(s){
+      checks.forEach(ch => ch.checked = !!s[ch.dataset.key]);
+      updateUI();
+    }
+    function currentScore(){
+      const total = checks.length || 1;
+      const ok = checks.filter(ch => ch.checked).length;
+      return {ok, total, pct: Math.round(100*ok/total)};
+    }
+    function updateUI(){
+      const {ok,total,pct} = currentScore();
+      if (bar) bar.style.width = pct + '%';
+      if (label) label.textContent = ok + '/' + total + ' · ' + pct + '%';
+    }
+    function handleToggle(e){
+      const s = readState();
+      s[e.target.dataset.key] = e.target.checked;
+      writeState(s); updateUI();
+    }
+    function calcNow(){ updateUI(); }
+    function resetAll(){
+      localStorage.removeItem(STORAGE);
+      checks.forEach(ch => ch.checked = false);
+      updateUI();
+    }
+
+    checks.forEach(ch => ch.addEventListener('change', handleToggle));
+    if (btnCalc) btnCalc.addEventListener('click', calcNow);
+    if (btnReset) btnReset.addEventListener('click', resetAll);
+    if (btnPrint) btnPrint.addEventListener('click', () => window.print());
+
+    applyState(readState());
+  })();
+  </script>
 
   <!-- ✅ CHECKLIST U0 con guardado local -->
   <section id="u0-checklist" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.5; max-width:980px; margin:0 auto;">
@@ -230,125 +349,6 @@
         resetBtn.addEventListener('click', resetAll);
       })();
     </script>
-    <!-- PUNTAJE MINI-EVAL (U0) -->
-<div id="u0-scorebox" style="margin-top:20px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-  <h2 style="color:#783f04; margin:0 0 8px;">📊 Puntaje de esta mini-evaluación</h2>
-  <p style="margin:0 0 10px;">
-    Marcá <b>✅</b> en cada ejercicio que resolviste correctamente. El puntaje se guarda en este dispositivo.
-  </p>
-
-  <!-- Checklist rápida de aciertos (adaptada a las 10 consignas de la propuesta) -->
-  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:8px;">
-    <!-- Parte 1: 6 ítems -->
-    <label style="display:flex; gap:8px; align-items:center;">
-      <input type="checkbox" class="u0-ans" data-key="q1"> <span>1) Conjuntos</span>
-    </label>
-    <label style="display:flex; gap:8px; align-items:center;">
-      <input type="checkbox" class="u0-ans" data-key="q2"> <span>2) Propiedades</span>
-    </label>
-    <label style="display:flex; gap:8px; align-items:center;">
-      <input type="checkbox" class="u0-ans" data-key="q3"> <span>3) Simplificación</span>
-    </label>
-    <label style="display:flex; gap:8px; align-items:center;">
-      <input type="checkbox" class="u0-ans" data-key="q4"> <span>4) Suma fracciones</span>
-    </label>
-    <label style="display:flex; gap:8px; align-items:center;">
-      <input type="checkbox" class="u0-ans" data-key="q5"> <span>5) Potencias/raíces</span>
-    </label>
-    <label style="display:flex; gap:8px; align-items:center;">
-      <input type="checkbox" class="u0-ans" data-key="q6"> <span>6) Notación científica</span>
-    </label>
-
-    <!-- Parte 2: 4 ítems -->
-    <label style="display:flex; gap:8px; align-items:center;">
-      <input type="checkbox" class="u0-ans" data-key="q7"> <span>7) Equivalencias</span>
-    </label>
-    <label style="display:flex; gap:8px; align-items:center;">
-      <input type="checkbox" class="u0-ans" data-key="q8"> <span>8) Prop. potencias</span>
-    </label>
-    <label style="display:flex; gap:8px; align-items:center;">
-      <input type="checkbox" class="u0-ans" data-key="q9"> <span>9) Raíces y suma</span>
-    </label>
-    <label style="display:flex; gap:8px; align-items:center;">
-      <input type="checkbox" class="u0-ans" data-key="q10"> <span>10) Orden con 10ⁿ</span>
-    </label>
-  </div>
-
-  <div style="display:flex; gap:10px; align-items:center; margin-top:12px; flex-wrap:wrap;">
-    <button id="u0-score-calc" type="button"
-            style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">
-      ✅ Calcular puntaje
-    </button>
-    <button id="u0-score-reset" type="button"
-            style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">
-      🔄 Reiniciar puntaje
-    </button>
-    <button id="u0-print" type="button"
-            style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">
-      🖨️ Imprimir / Guardar PDF
-    </button>
-
-    <div style="margin-left:auto;">
-      <div style="min-width:220px;">
-        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-          <span style="color:#783f04;">Progreso</span>
-          <span id="u0-score-label" style="color:#7f6000;">0/10 · 0%</span>
-        </div>
-        <div style="height:12px; background:#FFF6E6; border:1px solid #FFD580; border-radius:999px; overflow:hidden;">
-          <div id="u0-score-bar" style="height:100%; width:0%; background:#FFA559;"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-(function(){
-  const STORAGE = 'mp-u0-score-v1';
-  const checks = Array.from(document.querySelectorAll('.u0-ans'));
-  const bar = document.getElementById('u0-score-bar');
-  const label = document.getElementById('u0-score-label');
-  const btnCalc = document.getElementById('u0-score-calc');
-  const btnReset = document.getElementById('u0-score-reset');
-  const btnPrint = document.getElementById('u0-print');
-
-  function readState(){ try{ return JSON.parse(localStorage.getItem(STORAGE)||'{}'); }catch(e){return {}} }
-  function writeState(s){ localStorage.setItem(STORAGE, JSON.stringify(s)); }
-
-  function applyState(s){
-    checks.forEach(ch => ch.checked = !!s[ch.dataset.key]);
-    updateUI();
-  }
-  function currentScore(){
-    const total = checks.length || 1;
-    const ok = checks.filter(ch => ch.checked).length;
-    return {ok, total, pct: Math.round(100*ok/total)};
-  }
-  function updateUI(){
-    const {ok,total,pct} = currentScore();
-    if (bar) bar.style.width = pct + '%';
-    if (label) label.textContent = ok + '/' + total + ' · ' + pct + '%';
-  }
-  function handleToggle(e){
-    const s = readState();
-    s[e.target.dataset.key] = e.target.checked;
-    writeState(s); updateUI();
-  }
-  function calcNow(){ updateUI(); } // ya está en vivo, pero dejamos el botón por claridad UX
-  function resetAll(){
-    localStorage.removeItem(STORAGE);
-    checks.forEach(ch => ch.checked = false);
-    updateUI();
-  }
-
-  checks.forEach(ch => ch.addEventListener('change', handleToggle));
-  if (btnCalc) btnCalc.addEventListener('click', calcNow);
-  if (btnReset) btnReset.addEventListener('click', resetAll);
-  if (btnPrint) btnPrint.addEventListener('click', () => window.print());
-
-  applyState(readState());
-})();
-</script>
   </section>
 
   <!-- Cierre -->
@@ -376,12 +376,12 @@
             border-radius:10px; padding:8px 14px;">🏁 Volver al inicio</a>
 </div>
 <script src="/matematica-a-pedal/assets/toc.js"></script>
-            <style>
+
+<style>
 /* ✅ Limpieza para impresión */
 @media print {
   /* Ocultar header/nav y botones de interacción */
   #header-placeholder, nav, .submenu, button, #u0-reset, #u0-score-reset, #u0-score-calc, #u0-print { display: none !important; }
-  /* Bordes suaves y tipografía legible */
   body { color: #000 !important; }
   a { color: #000 !important; text-decoration: none; }
   /* Expandir a ancho completo al imprimir */
@@ -390,7 +390,5 @@
   details { display: block; }
   details > summary { display: none; }
 }
-/* Evitar corte feo de tarjetas entre páginas */
 @page { margin: 16mm; }
 </style>
-

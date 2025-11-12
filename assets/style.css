@@ -110,3 +110,11 @@ section {
   line-height: 1;
   color: #783f04;
 }
+.unit-progress__bike span {
+  font-size: 22px;
+  line-height: 1;
+  color: #783f04;
+  display: inline-block;
+  transform: scaleX(-1); /* 🚲 gira horizontalmente */
+}
+

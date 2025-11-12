@@ -53,24 +53,21 @@
     </p>
   </div>
 
-  <!-- Progreso -->
-  <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-    <div style="display:flex; align-items:center; gap:10px; justify-content:space-between; flex-wrap:wrap;">
-      <div style="flex:1 1 280px;">
-        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-          <span style="color:#783f04;">Progreso de la unidad</span>
-          <span id="u1-progress-label" style="color:#7f6000;">0%</span>
-        </div>
-        <div style="height:12px; background:#FFF6E6; border:1px solid #FFD580; border-radius:999px; overflow:hidden;">
-          <div id="u1-progress-bar" style="height:100%; width:0%; background:#FFA559;"></div>
-        </div>
-      </div>
-      <div style="display:flex; gap:8px;">
-        <a id="u1-continue" href="#" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">▶️ Continuar donde quedé</a>
-        <button id="u1-reset" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Reset progreso</button>
-      </div>
-    </div>
-  </div>
+<!-- Progreso con bicicleta (una sola barra) -->
+<div id="unit-progress"></div>
+
+<!-- Acciones -->
+<div style="display:flex; gap:8px; margin-top:12px;">
+  <a id="u1-continue" href="/matematica-a-pedal/unidad1/bloque-a.html"
+     style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">
+    ▶️ Continuar donde quedé
+  </a>
+  <button id="u1-reset" type="button"
+          style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">
+    🔄 Reset progreso
+  </button>
+</div>
+
 
   <!-- Menú índice (Cards) -->
   <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
@@ -207,73 +204,64 @@
   </div>
 
   
-  <!-- Script: progreso y guardado local -->
-  <script>
-    (function(){
-      const STORAGE_KEY = 'mp-u1-progress-v1';
-      const cards = Array.from(document.querySelectorAll('#u1-home .u1-card'));
-      const toggles = Array.from(document.querySelectorAll('#u1-home .u1-done'));
-      const bar = document.getElementById('u1-progress-bar');
-      const label = document.getElementById('u1-progress-label');
-      const resetBtn = document.getElementById('u1-reset');
-      const continueA = document.getElementById('u1-continue');
+  <!-- Acciones de la U1: continuar / reset + actualización de “pills” -->
+<script>
+(function(){
+  // Orden de tarjetas (según aparecen)
+  const cards   = Array.from(document.querySelectorAll('#u1-home .u1-card'));
+  const order   = cards.map(c => c.dataset.key); // c1..c8
+  const toggles = Array.from(document.querySelectorAll('#u1-home .u1-done'));
+  const continueA = document.getElementById('u1-continue');
+  const resetBtn  = document.getElementById('u1-reset');
 
-      const order = cards.map(c => c.dataset.key); // c1..c7
+  // Mapea card key -> href (toma el <a> de cada tarjeta)
+  const links = Object.fromEntries(
+    cards.map(card => [card.dataset.key, (card.querySelector('a[href]')||{}).getAttribute?.('href')])
+  );
 
-      function readState(){
-        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
-        catch(e){ return {}; }
+  function updatePills(){
+    cards.forEach(card => {
+      const pill = card.querySelector('.u1-pill');
+      const chk  = card.querySelector('.u1-done');
+      const done = !!(chk && chk.checked);
+      if (pill){
+        pill.textContent   = done ? '✅ Completado' : '🔄 En curso';
+        pill.style.background = done ? '#EFFFF2' : 'transparent';
       }
-      function writeState(s){ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
+    });
+  }
 
-      function updateUI(){
-        const s = readState();
-        // checkboxes + pills
-        toggles.forEach(chk => {
-          chk.checked = !!s[chk.dataset.key];
-        });
-        cards.forEach(card => {
-          const pill = card.querySelector('.u1-pill');
-          const done = !!s[card.dataset.key];
-          pill.textContent = done ? '✅ Completado' : '🔄 En curso';
-          pill.style.background = done ? '#EFFFF2' : 'transparent';
-        });
-        // progress
-        const total = order.length || 1;
-        const doneCount = order.filter(k => !!s[k]).length;
-        const pct = Math.round(100 * doneCount / total);
-        bar.style.width = pct + '%';
-        label.textContent = pct + '%';
+  function updateContinueLink(){
+    const doneKeys = new Set(toggles.filter(t => t.checked).map(t => t.dataset.key));
+    const nextKey  = order.find(k => !doneKeys.has(k)) || order[order.length - 1];
+    const href     = links[nextKey] || links[order[0]];
+    if (href) continueA.href = href;
+  }
 
-        // continuar donde quedé
-        let nextKey = order.find(k => !s[k]) || order[order.length-1];
-        const nextCard = cards.find(c => c.dataset.key === nextKey);
-        const nextLink = nextCard ? nextCard.querySelector('a[href]') : null;
-        if(nextLink){
-          continueA.href = nextLink.href;
-        } else {
-          continueA.removeAttribute('href');
-        }
+  function resetProgress(){
+    if (!confirm('¿Reiniciar tu progreso en esta unidad?')) return;
+    toggles.forEach(t => {
+      if (t.checked) {
+        t.checked = false;
+        t.dispatchEvent(new Event('change', { bubbles:true }));
       }
+    });
+    // Avisá a la barra de la bici por si necesita actualizar
+    window.dispatchEvent(new Event('map:progress-updated'));
+    updatePills();
+    updateContinueLink();
+  }
 
-      function onToggle(e){
-        const s = readState();
-        s[e.target.dataset.key] = e.target.checked;
-        writeState(s);
-        updateUI();
-      }
-      function onReset(){
-        if (confirm('¿Estás seguro de que deseas reiniciar tu progreso en esta unidad?')) {
-          localStorage.removeItem(STORAGE_KEY);
-          updateUI();
-        }
-      }
+  // Eventos
+  toggles.forEach(t => t.addEventListener('change', () => { updatePills(); updateContinueLink(); }));
+  window.addEventListener('map:progress-updated', () => { updatePills(); updateContinueLink(); });
+  if (resetBtn) resetBtn.addEventListener('click', resetProgress);
 
-      toggles.forEach(t => t.addEventListener('change', onToggle));
-      resetBtn.addEventListener('click', onReset);
-      updateUI();
-    })();
-  </script>
+  // Inicio
+  updatePills();
+  updateContinueLink();
+})();
+</script>
 
   <!-- Navegador Unidad 1 - Introducción -->
 <div style="max-width:1180px; margin:12px auto 0;">
@@ -299,8 +287,20 @@
 </main>
 <!-- FIN UNIDAD 1 — PORTADA -->
 
-<!-- Encabezado compartido (si lo estás usando en todo el sitio) -->
-<script src="https://utec-math.github.io/matematica-a-pedal/assets/load-header.js"></script>
+  <!-- Firebase + Auth -->
+  <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
+
+  <!-- Sincronización de progreso -->
+  <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
+
+  <!-- Barra de progreso con bicicleta -->
+  <script src="/matematica-a-pedal/assets/progress-bar-bike.js"></script>
+
+  <!-- Acciones de la U1 -->
+  <script>
+    // (el código corto que te pasé en el punto 2)
+  </script>
+
 
 </body>
 </html>

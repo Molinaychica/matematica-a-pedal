@@ -59,10 +59,12 @@ section {
 .unit-progress {
   border: 1px solid #FFD580;
   border-radius: 12px;
-  padding: 10px 12px;
-  background: #FFFDF7;
+  padding: 14px;
+  background: #FFF6E6; /* mismo fondo que las tarjetas */
   color: #7f6000;
-  margin: 12px 20px;
+  margin: 18px 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .unit-progress__top {

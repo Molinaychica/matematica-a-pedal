@@ -55,3 +55,27 @@ section {
   padding: 20px;
 }
 
+/* --- Barra de progreso con bici --- */
+.unit-progress {
+  border: 1px solid #FFD580; border-radius: 12px; padding: 10px 12px;
+  background: #FFFDF7; color: #7f6000; margin: 12px 20px;
+}
+.unit-progress__top {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
+  font-weight: 600; color: #783f04;
+}
+.unit-progress__bar {
+  position: relative; height: 14px; border: 1px solid #FFD580; border-radius: 999px;
+  background: #FFF3DA; overflow: hidden;
+}
+.unit-progress__fill {
+  height: 100%; background: linear-gradient(90deg,#FFA559,#FFD580);
+  width: 0%; transition: width .35s ease;
+}
+.unit-progress__bike {
+  position: absolute; top: 0; left: 0; height: 26px; width: 26px;
+  transform: translate(-50%, -65%); transition: left .35s ease;
+  display: flex; align-items: center; justify-content: center; pointer-events: none;
+}
+.unit-progress__bike span { font-size: 22px; line-height: 1; color: #783f04; }
+

@@ -20,7 +20,6 @@
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
   <style>
-    /* Estilos suaves para las tarjetas de autodiagnóstico */
     .ad-intro {
       background: linear-gradient(90deg,#FFD580,#FFA559);
       border-radius: 14px;
@@ -44,10 +43,6 @@
       margin-top: 10px;
       padding-top: 8px;
       border-top: 1px dashed #FFE0A8;
-    }
-    .ad-question:first-of-type {
-      border-top: none;
-      padding-top: 0;
     }
     .ad-options label {
       display: block;
@@ -81,42 +76,32 @@
 
 <body>
 
-  <!-- Encabezado compartido -->
   <div id="header-placeholder"></div>
   <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
-  <!-- CONTENIDO AUTODIAGNÓSTICO -->
   <main id="autodiag-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1180px; margin:0 auto;">
 
     <!-- Intro -->
     <section class="ad-intro">
       <h1 style="color:#783f04; margin:0; font-size:30px;">Autodiagnóstico de Matemática a Pedal</h1>
-      <p style="margin:8px 0 0;">
-        Este autodiagnóstico te ayuda a ubicar por dónde conviene empezar a pedalear 🧮🚲  
-        No es una prueba calificable, sino una herramienta para saber qué unidades requieren más repaso.
-      </p>
-      <p style="margin:8px 0 0;">
-        Respondé sin calculadora si es posible. Al final vas a ver tu resultado global y sugerencias por tema
-        (Calentamiento, Conjuntos y Operaciones, Factorización, Trigonometría y Potencias/Notación Científica).
-      </p>
+      <p>Este autodiagnóstico te ayuda a ubicar por dónde conviene empezar a pedalear 🧮🚲</p>
+      <p>Respondé sin calculadora si es posible. Al final vas a ver tu resultado global y sugerencias por tema.</p>
     </section>
 
-    <!-- Progreso visual simple (no afecta a la bici global, solo estética local) -->
+    <!-- Progreso visual → bicicleta -->
     <div id="unit-progress" style="margin-top:16px;"></div>
 
-    <section id="autodiag-form" class="ad-card">
+    <section class="ad-card">
       <h2>Indicaciones generales</h2>
-      <p style="margin-top:0;">
-        Marcá una sola opción en cada ejercicio. Si no estás seguro, elegí la que te parezca más razonable:
-        eso también es información útil sobre tu nivel actual.
-      </p>
+      <p>Marcá una sola opción en cada ejercicio.</p>
     </section>
 
-    <!-- BLOQUE U0 · CALENTAMIENTO -->
+    <!-- ============================= -->
+    <!--     BLOQUE A — U0            -->
+    <!-- ============================= -->
     <section class="ad-card">
       <h2>Bloque A — Calentamiento matemático (U0)</h2>
 
-      <!-- Q1 -->
       <div class="ad-question" data-answer="c">
         <p><b>1.</b> El número \( \sqrt{2} \) es:</p>
         <div class="ad-options">
@@ -127,47 +112,46 @@
         </div>
       </div>
 
-      <!-- Q2 -->
       <div class="ad-question" data-answer="b">
-        <p><b>2.</b> Calculá \( \dfrac{3}{4} + \dfrac{5}{6} \).</p>
+        <p><b>2.</b> Calculá \( \frac{3}{4} + \frac{5}{6} \).</p>
         <div class="ad-options">
-          <label><input type="radio" name="q2" value="a"> \( \dfrac{8}{10} \)</label>
-          <label><input type="radio" name="q2" value="b"> \( \dfrac{19}{12} \)</label>
-          <label><input type="radio" name="q2" value="c"> \( \dfrac{7}{10} \)</label>
-          <label><input type="radio" name="q2" value="d"> \( \dfrac{23}{24} \)</label>
+          <label><input type="radio" name="q2" value="a"> \( \frac{8}{10} \)</label>
+          <label><input type="radio" name="q2" value="b"> \( \frac{19}{12} \)</label>
+          <label><input type="radio" name="q2" value="c"> \( \frac{7}{10} \)</label>
+          <label><input type="radio" name="q2" value="d"> \( \frac{23}{24} \)</label>
         </div>
       </div>
 
-      <!-- Q3 -->
       <div class="ad-question" data-answer="b">
-        <p><b>3.</b> Ordená de menor a mayor: \( -2, \; -\dfrac{1}{2}, \; 0, \; 1{,}5 \).</p>
+        <p><b>3.</b> Ordená: \(-2,\; -\frac12,\; 0,\; 1.5\)</p>
         <div class="ad-options">
-          <label><input type="radio" name="q3" value="a"> \( -2 &lt; 0 &lt; -\dfrac{1}{2} &lt; 1{,}5 \)</label>
-          <label><input type="radio" name="q3" value="b"> \( -2 &lt; -\dfrac{1}{2} &lt; 0 &lt; 1{,}5 \)</label>
-          <label><input type="radio" name="q3" value="c"> \( -\dfrac{1}{2} &lt; -2 &lt; 0 &lt; 1{,}5 \)</label>
-          <label><input type="radio" name="q3" value="d"> \( 0 &lt; -2 &lt; -\dfrac{1}{2} &lt; 1{,}5 \)</label>
+          <label><input type="radio" name="q3" value="a"> -2 &lt; 0 &lt; -1/2 &lt; 1.5</label>
+          <label><input type="radio" name="q3" value="b"> -2 &lt; -1/2 &lt; 0 &lt; 1.5</label>
+          <label><input type="radio" name="q3" value="c"> -1/2 &lt; -2 &lt; 0 &lt; 1.5</label>
+          <label><input type="radio" name="q3" value="d"> 0 &lt; -2 &lt; -1/2 &lt; 1.5</label>
         </div>
       </div>
 
-      <!-- Q4 -->
       <div class="ad-question" data-answer="b">
-        <p><b>4.</b> El resultado de \( (-3)^2 - 4\cdot(-2) \) es:</p>
+        <p><b>4.</b> El resultado de \( (-3)^2 - 4\cdot 2 \) es:</p>
         <div class="ad-options">
-          <label><input type="radio" name="q4" value="a"> \( -17 \)</label>
-          <label><input type="radio" name="q4" value="b"> \( 1 \)</label>
-          <label><input type="radio" name="q4" value="c"> \( 25 \)</label>
-          <label><input type="radio" name="q4" value="d"> \( 5 \)</label>
+          <label><input type="radio" name="q4" value="a"> -17</label>
+          <label><input type="radio" name="q4" value="b"> 1</label>
+          <label><input type="radio" name="q4" value="c"> 25</label>
+          <label><input type="radio" name="q4" value="d"> 5</label>
         </div>
       </div>
+
     </section>
 
-    <!-- BLOQUE U1 · CONJUNTOS Y OPERACIONES -->
+    <!-- ============================= -->
+    <!--     BLOQUE B — U1            -->
+    <!-- ============================= -->
     <section class="ad-card">
-      <h2>Bloque B — Conjuntos numéricos y operaciones básicas (U1)</h2>
+      <h2>Bloque B — Conjuntos y operaciones básicas (U1)</h2>
 
-      <!-- Q5 -->
       <div class="ad-question" data-answer="a">
-        <p><b>5.</b> ¿Cuál de las siguientes afirmaciones es verdadera?</p>
+        <p><b>5.</b> ¿Cuál es verdadera?</p>
         <div class="ad-options">
           <label><input type="radio" name="q5" value="a"> \( \mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \)</label>
           <label><input type="radio" name="q5" value="b"> \( \mathbb{Q} \subset \mathbb{Z} \subset \mathbb{R} \subset \mathbb{N} \)</label>
@@ -176,252 +160,231 @@
         </div>
       </div>
 
-      <!-- Q6 -->
       <div class="ad-question" data-answer="b">
-        <p><b>6.</b> Aplicando la propiedad distributiva, el valor de \( 3(2x - 5) - (x - 1) \) es:</p>
+        <p><b>6.</b> \( 3(2x-5) - (x-1) = \)</p>
         <div class="ad-options">
-          <label><input type="radio" name="q6" value="a"> \( 7x - 16 \)</label>
-          <label><input type="radio" name="q6" value="b"> \( 5x - 14 \)</label>
-          <label><input type="radio" name="q6" value="c"> \( 6x - 15 - x + 1 \)</label>
-          <label><input type="radio" name="q6" value="d"> \( 5x - 16 \)</label>
+          <label><input type="radio" name="q6" value="a"> 7x - 16</label>
+          <label><input type="radio" name="q6" value="b"> 5x - 14</label>
+          <label><input type="radio" name="q6" value="c"> 6x - 15 - x + 1</label>
+          <label><input type="radio" name="q6" value="d"> 5x - 16</label>
         </div>
       </div>
 
-      <!-- Q7 -->
       <div class="ad-question" data-answer="c">
-        <p><b>7.</b> Calculá \( \dfrac{5}{8} - \dfrac{3}{10} \).</p>
+        <p><b>7.</b> \( \frac{5}{8} - \frac{3}{10} = \)</p>
         <div class="ad-options">
-          <label><input type="radio" name="q7" value="a"> \( \dfrac{1}{40} \)</label>
-          <label><input type="radio" name="q7" value="b"> \( \dfrac{7}{40} \)</label>
-          <label><input type="radio" name="q7" value="c"> \( \dfrac{13}{40} \)</label>
-          <label><input type="radio" name="q7" value="d"> \( \dfrac{19}{40} \)</label>
+          <label><input type="radio" name="q7" value="a"> 1/40</label>
+          <label><input type="radio" name="q7" value="b"> 7/40</label>
+          <label><input type="radio" name="q7" value="c"> 13/40</label>
+          <label><input type="radio" name="q7" value="d"> 19/40</label>
         </div>
       </div>
 
-      <!-- Q8 -->
       <div class="ad-question" data-answer="b">
-        <p><b>8.</b> ¿Cuál de las siguientes expresiones es equivalente a \( -(-a + 3b) \)?</p>
+        <p><b>8.</b> \( -(-a+3b)= \)</p>
         <div class="ad-options">
-          <label><input type="radio" name="q8" value="a"> \( -a - 3b \)</label>
-          <label><input type="radio" name="q8" value="b"> \( a - 3b \)</label>
-          <label><input type="radio" name="q8" value="c"> \( a + 3b \)</label>
-          <label><input type="radio" name="q8" value="d"> \( -a + 3b \)</label>
+          <label><input type="radio" name="q8" value="a"> -a - 3b</label>
+          <label><input type="radio" name="q8" value="b"> a - 3b</label>
+          <label><input type="radio" name="q8" value="c"> a + 3b</label>
+          <label><input type="radio" name="q8" value="d"> -a + 3b</label>
         </div>
       </div>
+
     </section>
 
-    <!-- BLOQUE U2 · FACTORIZACIÓN -->
+    <!-- ============================= -->
+    <!--     BLOQUE C — U2            -->
+    <!-- ============================= -->
     <section class="ad-card">
       <h2>Bloque C — Factorización y expresiones algebraicas (U2)</h2>
 
-      <!-- Q9 -->
       <div class="ad-question" data-answer="c">
         <p><b>9.</b> Factorizá \( x^2 - 9 \).</p>
         <div class="ad-options">
-          <label><input type="radio" name="q9" value="a"> \( (x - 3)^2 \)</label>
-          <label><input type="radio" name="q9" value="b"> \( (x - 9)(x + 1) \)</label>
-          <label><input type="radio" name="q9" value="c"> \( (x - 3)(x + 3) \)</label>
-          <label><input type="radio" name="q9" value="d"> \( x(x - 9) \)</label>
+          <label><input type="radio" name="q9" value="a"> (x-3)^2</label>
+          <label><input type="radio" name="q9" value="b"> (x-9)(x+1)</label>
+          <label><input type="radio" name="q9" value="c"> (x-3)(x+3)</label>
+          <label><input type="radio" name="q9" value="d"> x(x-9)</label>
         </div>
       </div>
 
-      <!-- Q10 -->
       <div class="ad-question" data-answer="c">
-        <p><b>10.</b> El desarrollo de \( (x + 2)^2 \) es:</p>
+        <p><b>10.</b> Desarrollo de \( (x+2)^2 \):</p>
         <div class="ad-options">
-          <label><input type="radio" name="q10" value="a"> \( x^2 + 4 \)</label>
-          <label><input type="radio" name="q10" value="b"> \( x^2 + 2x + 4 \)</label>
-          <label><input type="radio" name="q10" value="c"> \( x^2 + 4x + 4 \)</label>
-          <label><input type="radio" name="q10" value="d"> \( x^2 + 2x + 2 \)</label>
+          <label><input type="radio" name="q10" value="a"> x^2 + 4</label>
+          <label><input type="radio" name="q10" value="b"> x^2 + 2x + 4</label>
+          <label><input type="radio" name="q10" value="c"> x^2 + 4x + 4</label>
+          <label><input type="radio" name="q10" value="d"> x^2 + 2x + 2</label>
         </div>
       </div>
 
-      <!-- Q11 -->
       <div class="ad-question" data-answer="a">
-        <p><b>11.</b> Simplificá la fracción algebraica \( \dfrac{6x^2}{9x} \) (con \( x \neq 0 \)).</p>
+        <p><b>11.</b> \( \frac{6x^2}{9x} = \)</p>
         <div class="ad-options">
-          <label><input type="radio" name="q11" value="a"> \( \dfrac{2x}{3} \)</label>
-          <label><input type="radio" name="q11" value="b"> \( \dfrac{2x^2}{3} \)</label>
-          <label><input type="radio" name="q11" value="c"> \( \dfrac{6x}{9} \)</label>
-          <label><input type="radio" name="q11" value="d"> \( \dfrac{3x}{2} \)</label>
+          <label><input type="radio" name="q11" value="a"> 2x/3</label>
+          <label><input type="radio" name="q11" value="b"> 2x^2/3</label>
+          <label><input type="radio" name="q11" value="c"> 6x/9</label>
+          <label><input type="radio" name="q11" value="d"> 3x/2</label>
         </div>
       </div>
 
-      <!-- Q12 -->
       <div class="ad-question" data-answer="a">
-        <p><b>12.</b> Factor común: \( 5x^3 - 10x^2 \) se puede escribir como:</p>
+        <p><b>12.</b> \( 5x^3 - 10x^2 = \)</p>
         <div class="ad-options">
-          <label><input type="radio" name="q12" value="a"> \( 5x^2(x - 2) \)</label>
-          <label><input type="radio" name="q12" value="b"> \( 5x(x^2 - 2) \)</label>
-          <label><input type="radio" name="q12" value="c"> \( x^2(5x - 10) \)</label>
-          <label><input type="radio" name="q12" value="d"> \( 5(x^3 - 2x^2) \)</label>
+          <label><input type="radio" name="q12" value="a"> 5x^2(x-2)</label>
+          <label><input type="radio" name="q12" value="b"> 5x(x^2 - 2)</label>
+          <label><input type="radio" name="q12" value="c"> x^2(5x - 10)</label>
+          <label><input type="radio" name="q12" value="d"> 5(x^3 - 2x^2)</label>
         </div>
       </div>
+
     </section>
 
-    <!-- BLOQUE U3 · TRIGONOMETRÍA -->
+    <!-- ============================= -->
+    <!--     BLOQUE D — U3            -->
+    <!-- ============================= -->
     <section class="ad-card">
       <h2>Bloque D — Trigonometría (U3)</h2>
 
-      <!-- Q13 -->
       <div class="ad-question" data-answer="b">
-        <p><b>13.</b> Expresá \( 150^\circ \) en radianes.</p>
+        <p><b>13.</b> 150° = ?</p>
         <div class="ad-options">
-          <label><input type="radio" name="q13" value="a"> \( \dfrac{\pi}{3} \)</label>
-          <label><input type="radio" name="q13" value="b"> \( \dfrac{5\pi}{6} \)</label>
-          <label><input type="radio" name="q13" value="c"> \( \dfrac{2\pi}{3} \)</label>
-          <label><input type="radio" name="q13" value="d"> \( \dfrac{3\pi}{4} \)</label>
+          <label><input type="radio" name="q13" value="a"> π/3</label>
+          <label><input type="radio" name="q13" value="b"> 5π/6</label>
+          <label><input type="radio" name="q13" value="c"> 2π/3</label>
+          <label><input type="radio" name="q13" value="d"> 3π/4</label>
         </div>
       </div>
 
-      <!-- Q14 -->
       <div class="ad-question" data-answer="b">
-        <p><b>14.</b> El valor de \( \sin\left(\dfrac{\pi}{6}\right) \) es:</p>
+        <p><b>14.</b> \( \sin(\pi/6) = \)</p>
         <div class="ad-options">
-          <label><input type="radio" name="q14" value="a"> \( \dfrac{\sqrt{3}}{2} \)</label>
-          <label><input type="radio" name="q14" value="b"> \( \dfrac{1}{2} \)</label>
-          <label><input type="radio" name="q14" value="c"> \( \dfrac{\sqrt{2}}{2} \)</label>
-          <label><input type="radio" name="q14" value="d"> \( 1 \)</label>
+          <label><input type="radio" name="q14" value="a"> √3/2</label>
+          <label><input type="radio" name="q14" value="b"> 1/2</label>
+          <label><input type="radio" name="q14" value="c"> √2/2</label>
+          <label><input type="radio" name="q14" value="d"> 1</label>
         </div>
       </div>
 
-      <!-- Q15 -->
       <div class="ad-question" data-answer="a">
-        <p><b>15.</b> En un triángulo rectángulo, el ángulo agudo mide \( 30^\circ \) y la hipotenusa mide 10. 
-        La longitud del cateto opuesto a ese ángulo es:</p>
+        <p><b>15.</b> Triángulo rectángulo, ángulo 30°, hipotenusa 10 → cateto opuesto:</p>
         <div class="ad-options">
           <label><input type="radio" name="q15" value="a"> 5</label>
-          <label><input type="radio" name="q15" value="b"> \( 5\sqrt{3} \)</label>
+          <label><input type="radio" name="q15" value="b"> 5√3</label>
           <label><input type="radio" name="q15" value="c"> 10</label>
-          <label><input type="radio" name="q15" value="d"> \( \dfrac{10}{\sqrt{3}} \)</label>
+          <label><input type="radio" name="q15" value="d"> 10/√3</label>
         </div>
       </div>
 
-      <!-- Q16 -->
       <div class="ad-question" data-answer="b">
-        <p><b>16.</b> Una función sinusoidal tiene período \( T = 4 \) segundos. ¿Cuál es su frecuencia?</p>
+        <p><b>16.</b> Si el período es T=4 s, la frecuencia es:</p>
         <div class="ad-options">
-          <label><input type="radio" name="q16" value="a"> \( 4 \,\text{Hz} \)</label>
-          <label><input type="radio" name="q16" value="b"> \( \dfrac{1}{4} \,\text{Hz} \)</label>
-          <label><input type="radio" name="q16" value="c"> \( 2 \,\text{Hz} \)</label>
-          <label><input type="radio" name="q16" value="d"> \( \dfrac{1}{2} \,\text{Hz} \)</label>
+          <label><input type="radio" name="q16" value="a"> 4 Hz</label>
+          <label><input type="radio" name="q16" value="b"> 1/4 Hz</label>
+          <label><input type="radio" name="q16" value="c"> 2 Hz</label>
+          <label><input type="radio" name="q16" value="d"> 1/2 Hz</label>
         </div>
       </div>
+
     </section>
 
-    <!-- BLOQUE U4 · POTENCIACIÓN Y NOTACIÓN CIENTÍFICA -->
+    <!-- ============================= -->
+    <!--     BLOQUE E — U4            -->
+    <!-- ============================= -->
     <section class="ad-card">
       <h2>Bloque E — Potencias, raíces y notación científica (U4)</h2>
 
-      <!-- Q17 -->
       <div class="ad-question" data-answer="a">
-        <p><b>17.</b> Calculá \( 2^3 \cdot 2^4 \).</p>
+        <p><b>17.</b> \( 2^3 \cdot 2^4 = \)</p>
         <div class="ad-options">
-          <label><input type="radio" name="q17" value="a"> \( 2^7 = 128 \)</label>
-          <label><input type="radio" name="q17" value="b"> \( 2^{12} = 4096 \)</label>
-          <label><input type="radio" name="q17" value="c"> \( 2^{1} = 2 \)</label>
-          <label><input type="radio" name="q17" value="d"> \( 2^{4} \cdot 2^{3} = 24 \)</label>
+          <label><input type="radio" name="q17" value="a"> 2^7 = 128</label>
+          <label><input type="radio" name="q17" value="b"> 2^{12} = 4096</label>
+          <label><input type="radio" name="q17" value="c"> 2</label>
+          <label><input type="radio" name="q17" value="d"> 24</label>
         </div>
       </div>
 
-      <!-- Q18 -->
       <div class="ad-question" data-answer="a">
-        <p><b>18.</b> El valor de \( \sqrt[3]{8} \) es:</p>
+        <p><b>18.</b> \( \sqrt[3]{8} = \)</p>
         <div class="ad-options">
           <label><input type="radio" name="q18" value="a"> 2</label>
           <label><input type="radio" name="q18" value="b"> 4</label>
-          <label><input type="radio" name="q18" value="c"> \( \sqrt{8} \)</label>
-          <label><input type="radio" name="q18" value="d"> \( \dfrac{1}{2} \)</label>
+          <label><input type="radio" name="q18" value="c"> √8</label>
+          <label><input type="radio" name="q18" value="d"> 1/2</label>
         </div>
       </div>
 
-      <!-- Q19 -->
       <div class="ad-question" data-answer="b">
-        <p><b>19.</b> Escribí \( 0{,}00045 \) en notación científica.</p>
+        <p><b>19.</b> \( 0.00045 = \)</p>
         <div class="ad-options">
-          <label><input type="radio" name="q19" value="a"> \( 4{,}5 \times 10^{-3} \)</label>
-          <label><input type="radio" name="q19" value="b"> \( 4{,}5 \times 10^{-4} \)</label>
-          <label><input type="radio" name="q19" value="c"> \( 45 \times 10^{-5} \)</label>
-          <label><input type="radio" name="q19" value="d"> \( 0{,}45 \times 10^{-4} \)</label>
+          <label><input type="radio" name="q19" value="a"> 4,5×10⁻³</label>
+          <label><input type="radio" name="q19" value="b"> 4,5×10⁻⁴</label>
+          <label><input type="radio" name="q19" value="c"> 45×10⁻⁵</label>
+          <label><input type="radio" name="q19" value="d"> 0,45×10⁻⁴</label>
         </div>
       </div>
 
-      <!-- Q20 -->
       <div class="ad-question" data-answer="b">
-        <p><b>20.</b> El número \( 5 \times 10^{-2} \) es igual a:</p>
+        <p><b>20.</b> \( 5×10^{-2} = \)</p>
         <div class="ad-options">
           <label><input type="radio" name="q20" value="a"> 0,5</label>
           <label><input type="radio" name="q20" value="b"> 0,05</label>
           <label><input type="radio" name="q20" value="c"> 5</label>
-          <label><input type="radio" name="q20" value="d"> \( 5 \times 100 \)</label>
+          <label><input type="radio" name="q20" value="d"> 500</label>
         </div>
       </div>
+
     </section>
 
-    <!-- Botones y resultados -->
+    <!-- ============================= -->
+    <!--     RESULTADOS               -->
+    <!-- ============================= -->
     <section class="ad-card">
       <h2>Resultados</h2>
-      <p>Cuando termines, hacé clic en <b>Corregir</b>. Podés borrar tus respuestas con <b>Reset</b>.</p>
       <div class="ad-actions">
         <button id="ad-submit" type="button">✅ Corregir autodiagnóstico</button>
         <button id="ad-reset" type="button">🔄 Reset respuestas</button>
       </div>
       <div id="ad-result" class="ad-result">
-        <p style="margin:0; opacity:.8;">Aquí aparecerán tus resultados globales y sugerencias por tema.</p>
+        <p style="margin:0; opacity:.8;">Aquí aparecerán tus resultados.</p>
       </div>
     </section>
 
   </main>
 
-  <!-- Firebase + Auth (opcional, para mantener coherencia con el resto del sitio) -->
+  <!-- Firebase -->
   <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
   <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
 
-  <!-- Barra de progreso con bicicleta (se reutiliza el mismo componente visual) -->
+  <!-- Progress bike bar -->
   <script src="/matematica-a-pedal/assets/progress-bar-bike.js"></script>
 
-  <!-- Lógica del autodiagnóstico -->
+  <!-- ===== LÓGICA DEL AUTODIAGNÓSTICO ===== -->
   <script>
   (function(){
-    // Clave de respuestas correctas
+
     const answerKey = {
-      q1: 'c',
-      q2: 'b',
-      q3: 'b',
-      q4: 'c',
-      q5: 'a',
-      q6: 'd',
-      q7: 'b',
-      q8: 'c',
-      q9: 'c',
-      q10:'c',
-      q11:'a',
-      q12:'a',
-      q13:'b',
-      q14:'b',
-      q15:'a',
-      q16:'b',
-      q17:'a',
-      q18:'a',
-      q19:'b',
-      q20:'b'
+      q1:'c', q2:'b', q3:'b', q4:'b',
+      q5:'a', q6:'b', q7:'c', q8:'b',
+      q9:'c', q10:'c', q11:'a', q12:'a',
+      q13:'b', q14:'b', q15:'a', q16:'b',
+      q17:'a', q18:'a', q19:'b', q20:'b'
     };
 
-    // Mapa pregunta -> tema/unidad
     const topicMap = {
-      q1: 'U0', q2: 'U0', q3: 'U0', q4: 'U0',
-      q5: 'U1', q6: 'U1', q7: 'U1', q8: 'U1',
-      q9: 'U2', q10:'U2', q11:'U2', q12:'U2',
+      q1:'U0', q2:'U0', q3:'U0', q4:'U0',
+      q5:'U1', q6:'U1', q7:'U1', q8:'U1',
+      q9:'U2', q10:'U2', q11:'U2', q12:'U2',
       q13:'U3', q14:'U3', q15:'U3', q16:'U3',
       q17:'U4', q18:'U4', q19:'U4', q20:'U4'
     };
 
     const topicLabels = {
-      U0: 'Calentamiento matemático (Unidad 0)',
-      U1: 'Conjuntos y operaciones básicas (Unidad 1)',
-      U2: 'Factorización y expresiones algebraicas (Unidad 2)',
-      U3: 'Trigonometría (Unidad 3)',
-      U4: 'Potenciación, radicación y notación científica (Unidad 4)'
+      U0:'Calentamiento matemático (Unidad 0)',
+      U1:'Conjuntos y operaciones básicas (Unidad 1)',
+      U2:'Factorización y expresiones algebraicas (Unidad 2)',
+      U3:'Trigonometría (Unidad 3)',
+      U4:'Potencias y notación científica (Unidad 4)'
     };
 
     const submitBtn = document.getElementById('ad-submit');
@@ -429,10 +392,8 @@
     const resultBox = document.getElementById('ad-result');
 
     function corregir(){
-      let total = 0;
-      let correct = 0;
-      const topicTotals  = {};
-      const topicCorrect = {};
+      let total = 0, correct = 0;
+      let topicTotals = {}, topicCorrect = {};
 
       for (const qid in answerKey){
         total++;
@@ -442,59 +403,50 @@
 
         const topic = topicMap[qid];
         topicTotals[topic]  = (topicTotals[topic]  || 0) + 1;
+
         if (chosen === answerKey[qid]){
           correct++;
           topicCorrect[topic] = (topicCorrect[topic] || 0) + 1;
         }
       }
 
-      if (total === 0) return;
+      const pct = Math.round(100 * correct / total);
 
-      const pctGlobal = Math.round(100 * correct / total);
-      let html = '';
+      let html = `<p><b>Resultado global:</b> ${correct}/${total} (${pct}%).</p>`;
 
-      html += `<p><b>Resultado global:</b> ${correct} de ${total} ítems correctos (${pctGlobal}%).</p>`;
-
-      let mensajeNivel = '';
-      if (pctGlobal >= 80){
-        mensajeNivel = 'Buen nivel general. Podés usar las unidades sobre todo para afianzar y profundizar.';
-      } else if (pctGlobal >= 50){
-        mensajeNivel = 'Nivel intermedio. Conviene repasar algunas unidades con más detalle.';
-      } else {
-        mensajeNivel = 'Te recomendamos comenzar despacio por las primeras unidades y usar los ejemplos guiados.';
+      if (pct >= 80){
+        html += `<p>Buen nivel general.</p>`;
       }
-      html += `<p>${mensajeNivel}</p>`;
+      else if (pct >= 50){
+        html += `<p>Nivel intermedio. Conviene repasar algunas unidades.</p>`;
+      }
+      else {
+        html += `<p>Conviene comenzar por las unidades iniciales y avanzar con calma.</p>`;
+      }
 
-      html += `<h3 style="color:#783f04; margin-top:12px;">Sugerencias por tema</h3><ul>`;
-      Object.keys(topicTotals).sort().forEach(t => {
-        const tot = topicTotals[t];
+      html += `<h3 style="color:#783f04;">Sugerencias por tema</h3><ul>`;
+      Object.keys(topicTotals).forEach(t => {
         const ok  = topicCorrect[t] || 0;
-        const pct = Math.round(100 * ok / tot);
-        let msg;
-        if (pct >= 80){
-          msg = 'Buen dominio. Podés avanzar con confianza.';
-        } else if (pct >= 50){
-          msg = 'Nivel medio. Vale la pena repasar esta unidad mientras la cursás.';
-        } else {
-          msg = 'Conviene trabajar esta unidad con calma (videos, ejemplos y ejercicios guiados).';
-        }
-        html += `<li><b>${topicLabels[t]}</b>: ${ok}/${tot} (${pct}%). ${msg}</li>`;
+        const tot = topicTotals[t];
+        const p   = Math.round(100 * ok / tot);
+        let msg = (p>=80) ? 'Buen dominio.' : (p>=50) ? 'Nivel medio.' : 'Conviene repasarlo.';
+        html += `<li><b>${topicLabels[t]}</b>: ${ok}/${tot} (${p}%). ${msg}</li>`;
       });
       html += `</ul>`;
 
       resultBox.innerHTML = html;
-      resultBox.scrollIntoView({behavior:'smooth', block:'start'});
+      resultBox.scrollIntoView({behavior:'smooth'});
     }
 
     function resetear(){
-      if (!confirm('¿Borrar tus respuestas del autodiagnóstico?')) return;
-      const radios = document.querySelectorAll('#autodiag-home input[type="radio"]');
-      radios.forEach(r => r.checked = false);
-      resultBox.innerHTML = '<p style="margin:0; opacity:.8;">Aquí aparecerán tus resultados globales y sugerencias por tema.</p>';
+      if (!confirm('¿Borrar tus respuestas?')) return;
+      document.querySelectorAll('#autodiag-home input[type="radio"]').forEach(r => r.checked = false);
+      resultBox.innerHTML = `<p style="margin:0; opacity:.8;">Aquí aparecerán tus resultados.</p>`;
     }
 
     submitBtn.addEventListener('click', corregir);
     resetBtn.addEventListener('click', resetear);
+
   })();
   </script>
 

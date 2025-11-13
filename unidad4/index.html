@@ -52,6 +52,9 @@
       </p>
     </div>
 
+    <!-- Progreso con bicicleta (una sola barra) -->
+    <div id="unit-progress"></div>
+
     <!-- 📚 Índice de capítulos -->
     <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
       <h2 style="color:#783f04;">📚 Índice de capítulos</h2>
@@ -71,26 +74,9 @@
       </ol>
     </div>
 
-    <!-- Progreso (idéntico formato a U1/U0) -->
+    <!-- Progreso: checklist (los mismos capítulos) -->
     <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <div style="display:flex; align-items:center; gap:10px; justify-content:space-between; flex-wrap:wrap;">
-        <div style="flex:1 1 280px;">
-          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-            <span style="color:#783f04;">Progreso de la unidad</span>
-            <span id="u4-progress-label" style="color:#7f6000;">0%</span>
-          </div>
-          <div style="height:12px; background:#FFF6E6; border:1px solid #FFD580; border-radius:999px; overflow:hidden;">
-            <div id="u4-progress-bar" style="height:100%; width:0%; background:#FFA559;"></div>
-          </div>
-        </div>
-        <div style="display:flex; gap:8px;">
-          <a id="u4-continue" href="/matematica-a-pedal/unidad4/capitulo1.html" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">▶️ Continuar donde quedé</a>
-          <button id="u4-reset" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Reset progreso</button>
-        </div>
-      </div>
-
-      <!-- Checklist -->
-      <div style="margin-top:12px; display:grid; gap:6px;">
+      <div style="margin-top:4px; display:grid; gap:6px;">
         <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
           <input type="checkbox" class="u4-done" data-key="c1"> <span>Cap. 1 — Potenciación</span>
         </label>
@@ -112,86 +98,99 @@
       </div>
     </div>
 
-    <!-- Script de progreso -->
-    <script>
-      (function(){
-        const STORAGE_KEY = 'mp-u4-progress-v1';
-        const toggles = Array.from(document.querySelectorAll('#u4-home .u4-done'));
-        const bar = document.getElementById('u4-progress-bar');
-        const label = document.getElementById('u4-progress-label');
-        const resetBtn = document.getElementById('u4-reset');
-        const continueA = document.getElementById('u4-continue');
-
-        const order = ['c1','c2','c3','c4','c5','c6'];
-        const links = {
-          c1: '/matematica-a-pedal/unidad4/capitulo1.html',
-          c2: '/matematica-a-pedal/unidad4/capitulo2.html',
-          c3: '/matematica-a-pedal/unidad4/capitulo3.html',
-          c4: '/matematica-a-pedal/unidad4/capitulo4.html',
-          c5: '/matematica-a-pedal/unidad4/capitulo5.html',
-          c6: '/matematica-a-pedal/unidad4/capitulo6.html'
-        };
-
-        function readState(){ try{ return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e){ return {}; } }
-        function writeState(s){ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
-
-        function updateUI(){
-          const s = readState();
-          toggles.forEach(chk => chk.checked = !!s[chk.dataset.key]);
-
-          const total = order.length;
-          const doneCount = order.filter(k => !!s[k]).length;
-          const pct = Math.round(100 * doneCount / total);
-          bar.style.width = pct + '%';
-          label.textContent = pct + '%';
-
-          const nextKey = order.find(k => !s[k]) || order[order.length-1];
-          continueA.href = links[nextKey];
-        }
-
-        function onToggle(e){
-          const s = readState();
-          s[e.target.dataset.key] = e.target.checked;
-          writeState(s); updateUI();
-        }
-
-        function onReset(){
-          if (confirm('¿Reiniciar tu progreso en la Unidad 4?')){
-            localStorage.removeItem(STORAGE_KEY);
-            updateUI();
-          }
-        }
-
-        toggles.forEach(t => t.addEventListener('change', onToggle));
-        resetBtn.addEventListener('click', onReset);
-        updateUI();
-      })();
-    </script>
-
   </main>
   <!-- FIN UNIDAD 4 -->
 
- <!-- Navegador inferior · Unidad 4 -->
-<div style="max-width:1180px; margin:12px auto 0;">
-  <div style="display:flex; justify-content:space-between; align-items:center;
-              background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
-              padding:12px; font-family:'Roboto Mono', monospace; position:relative;">
-    
-    <!-- espacio vacío para equilibrar -->
-    <span style="visibility:hidden;">⬅️</span>
-    
-    <!-- texto centrado -->
-    <span style="position:absolute; left:50%; transform:translateX(-50%);
-                 color:#7f6000; font-size:14px;">Continuá pedaleando</span>
-    
-    <!-- botón a la derecha -->
-    <a href="/matematica-a-pedal/unidad4/bloque-a.html"
-       style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-              border-radius:10px; padding:8px 14px;">Bloque A ➡️</a>
+  <!-- Navegador inferior · Unidad 4 -->
+  <div style="max-width:1180px; margin:12px auto 0;">
+    <div style="display:flex; justify-content:space-between; align-items:center;
+                background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
+                padding:12px; font-family:'Roboto Mono', monospace; position:relative;">
+      <!-- espacio vacío para equilibrar -->
+      <span style="visibility:hidden;">⬅️</span>
+      <!-- texto centrado -->
+      <span style="position:absolute; left:50%; transform:translateX(-50%);
+                   color:#7f6000; font-size:14px;">Continuá pedaleando</span>
+      <!-- botón a la derecha (apunta al primer capítulo) -->
+      <a href="/matematica-a-pedal/unidad4/capitulo1.html"
+         style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
+                border-radius:10px; padding:8px 14px;">Capítulo 1 ➡️</a>
+    </div>
   </div>
-</div>
 
+  <!-- Firebase + Auth -->
+  <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
 
-  
+  <!-- Sincronización de progreso -->
+  <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
+
+  <!-- Barra de progreso con bicicleta -->
+  <script src="/matematica-a-pedal/assets/progress-bar-bike.js"></script>
+
+  <!-- Acciones de la U4: continuar / reset -->
+  <script>
+  (function(){
+    // Checkboxes de la unidad 4
+    const toggles = Array.from(document.querySelectorAll('#u4-home .u4-done'));
+    const order   = ['c1','c2','c3','c4','c5','c6'];
+
+    // Mapa capítulo -> URL
+    const links = {
+      c1: '/matematica-a-pedal/unidad4/capitulo1.html',
+      c2: '/matematica-a-pedal/unidad4/capitulo2.html',
+      c3: '/matematica-a-pedal/unidad4/capitulo3.html',
+      c4: '/matematica-a-pedal/unidad4/capitulo4.html',
+      c5: '/matematica-a-pedal/unidad4/capitulo5.html',
+      c6: '/matematica-a-pedal/unidad4/capitulo6.html'
+    };
+
+    // Botones: si no existen en el HTML, los creamos debajo de la barra
+    const continueA = document.getElementById('u4-continue') || (function(){
+      const up = document.getElementById('unit-progress');
+      const wrap = document.createElement('div');
+      wrap.style.cssText = "display:flex; gap:8px; margin-top:12px;";
+      wrap.innerHTML = `
+        <a id="u4-continue" href="/matematica-a-pedal/unidad4/capitulo1.html"
+           style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
+                  border-radius:10px; padding:8px 12px;">▶️ Continuar donde quedé</a>
+        <button id="u4-reset" type="button"
+                style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580;
+                       border-radius:10px; padding:8px 12px;">🔄 Reset progreso</button>
+      `;
+      up.insertAdjacentElement('afterend', wrap);
+      return wrap.querySelector('#u4-continue');
+    })();
+    const resetBtn = document.getElementById('u4-reset') || document.querySelector('#u4-continue')?.nextElementSibling;
+
+    function updateContinueLink(){
+      const doneKeys = new Set(toggles.filter(t => t.checked).map(t => t.dataset.key));
+      const nextKey  = order.find(k => !doneKeys.has(k)) || order[order.length - 1];
+      const href     = links[nextKey] || links[order[0]];
+      if (href) continueA.href = href;
+    }
+
+    function resetProgress(){
+      if (!confirm('¿Reiniciar tu progreso en esta unidad?')) return;
+      toggles.forEach(t => {
+        if (t.checked) {
+          t.checked = false;
+          t.dispatchEvent(new Event('change', { bubbles:true }));
+        }
+      });
+      // Avisamos a la barra de la bici que cambió el progreso
+      window.dispatchEvent(new Event('map:progress-updated'));
+      updateContinueLink();
+    }
+
+    // Eventos
+    toggles.forEach(t => t.addEventListener('change', () => { updateContinueLink(); }));
+    window.addEventListener('map:progress-updated', () => { updateContinueLink(); });
+    if (resetBtn) resetBtn.addEventListener('click', resetProgress);
+
+    // Inicio
+    updateContinueLink();
+  })();
+  </script>
+
 </body>
 </html>

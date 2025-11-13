@@ -6,14 +6,14 @@
   <title>Unidad 3 — Trigonometría · Matemática a Pedal</title>
 
   <!-- Estilos globales -->
-  <link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=2">
+  <link rel="stylesheet" href="https://utec-math.github.io/matematica-a-pedal/assets/style.css?v=3">
 
   <!-- MathJax -->
   <script>
     window.MathJax = {
       tex: {
         inlineMath: [['\\(', '\\)'], ['$', '$']],
-        displayMath: [['\\[', '\\]'], ['$$', '$$']]
+        displayMath: [['\\[','\\]'], ['$$','$$']]
       }
     };
   </script>
@@ -24,11 +24,7 @@
 
   <!-- Encabezado compartido -->
   <div id="header-placeholder"></div>
-  <script>
-    fetch("https://utec-math.github.io/matematica-a-pedal/assets/header.html")
-      .then(r => r.text())
-      .then(html => document.getElementById("header-placeholder").innerHTML = html);
-  </script>
+  <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
   <!-- CONTENIDO DE LA UNIDAD -->
   <main id="u3-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1180px; margin:0 auto;">
@@ -61,24 +57,8 @@
       </p>
     </div>
 
-    <!-- Progreso -->
-    <div style="margin-top:16px; border:1px solid #FFD580; border-radius:12px; padding:14px;">
-      <div style="display:flex; align-items:center; gap:10px; justify-content:space-between; flex-wrap:wrap;">
-        <div style="flex:1 1 280px;">
-          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-            <span style="color:#783f04;">Progreso de la unidad</span>
-            <span id="u3-progress-label" style="color:#7f6000;">0%</span>
-          </div>
-          <div style="height:12px; background:#FFF6E6; border:1px solid #FFD580; border-radius:999px; overflow:hidden;">
-            <div id="u3-progress-bar" style="height:100%; width:0%; background:#FFA559;"></div>
-          </div>
-        </div>
-        <div style="display:flex; gap:8px;">
-          <a id="u3-continue" href="#" style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">▶️ Continuar donde quedé</a>
-          <button id="u3-reset" type="button" style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Reset progreso</button>
-        </div>
-      </div>
-    </div>
+    <!-- Progreso con bicicleta (una sola barra) -->
+    <div id="unit-progress"></div>
 
     <!-- Índice de capítulos -->
     <div style="margin-top:18px; border:1px solid #FFD580; border-radius:12px; padding:16px;">
@@ -161,75 +141,24 @@
           </div>
         </article>
 
-        <!-- Mini-evaluación (tarjeta) -->
-<article class="u3-card" data-key="c6" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
-  <div style="display:flex; justify-content:space-between; align-items:center;">
-    <h3 style="color:#783f04; margin:0;">Mini-evaluación · Cierre de la unidad</h3>
-    <span class="u3-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
-  </div>
-  <p style="margin:6px 0 8px;">10 ítems: ángulos, triángulos, círculo unitario e identidades básicas.</p>
-  <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-    <a href="mini-evaluacion.html"
-       style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
-    <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
-      <input type="checkbox" class="u3-done" data-key="c6"> <span>Marcar como completado</span>
-    </label>
-  </div>
-</article>
+        <!-- Mini-evaluación -->
+        <article class="u3-card" data-key="c6" style="border:1px solid #FFD580; border-radius:12px; padding:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h3 style="color:#783f04; margin:0;">Mini-evaluación · Cierre de la unidad</h3>
+            <span class="u3-pill" style="font-size:12px; padding:2px 8px; border-radius:999px; border:1px solid #FFD580;">🔄 En curso</span>
+          </div>
+          <p style="margin:6px 0 8px;">10 ítems: ángulos, triángulos, círculo unitario e identidades básicas.</p>
+          <div style="display:flex; gap:8px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+            <a href="mini-evaluacion.html"
+               style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">Abrir</a>
+            <label style="display:flex; align-items:center; gap:6px; cursor:pointer;">
+              <input type="checkbox" class="u3-done" data-key="c6"> <span>Marcar como completado</span>
+            </label>
+          </div>
+        </article>
 
       </div>
     </div>
-
-    <!-- Script de progreso -->
-    <script>
-      (function(){
-        const STORAGE_KEY = 'mp-u3-progress-v1';
-        const cards = Array.from(document.querySelectorAll('#u3-home .u3-card'));
-        const toggles = Array.from(document.querySelectorAll('#u3-home .u3-done'));
-        const bar = document.getElementById('u3-progress-bar');
-        const label = document.getElementById('u3-progress-label');
-        const resetBtn = document.getElementById('u3-reset');
-        const continueA = document.getElementById('u3-continue');
-        const order = cards.map(c => c.dataset.key);
-
-        function readState(){
-          try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
-          catch(e){ return {}; }
-        }
-        function writeState(s){ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
-
-        function updateUI(){
-          const s = readState();
-          toggles.forEach(chk => { chk.checked = !!s[chk.dataset.key]; });
-          cards.forEach(c => {
-            const pill = c.querySelector('.u3-pill');
-            const done = !!s[c.dataset.key];
-            pill.textContent = done ? '✅ Completado' : '🔄 En curso';
-            pill.style.background = done ? '#EFFFF2' : 'transparent';
-          });
-          const pct = Math.round(100 * order.filter(k => s[k]).length / order.length);
-          bar.style.width = pct + '%';
-          label.textContent = pct + '%';
-          const nextKey = order.find(k => !s[k]) || order[order.length-1];
-          const nextCard = cards.find(c => c.dataset.key === nextKey);
-          continueA.href = nextCard ? nextCard.querySelector('a[href]').href : '#';
-        }
-
-        toggles.forEach(t => t.addEventListener('change', e => {
-          const s = readState();
-          s[e.target.dataset.key] = e.target.checked;
-          writeState(s);
-          updateUI();
-        }));
-        resetBtn.addEventListener('click', () => {
-          if (confirm('¿Reiniciar tu progreso en esta unidad?')) {
-            localStorage.removeItem(STORAGE_KEY);
-            updateUI();
-          }
-        });
-        updateUI();
-      })();
-    </script>
 
     <!-- Pie -->
     <footer style="margin:18px 0; background:#FFF6E6; border:1px solid #FFD580; border-radius:14px; padding:14px;">
@@ -241,32 +170,98 @@
       <small style="display:block; margin-top:8px; opacity:.9;">Material abierto para uso educativo · UTEC – Uruguay</small>
     </footer>
 
+    <!-- Navegador inferior · Unidad 3 -->
+    <div style="display:flex; justify-content:space-between; align-items:center;
+                background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
+                padding:12px; font-family:'Roboto Mono', monospace; position:relative;">
+      <span style="visibility:hidden;">⬅️</span>
+      <span style="position:absolute; left:50%; transform:translateX(-50%); color:#7f6000; font-size:14px;">Continuá pedaleando</span>
+      <a href="/matematica-a-pedal/unidad3/bloque-a.html"
+         style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 14px;">Bloque A ➡️</a>
+    </div>
+
   </main>
 
-  <!-- Script del encabezado -->
-  <script src="https://utec-math.github.io/matematica-a-pedal/assets/load-header.js"></script>
+  <!-- Firebase + Auth -->
+  <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
 
-<!-- Navegador inferior · Unidad 2 -->
-<div style="max-width:1180px; margin:12px auto 0;">
-  <div style="display:flex; justify-content:space-between; align-items:center;
-              background:#FFF6E6; border:1px solid #FFD580; border-radius:12px;
-              padding:12px; font-family:'Roboto Mono', monospace; position:relative;">
-    
-    <!-- espacio vacío para equilibrar -->
-    <span style="visibility:hidden;">⬅️</span>
-    
-    <!-- texto centrado -->
-    <span style="position:absolute; left:50%; transform:translateX(-50%);
-                 color:#7f6000; font-size:14px;">Continuá pedaleando</span>
-    
-    <!-- botón a la derecha -->
-    <a href="/matematica-a-pedal/unidad3/bloque-a.html"
-       style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580;
-              border-radius:10px; padding:8px 14px;">Bloque A ➡️</a>
-  </div>
-</div>
+  <!-- Sincronización de progreso (asigna data-progress-id y sincroniza) -->
+  <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
 
+  <!-- Barra de progreso con bicicleta -->
+  <script src="/matematica-a-pedal/assets/progress-bar-bike.js"></script>
 
-  
+  <!-- Acciones de la U3: continuar / reset + actualización de “pills” -->
+  <script>
+  (function(){
+    // Tarjetas y orden
+    const cards   = Array.from(document.querySelectorAll('#u3-home .u3-card'));
+    const order   = cards.map(c => c.dataset.key); // c1..c6
+    const toggles = Array.from(document.querySelectorAll('#u3-home .u3-done'));
+
+    // Botones (si no existen, se insertan debajo de la barra)
+    const continueA = document.getElementById('u3-continue') || (function(){
+      const up = document.getElementById('unit-progress');
+      const wrap = document.createElement('div');
+      wrap.style.cssText = "display:flex; gap:8px; margin-top:12px;";
+      wrap.innerHTML = `
+        <a id="u3-continue" href="/matematica-a-pedal/unidad3/bloque-a.html"
+           style="text-decoration:none; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">▶️ Continuar donde quedé</a>
+        <button id="u3-reset" type="button"
+                style="cursor:pointer; color:#783f04; background:#fff; border:1px solid #FFD580; border-radius:10px; padding:8px 12px;">🔄 Reset progreso</button>
+      `;
+      up.insertAdjacentElement('afterend', wrap);
+      return wrap.querySelector('#u3-continue');
+    })();
+    const resetBtn  = document.getElementById('u3-reset') || document.querySelector('#u3-continue')?.nextElementSibling;
+
+    // Mapa key -> href (desde cada card)
+    const links = Object.fromEntries(
+      cards.map(card => [card.dataset.key, (card.querySelector('a[href]')||{}).getAttribute?.('href')])
+    );
+
+    function updatePills(){
+      cards.forEach(card => {
+        const pill = card.querySelector('.u3-pill');
+        const chk  = card.querySelector('.u3-done');
+        const done = !!(chk && chk.checked);
+        if (pill){
+          pill.textContent   = done ? '✅ Completado' : '🔄 En curso';
+          pill.style.background = done ? '#EFFFF2' : 'transparent';
+        }
+      });
+    }
+
+    function updateContinueLink(){
+      const doneKeys = new Set(toggles.filter(t => t.checked).map(t => t.dataset.key));
+      const nextKey  = order.find(k => !doneKeys.has(k)) || order[order.length - 1];
+      const href     = links[nextKey] || links[order[0]];
+      if (href) continueA.href = href;
+    }
+
+    function resetProgress(){
+      if (!confirm('¿Reiniciar tu progreso en esta unidad?')) return;
+      toggles.forEach(t => {
+        if (t.checked) {
+          t.checked = false;
+          t.dispatchEvent(new Event('change', { bubbles:true }));
+        }
+      });
+      window.dispatchEvent(new Event('map:progress-updated'));
+      updatePills();
+      updateContinueLink();
+    }
+
+    // Eventos
+    toggles.forEach(t => t.addEventListener('change', () => { updatePills(); updateContinueLink(); }));
+    window.addEventListener('map:progress-updated', () => { updatePills(); updateContinueLink(); });
+    if (resetBtn) resetBtn.addEventListener('click', resetProgress);
+
+    // Inicio
+    updatePills();
+    updateContinueLink();
+  })();
+  </script>
+
 </body>
 </html>

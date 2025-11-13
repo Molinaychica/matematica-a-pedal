@@ -76,85 +76,6 @@
       padding: 14px;
       background: #FFF6E6;
     }
-
-    /* --- Barra de progreso flotante con bici --- */
-    .unit-progress {
-      border: 1px solid #FFD580;
-      border-radius: 12px;
-      padding: 10px 12px;
-      background: #FFFDF7;
-      color: #7f6000;
-      font-family: 'Roboto Mono', monospace;
-      box-shadow: 0 4px 12px rgba(0,0,0,.12);
-    }
-    .unit-progress__top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 6px;
-      font-weight: 600;
-      color: #783f04;
-      font-size: 13px;
-    }
-    .unit-progress__bar {
-      position: relative;
-      height: 14px;
-      border: 1px solid #FFD580;
-      border-radius: 999px;
-      background: #FFF3DA;
-      overflow: hidden;
-    }
-    .unit-progress__fill {
-      height: 100%;
-      background: linear-gradient(90deg,#FFA559,#FFD580);
-      width: 0%;
-      transition: width .35s ease;
-    }
-    .unit-progress__bike {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 26px;
-      width: 26px;
-      transform: translate(-50%, -65%);
-      transition: left .35s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-    }
-    .unit-progress__bike span {
-      font-size: 20px;
-      line-height: 1;
-      color: #783f04;
-      /* Bici mirando hacia la derecha */
-      transform: scaleX(-1);
-      display: inline-block;
-    }
-
-    .unit-progress--floating {
-      position: fixed;
-      right: 16px;
-      bottom: 20px;
-      width: 260px;
-      z-index: 999;
-    }
-    .unit-progress--floating small {
-      display: block;
-      margin-top: 4px;
-      font-size: 11px;
-      opacity: .8;
-    }
-
-    /* En pantallas pequeñas la barra ocupa casi todo el ancho abajo */
-    @media (max-width: 900px) {
-      .unit-progress--floating {
-        right: 8px;
-        left: 8px;
-        bottom: 10px;
-        width: auto;
-      }
-    }
   </style>
 </head>
 
@@ -179,6 +100,9 @@
         (Calentamiento, Conjuntos y Operaciones, Factorización, Trigonometría y Potencias/Notación Científica).
       </p>
     </section>
+
+    <!-- Progreso visual simple (no afecta a la bici global, solo estética local) -->
+    <div id="unit-progress" style="margin-top:16px;"></div>
 
     <section id="autodiag-form" class="ad-card">
       <h2>Indicaciones generales</h2>
@@ -449,29 +373,17 @@
 
   </main>
 
-  <!-- Barra de progreso flotante del autodiagnóstico -->
-  <div id="ad-progress-floating" class="unit-progress unit-progress--floating">
-    <div class="unit-progress__top">
-      <span>Progreso del autodiagnóstico</span>
-      <span id="ad-progress-label">0%</span>
-    </div>
-    <div class="unit-progress__bar">
-      <div class="unit-progress__fill" id="ad-progress-fill"></div>
-      <div class="unit-progress__bike" id="ad-progress-bike">
-        <span>🚲</span>
-      </div>
-    </div>
-    <small>Porcentaje de preguntas respondidas</small>
-  </div>
-
   <!-- Firebase + Auth (opcional, para mantener coherencia con el resto del sitio) -->
   <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
   <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
 
-  <!-- Lógica del autodiagnóstico + barra flotante -->
+  <!-- Barra de progreso con bicicleta (se reutiliza el mismo componente visual) -->
+  <script src="/matematica-a-pedal/assets/progress-bar-bike.js"></script>
+
+  <!-- Lógica del autodiagnóstico -->
   <script>
   (function(){
-    // Clave de respuestas correctas (luego las ajustamos si hace falta)
+    // Clave de respuestas correctas
     const answerKey = {
       q1: 'c',
       q2: 'b',
@@ -515,38 +427,6 @@
     const submitBtn = document.getElementById('ad-submit');
     const resetBtn  = document.getElementById('ad-reset');
     const resultBox = document.getElementById('ad-result');
-
-    const totalQuestions = Object.keys(answerKey).length;
-
-    function updateFloatingProgress(){
-      const names = Object.keys(answerKey);
-      let answered = 0;
-
-      names.forEach(qid => {
-        const radios = document.querySelectorAll('input[name="'+qid+'"]');
-        let chosen = null;
-        radios.forEach(r => { if (r.checked) chosen = r.value; });
-        if (chosen !== null) answered++;
-      });
-
-      const pct = Math.round(100 * answered / totalQuestions);
-
-      const fill  = document.getElementById('ad-progress-fill');
-      const label = document.getElementById('ad-progress-label');
-      const bike  = document.getElementById('ad-progress-bike');
-
-      if (!fill || !label || !bike) return;
-
-      fill.style.width = pct + '%';
-      label.textContent = pct + '%';
-      bike.style.left = pct + '%';
-    }
-
-    function setupFloatingProgress(){
-      const radios = document.querySelectorAll('#autodiag-home input[type="radio"]');
-      radios.forEach(r => r.addEventListener('change', updateFloatingProgress));
-      updateFloatingProgress();
-    }
 
     function corregir(){
       let total = 0;
@@ -611,12 +491,10 @@
       const radios = document.querySelectorAll('#autodiag-home input[type="radio"]');
       radios.forEach(r => r.checked = false);
       resultBox.innerHTML = '<p style="margin:0; opacity:.8;">Aquí aparecerán tus resultados globales y sugerencias por tema.</p>';
-      updateFloatingProgress();
     }
 
     submitBtn.addEventListener('click', corregir);
     resetBtn.addEventListener('click', resetear);
-    setupFloatingProgress();
   })();
   </script>
 

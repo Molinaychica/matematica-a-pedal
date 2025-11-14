@@ -97,10 +97,12 @@
       margin-top: 14px;
     }
 
-    /* Layout con barra lateral izquierda con bici */
+    /* Layout con barra lateral izquierda */
     #autodiag-home {
       position: relative;
-      padding-left: 280px; /* deja espacio para la barra lateral en pantallas grandes */
+      max-width: 1180px;
+      margin: 0 auto;
+      padding-left: 280px; /* espacio para la barra lateral en pantallas grandes */
     }
 
     #autodiag-progress-wrapper {
@@ -112,6 +114,54 @@
       z-index: 40;
     }
 
+    /* Nuestra barra propia con bici */
+    .ad-bici-progress {
+      border: 1px solid #FFD580;
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: #FFF6E6;
+      box-shadow: 0 4px 10px rgba(0,0,0,.05);
+      font-family: 'Roboto Mono', monospace;
+      color: #7f6000;
+    }
+    .ad-bici-progress-title {
+      font-size: 14px;
+      color: #783f04;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .ad-bici-track {
+      position: relative;
+      height: 14px;
+      background: #FFF;
+      border-radius: 999px;
+      border: 1px solid #FFD580;
+      overflow: hidden;
+    }
+    .ad-bici-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg,#FFD580,#FFA559);
+      transition: width 0.25s ease-out;
+    }
+    .ad-bici-bike {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      left: 0%;
+      font-size: 16px;
+      pointer-events: none;
+      transition: left 0.25s ease-out;
+    }
+    .ad-bici-label {
+      margin-top: 6px;
+      text-align: center;
+      font-size: 13px;
+    }
+
     /* En pantallas chicas, la barra vuelve arriba del contenido */
     @media (max-width: 1024px) {
       #autodiag-home {
@@ -121,7 +171,7 @@
         position: static;
         transform: none;
         width: auto;
-        margin-top: 16px;
+        margin: 16px 0;
       }
     }
 
@@ -144,7 +194,7 @@
   <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
   <!-- CONTENIDO AUTODIAGNÓSTICO -->
-  <main id="autodiag-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1180px; margin:0 auto;">
+  <main id="autodiag-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55;">
 
     <!-- Intro -->
     <section class="ad-intro">
@@ -159,9 +209,16 @@
       </p>
     </section>
 
-    <!-- Barra con bici en el margen izquierdo (progress-bar-bike.js rellena dentro de #unit-progress) -->
+    <!-- Barra propia con bici en el margen izquierdo -->
     <div id="autodiag-progress-wrapper">
-      <div id="unit-progress"></div>
+      <div id="unit-progress" class="ad-bici-progress">
+        <div class="ad-bici-progress-title">Progreso del autodiagnóstico</div>
+        <div class="ad-bici-track">
+          <div class="ad-bici-fill"></div>
+          <div class="ad-bici-bike">🚲</div>
+        </div>
+        <div class="ad-bici-label">0% respondido</div>
+      </div>
     </div>
 
     <section id="autodiag-form" class="ad-card">
@@ -434,14 +491,11 @@
 
   </main>
 
-  <!-- Firebase + Auth -->
+  <!-- Firebase + Auth (no molesta aunque acá no usemos progreso global) -->
   <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
   <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
 
-  <!-- Barra de progreso con bicicleta (componente general del sitio) -->
-  <script src="/matematica-a-pedal/assets/progress-bar-bike.js"></script>
-
-  <!-- Lógica del autodiagnóstico + actualización de barra con bici -->
+  <!-- Lógica del autodiagnóstico + actualización de barra propia con bici -->
   <script>
   (function(){
     // Clave de respuestas correctas (según tu lista por bloque)
@@ -490,14 +544,13 @@
     const printBtn  = document.getElementById('ad-print');
     const resultBox = document.getElementById('ad-result');
 
-    const questions   = Array.from(document.querySelectorAll('.ad-question'));
-    const allRadios   = document.querySelectorAll('#autodiag-home input[type="radio"]');
+    const questions = Array.from(document.querySelectorAll('.ad-question'));
+    const allRadios = document.querySelectorAll('#autodiag-home input[type="radio"]');
 
-    // Elementos de la barra con bici dentro de #unit-progress
-    const progressRoot  = document.getElementById('unit-progress');
-    const progressFill  = progressRoot ? progressRoot.querySelector('[class*="fill"]')   : null;
-    const progressBike  = progressRoot ? progressRoot.querySelector('[class*="bike"]')   : null;
-    const progressLabel = progressRoot ? progressRoot.querySelector('[class*="label"]')  : null;
+    // Elementos de nuestra propia barra con bici
+    const progressFill  = document.querySelector('.ad-bici-fill');
+    const progressBike  = document.querySelector('.ad-bici-bike');
+    const progressLabel = document.querySelector('.ad-bici-label');
 
     function limpiarMarcas(){
       document.querySelectorAll('.ad-question').forEach(q => {
@@ -523,10 +576,12 @@
         progressFill.style.width = pct + '%';
       }
       if (progressBike){
-        progressBike.style.left = pct + '%';
+        // Limitar un poquito para que la bici no se vaya fuera del borde
+        const pos = Math.min(100, Math.max(0, pct));
+        progressBike.style.left = pos + '%';
       }
       if (progressLabel){
-        progressLabel.textContent = pct + '%';
+        progressLabel.textContent = pct + '% respondido';
       }
     }
 

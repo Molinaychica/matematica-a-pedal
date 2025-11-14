@@ -20,7 +20,6 @@
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
   <style>
-    /* Estilos suaves para las tarjetas de autodiagnóstico */
     .ad-intro {
       background: linear-gradient(90deg,#FFD580,#FFA559);
       border-radius: 14px;
@@ -45,14 +44,13 @@
       padding-top: 8px;
       border-top: 1px dashed #FFE0A8;
     }
-    .ad-question:first-of-type {
-      border-top: none;
-      padding-top: 0;
-    }
     .ad-options label {
       display: block;
       margin: 3px 0;
       cursor: pointer;
+      padding: 2px 4px;
+      border-radius: 6px;
+      transition: background 0.2s, box-shadow 0.2s;
     }
     .ad-actions {
       margin-top: 18px;
@@ -75,6 +73,66 @@
       border-radius: 12px;
       padding: 14px;
       background: #FFF6E6;
+    }
+
+    /* Resaltado de corrección */
+    .ad-correct {
+      background: #EFFFF2;
+      box-shadow: 0 0 0 1px #9BE7B0;
+    }
+    .ad-incorrect {
+      background: #FFECEC;
+      box-shadow: 0 0 0 1px #F5A3A3;
+    }
+    .ad-mark {
+      font-size: 0.9em;
+      margin-left: 6px;
+    }
+
+    /* Pregunta enfocada (primera incorrecta/sin responder) */
+    .ad-question-focus {
+      box-shadow: 0 0 0 2px #FFA559;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 14px;
+    }
+
+    /* Layout con barra lateral izquierda con bici */
+    #autodiag-home {
+      position: relative;
+      padding-left: 280px; /* deja espacio para la barra lateral en pantallas grandes */
+    }
+
+    #autodiag-progress-wrapper {
+      position: fixed;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 250px;
+      z-index: 40;
+    }
+
+    /* En pantallas chicas, la barra vuelve arriba del contenido */
+    @media (max-width: 1024px) {
+      #autodiag-home {
+        padding-left: 0;
+      }
+      #autodiag-progress-wrapper {
+        position: static;
+        transform: none;
+        width: auto;
+        margin-top: 16px;
+      }
+    }
+
+    /* Modo impresión: ocultar barra lateral para PDF más limpio */
+    @media print {
+      #autodiag-progress-wrapper {
+        display: none;
+      }
+      #autodiag-home {
+        padding-left: 0;
+      }
     }
   </style>
 </head>
@@ -101,8 +159,10 @@
       </p>
     </section>
 
-    <!-- Barra con bici (el JS la inyecta dentro de este div) -->
-    <div id="unit-progress" style="margin-top:16px;"></div>
+    <!-- Barra con bici en el margen izquierdo (progress-bar-bike.js rellena dentro de #unit-progress) -->
+    <div id="autodiag-progress-wrapper">
+      <div id="unit-progress"></div>
+    </div>
 
     <section id="autodiag-form" class="ad-card">
       <h2>Indicaciones generales</h2>
@@ -117,7 +177,7 @@
       <h2>Bloque A — Calentamiento matemático (U0)</h2>
 
       <!-- Q1 -->
-      <div class="ad-question" data-answer="c">
+      <div class="ad-question">
         <p><b>1.</b> El número \( \sqrt{2} \) es:</p>
         <div class="ad-options">
           <label><input type="radio" name="q1" value="a"> Natural y racional.</label>
@@ -128,7 +188,7 @@
       </div>
 
       <!-- Q2 -->
-      <div class="ad-question" data-answer="b">
+      <div class="ad-question">
         <p><b>2.</b> Calculá \( \dfrac{3}{4} + \dfrac{5}{6} \).</p>
         <div class="ad-options">
           <label><input type="radio" name="q2" value="a"> \( \dfrac{8}{10} \)</label>
@@ -139,7 +199,7 @@
       </div>
 
       <!-- Q3 -->
-      <div class="ad-question" data-answer="b">
+      <div class="ad-question">
         <p><b>3.</b> Ordená de menor a mayor: \( -2, \; -\dfrac{1}{2}, \; 0, \; 1{,}5 \).</p>
         <div class="ad-options">
           <label><input type="radio" name="q3" value="a"> \( -2 &lt; 0 &lt; -\dfrac{1}{2} &lt; 1{,}5 \)</label>
@@ -150,8 +210,8 @@
       </div>
 
       <!-- Q4 -->
-      <div class="ad-question" data-answer="b">
-        <p><b>4.</b> El resultado de \( (-3)^2 - 4\cdot(-2) \) es:</p>
+      <div class="ad-question">
+        <p><b>4.</b> El resultado de \( (-3)^2 - 4\cdot 2 \) es:</p>
         <div class="ad-options">
           <label><input type="radio" name="q4" value="a"> \( -17 \)</label>
           <label><input type="radio" name="q4" value="b"> \( 1 \)</label>
@@ -166,7 +226,7 @@
       <h2>Bloque B — Conjuntos numéricos y operaciones básicas (U1)</h2>
 
       <!-- Q5 -->
-      <div class="ad-question" data-answer="a">
+      <div class="ad-question">
         <p><b>5.</b> ¿Cuál de las siguientes afirmaciones es verdadera?</p>
         <div class="ad-options">
           <label><input type="radio" name="q5" value="a"> \( \mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R} \)</label>
@@ -177,7 +237,7 @@
       </div>
 
       <!-- Q6 -->
-      <div class="ad-question" data-answer="b">
+      <div class="ad-question">
         <p><b>6.</b> Aplicando la propiedad distributiva, el valor de \( 3(2x - 5) - (x - 1) \) es:</p>
         <div class="ad-options">
           <label><input type="radio" name="q6" value="a"> \( 7x - 16 \)</label>
@@ -188,7 +248,7 @@
       </div>
 
       <!-- Q7 -->
-      <div class="ad-question" data-answer="c">
+      <div class="ad-question">
         <p><b>7.</b> Calculá \( \dfrac{5}{8} - \dfrac{3}{10} \).</p>
         <div class="ad-options">
           <label><input type="radio" name="q7" value="a"> \( \dfrac{1}{40} \)</label>
@@ -199,7 +259,7 @@
       </div>
 
       <!-- Q8 -->
-      <div class="ad-question" data-answer="b">
+      <div class="ad-question">
         <p><b>8.</b> ¿Cuál de las siguientes expresiones es equivalente a \( -(-a + 3b) \)?</p>
         <div class="ad-options">
           <label><input type="radio" name="q8" value="a"> \( -a - 3b \)</label>
@@ -215,7 +275,7 @@
       <h2>Bloque C — Factorización y expresiones algebraicas (U2)</h2>
 
       <!-- Q9 -->
-      <div class="ad-question" data-answer="c">
+      <div class="ad-question">
         <p><b>9.</b> Factorizá \( x^2 - 9 \).</p>
         <div class="ad-options">
           <label><input type="radio" name="q9" value="a"> \( (x - 3)^2 \)</label>
@@ -226,7 +286,7 @@
       </div>
 
       <!-- Q10 -->
-      <div class="ad-question" data-answer="c">
+      <div class="ad-question">
         <p><b>10.</b> El desarrollo de \( (x + 2)^2 \) es:</p>
         <div class="ad-options">
           <label><input type="radio" name="q10" value="a"> \( x^2 + 4 \)</label>
@@ -237,7 +297,7 @@
       </div>
 
       <!-- Q11 -->
-      <div class="ad-question" data-answer="a">
+      <div class="ad-question">
         <p><b>11.</b> Simplificá la fracción algebraica \( \dfrac{6x^2}{9x} \) (con \( x \neq 0 \)).</p>
         <div class="ad-options">
           <label><input type="radio" name="q11" value="a"> \( \dfrac{2x}{3} \)</label>
@@ -248,7 +308,7 @@
       </div>
 
       <!-- Q12 -->
-      <div class="ad-question" data-answer="a">
+      <div class="ad-question">
         <p><b>12.</b> Factor común: \( 5x^3 - 10x^2 \) se puede escribir como:</p>
         <div class="ad-options">
           <label><input type="radio" name="q12" value="a"> \( 5x^2(x - 2) \)</label>
@@ -264,7 +324,7 @@
       <h2>Bloque D — Trigonometría (U3)</h2>
 
       <!-- Q13 -->
-      <div class="ad-question" data-answer="b">
+      <div class="ad-question">
         <p><b>13.</b> Expresá \( 150^\circ \) en radianes.</p>
         <div class="ad-options">
           <label><input type="radio" name="q13" value="a"> \( \dfrac{\pi}{3} \)</label>
@@ -275,18 +335,18 @@
       </div>
 
       <!-- Q14 -->
-      <div class="ad-question" data-answer="b">
+      <div class="ad-question">
         <p><b>14.</b> El valor de \( \sin\left(\dfrac{\pi}{6}\right) \) es:</p>
         <div class="ad-options">
           <label><input type="radio" name="q14" value="a"> \( \dfrac{\sqrt{3}}{2} \)</label>
           <label><input type="radio" name="q14" value="b"> \( \dfrac{1}{2} \)</label>
           <label><input type="radio" name="q14" value="c"> \( \dfrac{\sqrt{2}}{2} \)</label>
-          <label><input type="radio" name="q14" value="d"> \( 1 \)</label>
+          <label><input type="radio" name="q14" value="d"> 1</label>
         </div>
       </div>
 
       <!-- Q15 -->
-      <div class="ad-question" data-answer="a">
+      <div class="ad-question">
         <p><b>15.</b> En un triángulo rectángulo, el ángulo agudo mide \( 30^\circ \) y la hipotenusa mide 10. 
         La longitud del cateto opuesto a ese ángulo es:</p>
         <div class="ad-options">
@@ -298,7 +358,7 @@
       </div>
 
       <!-- Q16 -->
-      <div class="ad-question" data-answer="b">
+      <div class="ad-question">
         <p><b>16.</b> Una función sinusoidal tiene período \( T = 4 \) segundos. ¿Cuál es su frecuencia?</p>
         <div class="ad-options">
           <label><input type="radio" name="q16" value="a"> \( 4 \,\text{Hz} \)</label>
@@ -314,7 +374,7 @@
       <h2>Bloque E — Potencias, raíces y notación científica (U4)</h2>
 
       <!-- Q17 -->
-      <div class="ad-question" data-answer="a">
+      <div class="ad-question">
         <p><b>17.</b> Calculá \( 2^3 \cdot 2^4 \).</p>
         <div class="ad-options">
           <label><input type="radio" name="q17" value="a"> \( 2^7 = 128 \)</label>
@@ -325,7 +385,7 @@
       </div>
 
       <!-- Q18 -->
-      <div class="ad-question" data-answer="a">
+      <div class="ad-question">
         <p><b>18.</b> El valor de \( \sqrt[3]{8} \) es:</p>
         <div class="ad-options">
           <label><input type="radio" name="q18" value="a"> 2</label>
@@ -336,7 +396,7 @@
       </div>
 
       <!-- Q19 -->
-      <div class="ad-question" data-answer="b">
+      <div class="ad-question">
         <p><b>19.</b> Escribí \( 0{,}00045 \) en notación científica.</p>
         <div class="ad-options">
           <label><input type="radio" name="q19" value="a"> \( 4{,}5 \times 10^{-3} \)</label>
@@ -347,7 +407,7 @@
       </div>
 
       <!-- Q20 -->
-      <div class="ad-question" data-answer="b">
+      <div class="ad-question">
         <p><b>20.</b> El número \( 5 \times 10^{-2} \) es igual a:</p>
         <div class="ad-options">
           <label><input type="radio" name="q20" value="a"> 0,5</label>
@@ -361,10 +421,11 @@
     <!-- Botones y resultados -->
     <section class="ad-card">
       <h2>Resultados</h2>
-      <p>Cuando termines, hacé clic en <b>Corregir</b>. Podés borrar tus respuestas con <b>Reset</b>.</p>
+      <p>Cuando termines, hacé clic en <b>Corregir</b>. Podés borrar tus respuestas con <b>Reset</b> o guardar en PDF.</p>
       <div class="ad-actions">
         <button id="ad-submit" type="button">✅ Corregir autodiagnóstico</button>
         <button id="ad-reset" type="button">🔄 Reset respuestas</button>
+        <button id="ad-print" type="button">🖨️ Imprimir / guardar como PDF</button>
       </div>
       <div id="ad-result" class="ad-result">
         <p style="margin:0; opacity:.8;">Aquí aparecerán tus resultados globales y sugerencias por tema.</p>
@@ -373,17 +434,17 @@
 
   </main>
 
-  <!-- Firebase + Auth (opcional, para mantener coherencia con el resto del sitio) -->
+  <!-- Firebase + Auth -->
   <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
   <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
 
-  <!-- Barra de progreso con bicicleta (dibuja la barra dentro de #unit-progress) -->
+  <!-- Barra de progreso con bicicleta (componente general del sitio) -->
   <script src="/matematica-a-pedal/assets/progress-bar-bike.js"></script>
 
-  <!-- Lógica del autodiagnóstico + actualización de la bici -->
+  <!-- Lógica del autodiagnóstico + actualización de barra con bici -->
   <script>
   (function(){
-    // Clave de respuestas correctas (actualizada según tu patrón)
+    // Clave de respuestas correctas (según tu lista por bloque)
     const answerKey = {
       q1: 'c',
       q2: 'b',
@@ -426,42 +487,58 @@
 
     const submitBtn = document.getElementById('ad-submit');
     const resetBtn  = document.getElementById('ad-reset');
+    const printBtn  = document.getElementById('ad-print');
     const resultBox = document.getElementById('ad-result');
 
-    // ---------- BARRA CON BICI: PROGRESO SEGÚN PREGUNTAS RESPONDIDAS ----------
-    const questions = Array.from(document.querySelectorAll('.ad-question'));
-    const bikeFill  = document.querySelector('#unit-progress .unit-progress__fill');
-    const bikeLabel = document.querySelector('#unit-progress .unit-progress__label, #unit-progress .unit-progress__pct');
-    const bikeIcon  = document.querySelector('#unit-progress .unit-progress__bike');
+    const questions   = Array.from(document.querySelectorAll('.ad-question'));
+    const allRadios   = document.querySelectorAll('#autodiag-home input[type="radio"]');
 
-    function updateBikeProgress() {
-      if (!bikeFill) return; // si por algún motivo no se cargó la barra, no hacemos nada
+    // Elementos de la barra con bici dentro de #unit-progress
+    const progressRoot  = document.getElementById('unit-progress');
+    const progressFill  = progressRoot ? progressRoot.querySelector('[class*="fill"]')   : null;
+    const progressBike  = progressRoot ? progressRoot.querySelector('[class*="bike"]')   : null;
+    const progressLabel = progressRoot ? progressRoot.querySelector('[class*="label"]')  : null;
 
+    function limpiarMarcas(){
+      document.querySelectorAll('.ad-question').forEach(q => {
+        q.classList.remove('ad-question-focus');
+      });
+      document.querySelectorAll('.ad-options label').forEach(lab => {
+        lab.classList.remove('ad-correct','ad-incorrect');
+        const mark = lab.querySelector('.ad-mark');
+        if (mark) mark.remove();
+      });
+    }
+
+    // -------- Barra con bici: porcentaje de preguntas respondidas --------
+    function updateProgress(){
       const total = questions.length || 1;
       let answered = 0;
-
       questions.forEach(q => {
-        const checked = q.querySelector('input[type="radio"]:checked');
-        if (checked) answered++;
+        if (q.querySelector('input[type="radio"]:checked')) answered++;
       });
-
       const pct = Math.round(100 * answered / total);
 
-      bikeFill.style.width = pct + '%';
-      if (bikeLabel) bikeLabel.textContent = pct + '%';
-
-      // La bici se mueve con la misma proporción sobre la barra
-      if (bikeIcon) {
-        bikeIcon.style.left = pct + '%';
+      if (progressFill){
+        progressFill.style.width = pct + '%';
+      }
+      if (progressBike){
+        progressBike.style.left = pct + '%';
+      }
+      if (progressLabel){
+        progressLabel.textContent = pct + '%';
       }
     }
 
-    // ---------- CORRECCIÓN DEL AUTODIAGNÓSTICO ----------
+    // -------- Corrección del autodiagnóstico --------
     function corregir(){
+      limpiarMarcas();
+
       let total = 0;
       let correct = 0;
       const topicTotals  = {};
       const topicCorrect = {};
+      let firstProblemQuestion = null; // primera incorrecta o sin responder
 
       for (const qid in answerKey){
         total++;
@@ -471,9 +548,39 @@
 
         const topic = topicMap[qid];
         topicTotals[topic]  = (topicTotals[topic]  || 0) + 1;
-        if (chosen === answerKey[qid]){
+
+        const correctValue = answerKey[qid];
+        const correctInput = document.querySelector('input[name="'+qid+'"][value="'+correctValue+'"]');
+        const correctLabel = correctInput ? correctInput.closest('label') : null;
+
+        if (correctLabel){
+          correctLabel.classList.add('ad-correct');
+          const span = document.createElement('span');
+          span.className = 'ad-mark';
+          span.textContent = '✔';
+          correctLabel.appendChild(span);
+        }
+
+        const questionDiv = radios[0] ? radios[0].closest('.ad-question') : null;
+
+        if (chosen === correctValue){
           correct++;
           topicCorrect[topic] = (topicCorrect[topic] || 0) + 1;
+        } else {
+          if (chosen){
+            const chosenInput = document.querySelector('input[name="'+qid+'"][value="'+chosen+'"]');
+            const chosenLabel = chosenInput ? chosenInput.closest('label') : null;
+            if (chosenLabel){
+              chosenLabel.classList.add('ad-incorrect');
+              const span = document.createElement('span');
+              span.className = 'ad-mark';
+              span.textContent = '✖';
+              chosenLabel.appendChild(span);
+            }
+          }
+          if (!firstProblemQuestion && questionDiv){
+            firstProblemQuestion = questionDiv;
+          }
         }
       }
 
@@ -512,27 +619,35 @@
       html += `</ul>`;
 
       resultBox.innerHTML = html;
-      resultBox.scrollIntoView({behavior:'smooth', block:'start'});
+
+      if (firstProblemQuestion){
+        firstProblemQuestion.classList.add('ad-question-focus');
+        firstProblemQuestion.scrollIntoView({behavior:'smooth', block:'center'});
+      } else {
+        resultBox.scrollIntoView({behavior:'smooth', block:'start'});
+      }
     }
 
     function resetear(){
       if (!confirm('¿Borrar tus respuestas del autodiagnóstico?')) return;
-      const radios = document.querySelectorAll('#autodiag-home input[type="radio"]');
-      radios.forEach(r => r.checked = false);
+      document.querySelectorAll('#autodiag-home input[type="radio"]').forEach(r => r.checked = false);
+      limpiarMarcas();
       resultBox.innerHTML = '<p style="margin:0; opacity:.8;">Aquí aparecerán tus resultados globales y sugerencias por tema.</p>';
-      updateBikeProgress();
+      updateProgress();
     }
 
-    // Eventos principales
+    function imprimirPDF(){
+      window.print();
+    }
+
     submitBtn.addEventListener('click', corregir);
     resetBtn.addEventListener('click', resetear);
+    printBtn.addEventListener('click', imprimirPDF);
 
-    // Actualizar bici cada vez que se marca una opción
-    const allRadios = document.querySelectorAll('#autodiag-home input[type="radio"]');
-    allRadios.forEach(r => r.addEventListener('change', updateBikeProgress));
+    allRadios.forEach(r => r.addEventListener('change', updateProgress));
 
     // Estado inicial de la barra
-    updateBikeProgress();
+    updateProgress();
   })();
   </script>
 

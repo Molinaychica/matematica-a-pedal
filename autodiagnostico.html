@@ -160,7 +160,7 @@
     .ad-progress-bike {
       position: absolute;
       top: 50%;
-      transform: translate(-50%, -55%); /* centrada y un poquito más arriba */
+      transform: translate(-50%, -55%) scaleX(-1); /* gira horizontalmente para mirar a la derecha */
       font-size: 18px;
       pointer-events: none;
     }
@@ -230,9 +230,8 @@
         </div>
         <div class="ad-progress-bar">
           <div class="ad-progress-track">
-            <div class="ad-progress-fill" id="ad-progress-fill">
-              <span class="ad-progress-bike" id="ad-progress-bike">🚲</span>
-            </div>
+            <div class="ad-progress-fill" id="ad-progress-fill"></div>
+            <span class="ad-progress-bike" id="ad-progress-bike">🚲</span>
           </div>
         </div>
         <div class="ad-progress-footer" id="ad-progress-footer">
@@ -511,7 +510,7 @@
 
   </main>
 
-  <!-- Firebase + Auth (si querés mantener coherencia con el resto del sitio) -->
+  <!-- Firebase + Auth (opcional) -->
   <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
   <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
 
@@ -589,10 +588,10 @@
       progressPercent.textContent = pct + '%';
       progressFill.style.width = pct + '%';
 
-      // Posición de la bici: le damos un margen para que no quede cortada
+      // Posición de la bici respecto a la pista
       let bikePct = pct;
-      if (bikePct < 5) bikePct = 5;
-      if (bikePct > 95) bikePct = 95;
+      if (bikePct < 3) bikePct = 3;   // margen para que no se corte al inicio
+      if (bikePct > 97) bikePct = 97; // margen para que no se corte al final
       progressBike.style.left = bikePct + '%';
 
       if (pct === 0){

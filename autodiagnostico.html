@@ -75,7 +75,7 @@
       background: #FFF6E6;
     }
 
-    /* Resaltado corrección */
+    /* Resaltado de corrección */
     .ad-correct {
       background: #EFFFF2;
       box-shadow: 0 0 0 1px #9BE7B0;
@@ -88,6 +88,8 @@
       font-size: 0.9em;
       margin-left: 6px;
     }
+
+    /* Pregunta enfocada (primera incorrecta/sin responder) */
     .ad-question-focus {
       box-shadow: 0 0 0 2px #FFA559;
       border-radius: 10px;
@@ -95,10 +97,12 @@
       margin-top: 14px;
     }
 
-    /* Layout con barra lateral izquierda */
+    /* Layout con barra lateral */
     #autodiag-home {
       position: relative;
-      padding-left: 280px; /* espacio para la barra en pantallas grandes */
+      padding-left: 280px; /* espacio para la barra lateral en pantallas grandes */
+      max-width: 1180px;
+      margin: 0 auto;
     }
 
     #autodiag-progress-wrapper {
@@ -110,45 +114,63 @@
       z-index: 40;
     }
 
-    /* Contenedor de la barra + bici */
-    .ad-bici-container {
-      border: 1px solid #FFD580;
-      border-radius: 12px;
-      padding: 10px 12px;
+    /* Tarjeta de progreso propia del autodiagnóstico */
+    .ad-progress-card {
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      color: #7f6000;
       background: #FFFDF7;
-      box-shadow: 0 4px 10px rgba(0,0,0,.06);
+      border: 1px solid #FFD580;
+      border-radius: 14px;
+      padding: 10px 14px 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,.06);
     }
-    .ad-bici-bar-outer {
+    .ad-progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .ad-progress-title {
+      font-weight: 600;
+    }
+    .ad-progress-label {
+      font-size: 11px;
+    }
+    .ad-progress-bar {
+      margin-top: 4px;
+    }
+    .ad-progress-track {
       position: relative;
-      height: 14px;
+      height: 10px;
       background: #FFF6E6;
       border-radius: 999px;
-      overflow: hidden;
       border: 1px solid #FFD580;
+      overflow: visible; /* para que la bici no quede cortada */
     }
-    .ad-bici-bar-inner {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .ad-progress-fill {
+      position: relative;
       height: 100%;
-      width: 0;
+      width: 0%;
       background: #FFA559;
+      border-radius: 999px;
       transition: width 0.25s ease-out;
     }
-    .ad-bici-label {
-      font-size: 13px;
-    }
-    .ad-bici-bike {
+    .ad-progress-bike {
       position: absolute;
       top: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -55%); /* centrada y un poquito más arriba */
+      font-size: 18px;
       pointer-events: none;
-      transition: left 0.25s ease-out;
-      width: 28px;
-      height: 28px;
+    }
+    .ad-progress-footer {
+      margin-top: 4px;
+      font-size: 11px;
+      opacity: 0.9;
     }
 
-    /* Pantallas chicas: barra arriba del contenido */
+    /* En pantallas chicas, la barra vuelve arriba del contenido */
     @media (max-width: 1024px) {
       #autodiag-home {
         padding-left: 0;
@@ -158,6 +180,7 @@
         transform: none;
         width: auto;
         margin-top: 16px;
+        margin-bottom: 4px;
       }
     }
 
@@ -180,7 +203,7 @@
   <script src="/matematica-a-pedal/assets/load-header.js"></script>
 
   <!-- CONTENIDO AUTODIAGNÓSTICO -->
-  <main id="autodiag-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55; max-width:1180px; margin:0 auto;">
+  <main id="autodiag-home" style="font-family:'Roboto Mono', monospace; color:#7f6000; line-height:1.55;">
 
     <!-- Intro -->
     <section class="ad-intro">
@@ -195,9 +218,27 @@
       </p>
     </section>
 
-    <!-- Barra con bici en margen izquierdo -->
+    <!-- Barra con bici en el margen izquierdo -->
     <div id="autodiag-progress-wrapper">
-      <div id="unit-progress"></div>
+      <div class="ad-progress-card">
+        <div class="ad-progress-header">
+          <span class="ad-progress-title">Progreso del autodiagnóstico</span>
+          <div>
+            <span id="ad-progress-percent">0%</span>
+            <span class="ad-progress-label">completado</span>
+          </div>
+        </div>
+        <div class="ad-progress-bar">
+          <div class="ad-progress-track">
+            <div class="ad-progress-fill" id="ad-progress-fill">
+              <span class="ad-progress-bike" id="ad-progress-bike">🚲</span>
+            </div>
+          </div>
+        </div>
+        <div class="ad-progress-footer" id="ad-progress-footer">
+          Empezá cuando quieras.
+        </div>
+      </div>
     </div>
 
     <section id="autodiag-form" class="ad-card">
@@ -470,74 +511,11 @@
 
   </main>
 
-  <!-- Firebase + Auth -->
+  <!-- Firebase + Auth (si querés mantener coherencia con el resto del sitio) -->
   <script type="module" src="/matematica-a-pedal/assets/firebase-init.js"></script>
   <script type="module" src="/matematica-a-pedal/assets/progress-sync.js"></script>
 
-  <!-- Barra de progreso con bicicleta (lógica local, sin script externo) -->
-  <script>
-  (function(){
-    const holder = document.getElementById('unit-progress');
-    if (!holder) return;
-
-    holder.innerHTML = `
-      <div class="ad-bici-container">
-        <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
-          <span style="color:#783f04;">Progreso del autodiagnóstico</span>
-          <span class="ad-bici-label" style="color:#7f6000;">0% completado</span>
-        </div>
-        <div class="ad-bici-bar-outer">
-          <div class="ad-bici-bar-inner"></div>
-          <div class="ad-bici-bike">
-            <svg viewBox="0 0 64 64" width="24" height="24">
-              <g transform="scale(1,-1) translate(0,-64)">
-                <path d="M20 16h8l8 20h10"
-                      stroke="#783f04" stroke-width="4" fill="none" stroke-linecap="round"/>
-                <circle cx="16" cy="40" r="12"
-                        stroke="#783f04" stroke-width="4" fill="none"/>
-                <circle cx="50" cy="40" r="12"
-                        stroke="#783f04" stroke-width="4" fill="none"/>
-              </g>
-            </svg>
-          </div>
-        </div>
-      </div>
-    `;
-
-    const barFill  = holder.querySelector('.ad-bici-bar-inner');
-    const label    = holder.querySelector('.ad-bici-label');
-    const bike     = holder.querySelector('.ad-bici-bike');
-    const radios   = Array.from(document.querySelectorAll('#autodiag-home input[type="radio"]'));
-
-    const questionNames = Array.from(new Set(radios.map(r => r.name)));
-    const totalQuestions = questionNames.length;
-
-    function updateProgress(){
-      const answered = new Set();
-      questionNames.forEach(name => {
-        const checked = document.querySelector('input[name="'+name+'"]:checked');
-        if (checked) answered.add(name);
-      });
-
-      const pct = totalQuestions ? Math.round(100 * answered.size / totalQuestions) : 0;
-      barFill.style.width = pct + '%';
-      label.textContent = pct + '% completado';
-
-      const minOffset = 5;   // para que no quede pegada al borde
-      const maxOffset = 95;
-      const safePos = minOffset + (pct * (maxOffset - minOffset) / 100);
-      bike.style.left = safePos + '%';
-    }
-
-    radios.forEach(r => r.addEventListener('change', updateProgress));
-    updateProgress();
-
-    // Dejo la función accesible para el reset
-    window.autodiagUpdateProgress = updateProgress;
-  })();
-  </script>
-
-  <!-- Lógica del autodiagnóstico -->
+  <!-- Lógica del autodiagnóstico + barra de progreso propia -->
   <script>
   (function(){
     // Clave de respuestas correctas (según tu lista por bloque)
@@ -564,7 +542,6 @@
       q20:'b'
     };
 
-    // Mapa pregunta -> tema/unidad
     const topicMap = {
       q1: 'U0', q2: 'U0', q3: 'U0', q4: 'U0',
       q5: 'U1', q6: 'U1', q7: 'U1', q8: 'U1',
@@ -586,6 +563,13 @@
     const printBtn  = document.getElementById('ad-print');
     const resultBox = document.getElementById('ad-result');
 
+    const progressPercent = document.getElementById('ad-progress-percent');
+    const progressFill    = document.getElementById('ad-progress-fill');
+    const progressBike    = document.getElementById('ad-progress-bike');
+    const progressFooter  = document.getElementById('ad-progress-footer');
+
+    const TOTAL_QUESTIONS = Object.keys(answerKey).length;
+
     function limpiarMarcas(){
       document.querySelectorAll('.ad-question').forEach(q => {
         q.classList.remove('ad-question-focus');
@@ -595,6 +579,31 @@
         const mark = lab.querySelector('.ad-mark');
         if (mark) mark.remove();
       });
+    }
+
+    // --- Barra de progreso (por respuestas marcadas) ---
+    function updateProgressBar(){
+      const checked = document.querySelectorAll('#autodiag-home input[type="radio"]:checked').length;
+      const pct = Math.round(100 * checked / TOTAL_QUESTIONS);
+
+      progressPercent.textContent = pct + '%';
+      progressFill.style.width = pct + '%';
+
+      // Posición de la bici: le damos un margen para que no quede cortada
+      let bikePct = pct;
+      if (bikePct < 5) bikePct = 5;
+      if (bikePct > 95) bikePct = 95;
+      progressBike.style.left = bikePct + '%';
+
+      if (pct === 0){
+        progressFooter.textContent = 'Empezá cuando quieras.';
+      } else if (pct < 50){
+        progressFooter.textContent = 'Buen comienzo, seguí pedaleando.';
+      } else if (pct < 100){
+        progressFooter.textContent = 'Ya recorriste más de la mitad.';
+      } else {
+        progressFooter.textContent = '¡Autodiagnóstico completo!';
+      }
     }
 
     function corregir(){
@@ -615,11 +624,9 @@
         const topic = topicMap[qid];
         topicTotals[topic]  = (topicTotals[topic]  || 0) + 1;
 
-        // Resaltado visual
         const correctValue = answerKey[qid];
         const correctInput = document.querySelector('input[name="'+qid+'"][value="'+correctValue+'"]');
         const correctLabel = correctInput ? correctInput.closest('label') : null;
-        const questionDiv  = radios[0] ? radios[0].closest('.ad-question') : null;
 
         if (correctLabel){
           correctLabel.classList.add('ad-correct');
@@ -628,6 +635,8 @@
           span.textContent = '✔';
           correctLabel.appendChild(span);
         }
+
+        const questionDiv = radios[0] ? radios[0].closest('.ad-question') : null;
 
         if (chosen === correctValue){
           correct++;
@@ -699,16 +708,24 @@
       document.querySelectorAll('#autodiag-home input[type="radio"]').forEach(r => r.checked = false);
       limpiarMarcas();
       resultBox.innerHTML = '<p style="margin:0; opacity:.8;">Aquí aparecerán tus resultados globales y sugerencias por tema.</p>';
-      if (window.autodiagUpdateProgress) window.autodiagUpdateProgress();
+      updateProgressBar();
     }
 
     function imprimirPDF(){
       window.print();
     }
 
+    // Eventos
     submitBtn.addEventListener('click', corregir);
     resetBtn.addEventListener('click', resetear);
     printBtn.addEventListener('click', imprimirPDF);
+
+    document.querySelectorAll('#autodiag-home input[type="radio"]').forEach(r => {
+      r.addEventListener('change', updateProgressBar);
+    });
+
+    // Estado inicial de la barra
+    updateProgressBar();
   })();
   </script>
 
